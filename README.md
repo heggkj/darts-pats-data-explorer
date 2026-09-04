@@ -2,6 +2,15 @@
 
 An interactive web explorer for Darts and Pats published in *The Breeze*.
 
+## Run the website locally
+
+```powershell
+pnpm install
+pnpm dev
+```
+
+Open the local address printed by the development server. The production version is created with `pnpm build`.
+
 ## Data files
 
 The website uses files generated from the source workbook:
@@ -21,4 +30,3 @@ python scripts/build_data.py "path/to/Darts-and-Pats_dataset_parsed.xlsx"
 ```
 
 The builder keeps the fields needed for filtering, searching, display, and source identification. Dates are stored as `YYYY-MM-DD`; numbers are stored as numbers; missing values are stored as `null`.
-
