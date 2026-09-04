@@ -1,6 +1,17 @@
 # Darts and Pats Data Explorer
 
-An interactive web explorer for Darts and Pats published in *The Breeze*.
+A static, PL2-styled explorer for Darts and Pats published in *The Breeze*. It includes linked sentiment-balance, controlled-topic, and campus-entity views alongside the searchable source records.
+
+## Refresh the data
+
+Run the source conversion first, then the transparent first-pass analysis:
+
+```powershell
+python scripts/build_data.py "..\Darts-and-Pats_dataset_parsed.xlsx"
+python scripts/enrich_data.py
+```
+
+The analysis vocabulary is defined near the top of `scripts/enrich_data.py`. Topic and entity labels require human validation before formal research use.
 
 ## Run the website locally
 
@@ -18,15 +29,7 @@ The website uses files generated from the source workbook:
 - `public/data/records.json`: web-ready records
 - `public/data/summary.json`: yearly and issue-level counts
 - `public/data/records.csv.gz`: compact downloadable table
+- `public/data/enrichment.json`: record-level topic and entity annotations
+- `public/data/analysis.json`: aggregates and method metadata for the charts
 
 The original Excel workbook is not committed to this repository.
-
-## Rebuild the data
-
-Run the data builder and pass the source workbook as its argument:
-
-```powershell
-python scripts/build_data.py "path/to/Darts-and-Pats_dataset_parsed.xlsx"
-```
-
-The builder keeps the fields needed for filtering, searching, display, and source identification. Dates are stored as `YYYY-MM-DD`; numbers are stored as numbers; missing values are stored as `null`.

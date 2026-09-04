@@ -54,6 +54,33 @@
       </section>
 
       <section class="workspace" aria-label="Explore the archive">
+        <section class="audience-panel" aria-labelledby="ways-title">
+          <div class="audience-intro">
+            <p class="eyebrow eyebrow--dark">Choose a starting point</p>
+            <h2 id="ways-title">Find your way into the archive</h2>
+          </div>
+          <button class="audience-card" id="student-view" type="button">
+            <span>Current students</span>
+            <strong>What is campus talking about now?</strong>
+            <small>Explore the most recent six years.</small>
+          </button>
+          <div class="audience-card audience-card--alumni">
+            <span>Alumni</span>
+            <strong>Return to your JMU years</strong>
+            <label for="alumni-year">Graduation year</label>
+            <div class="alumni-control">
+              <select id="alumni-year" aria-label="Graduation year"></select>
+              <button id="alumni-view" type="button">Explore</button>
+            </div>
+            <small>Shows that year and the previous three.</small>
+          </div>
+          <a class="audience-card" href="#methods">
+            <span>Researchers</span>
+            <strong>Methods, data, and reproducible filters</strong>
+            <small>Review the coding approach and download records.</small>
+          </a>
+        </section>
+
         <form class="filter-panel" id="filter-form">
           <div class="search-field">
             <label for="search">Search the published text</label>
@@ -89,24 +116,63 @@
             </select>
           </div>
 
+          <div class="select-field">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option value="all">All topics</option>
+            </select>
+          </div>
+
           <button class="reset-button" id="reset-filters" type="reset">Reset</button>
         </form>
+
+        <p class="active-scope" id="active-scope" aria-live="polite"></p>
 
         <section class="timeline-panel" aria-labelledby="timeline-title">
           <div class="section-heading">
             <div>
               <p class="eyebrow eyebrow--dark">Archive balance</p>
-              <h2 id="timeline-title">Darts and Pats by year</h2>
+              <h2 id="timeline-title">Positive share and publishing volume</h2>
             </div>
             <div class="chart-key" aria-label="Chart legend">
-              <span><i class="key key--dart"></i>Darts</span>
-              <span><i class="key key--pat"></i>Pats</span>
+              <span><i class="key key--pat"></i>Pat share</span>
+              <span><i class="key key--volume"></i>Records</span>
             </div>
           </div>
-          <p class="timeline-help">Select a year to filter the records below.</p>
-          <div class="timeline" id="timeline" aria-live="polite">
+          <div class="balance-callout" id="balance-summary">Calculating the archive balance…</div>
+          <p class="timeline-help">Each dot is the percentage of classified entries that were Pats. The pale bar shows how many records were published. Select a year to filter the archive.</p>
+          <div class="balance-chart-shell">
+            <span class="axis-label axis-label--top">100% Pats</span>
+            <span class="axis-label axis-label--middle">50% balance</span>
+            <span class="axis-label axis-label--bottom">0% Pats</span>
+            <div class="timeline balance-timeline" id="timeline" aria-live="polite">
             <p class="loading-note">Loading the timeline…</p>
+            </div>
           </div>
+        </section>
+
+        <section class="analysis-grid" aria-label="Topic and entity analysis">
+          <section class="topic-panel" aria-labelledby="topic-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow eyebrow--dark">Topic analysis</p>
+                <h2 id="topic-title">What draws Darts and Pats?</h2>
+              </div>
+              <div class="chart-key" aria-label="Topic chart legend">
+                <span><i class="key key--dart"></i>Darts</span>
+                <span><i class="key key--pat"></i>Pats</span>
+              </div>
+            </div>
+            <p class="timeline-help">Select a topic to see its records. Bar length shows its Dart/Pat split; the number shows the amount of evidence.</p>
+            <div class="topic-bars" id="topic-bars"><p class="loading-note">Analyzing topics…</p></div>
+          </section>
+
+          <aside class="entity-panel" aria-labelledby="entity-title">
+            <p class="eyebrow eyebrow--dark">Named entities</p>
+            <h2 id="entity-title">Campus names in the archive</h2>
+            <p class="timeline-help">Organizations and places recognized with a campus-specific dictionary. Select one to filter the records.</p>
+            <div class="entity-list" id="entity-list"><p class="loading-note">Finding campus entities…</p></div>
+          </aside>
         </section>
 
         <section class="results-panel" aria-labelledby="results-title">
@@ -127,6 +193,23 @@
           <div class="status-message" id="status-message" role="status">Loading the archive…</div>
           <div class="record-list" id="record-list"></div>
           <button class="load-more" id="load-more" type="button" hidden>Show more records</button>
+        </section>
+
+        <section class="methods-panel" id="methods" aria-labelledby="methods-title">
+          <div>
+            <p class="eyebrow eyebrow--dark">For researchers</p>
+            <h2 id="methods-title">Methods and downloads</h2>
+          </div>
+          <div class="methods-copy">
+            <p id="method-note">Loading the analysis method…</p>
+            <p><strong>Important:</strong> Dart and Pat are publication labels, not measurements of emotional intensity. Topic and entity labels are automated first-pass annotations and need human validation before formal inference.</p>
+            <p id="coverage-note"></p>
+            <div class="download-links">
+              <a href="./data/records.csv.gz" download>Download source records</a>
+              <a href="./data/analysis.json" download>Download aggregate analysis</a>
+              <a href="./data/enrichment.json" download>Download record annotations</a>
+            </div>
+          </div>
         </section>
       </section>
     </main>
