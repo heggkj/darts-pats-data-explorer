@@ -1,0 +1,10755 @@
+{
+  "generatedAt": "2026-09-04T20:28:32+00:00",
+  "sourceFile": "Darts-and-Pats_dataset_parsed.xlsx",
+  "recordCount": 10863,
+  "dateMin": "1991-08-26",
+  "dateMax": "2026-04-30",
+  "kindCounts": {
+    "DART": 5723,
+    "DART AND PAT": 3,
+    "PAT": 5137
+  },
+  "invalidTargetValuesRemoved": 1,
+  "years": [
+    {
+      "key": 1991,
+      "darts": 79,
+      "pats": 79,
+      "combined": 0,
+      "total": 158
+    },
+    {
+      "key": 1992,
+      "darts": 153,
+      "pats": 153,
+      "combined": 0,
+      "total": 306
+    },
+    {
+      "key": 1993,
+      "darts": 120,
+      "pats": 120,
+      "combined": 0,
+      "total": 240
+    },
+    {
+      "key": 1994,
+      "darts": 114,
+      "pats": 120,
+      "combined": 0,
+      "total": 234
+    },
+    {
+      "key": 1995,
+      "darts": 147,
+      "pats": 142,
+      "combined": 0,
+      "total": 289
+    },
+    {
+      "key": 1996,
+      "darts": 153,
+      "pats": 153,
+      "combined": 0,
+      "total": 306
+    },
+    {
+      "key": 1997,
+      "darts": 150,
+      "pats": 150,
+      "combined": 0,
+      "total": 300
+    },
+    {
+      "key": 1998,
+      "darts": 157,
+      "pats": 161,
+      "combined": 0,
+      "total": 318
+    },
+    {
+      "key": 1999,
+      "darts": 173,
+      "pats": 170,
+      "combined": 0,
+      "total": 343
+    },
+    {
+      "key": 2000,
+      "darts": 200,
+      "pats": 179,
+      "combined": 0,
+      "total": 379
+    },
+    {
+      "key": 2001,
+      "darts": 179,
+      "pats": 182,
+      "combined": 0,
+      "total": 361
+    },
+    {
+      "key": 2002,
+      "darts": 151,
+      "pats": 150,
+      "combined": 0,
+      "total": 301
+    },
+    {
+      "key": 2003,
+      "darts": 109,
+      "pats": 109,
+      "combined": 0,
+      "total": 218
+    },
+    {
+      "key": 2004,
+      "darts": 148,
+      "pats": 147,
+      "combined": 0,
+      "total": 295
+    },
+    {
+      "key": 2005,
+      "darts": 186,
+      "pats": 154,
+      "combined": 0,
+      "total": 340
+    },
+    {
+      "key": 2006,
+      "darts": 200,
+      "pats": 132,
+      "combined": 0,
+      "total": 332
+    },
+    {
+      "key": 2007,
+      "darts": 230,
+      "pats": 159,
+      "combined": 0,
+      "total": 389
+    },
+    {
+      "key": 2008,
+      "darts": 230,
+      "pats": 180,
+      "combined": 0,
+      "total": 410
+    },
+    {
+      "key": 2009,
+      "darts": 315,
+      "pats": 181,
+      "combined": 0,
+      "total": 496
+    },
+    {
+      "key": 2010,
+      "darts": 431,
+      "pats": 316,
+      "combined": 1,
+      "total": 748
+    },
+    {
+      "key": 2011,
+      "darts": 314,
+      "pats": 314,
+      "combined": 0,
+      "total": 628
+    },
+    {
+      "key": 2012,
+      "darts": 346,
+      "pats": 297,
+      "combined": 1,
+      "total": 644
+    },
+    {
+      "key": 2013,
+      "darts": 345,
+      "pats": 337,
+      "combined": 0,
+      "total": 682
+    },
+    {
+      "key": 2014,
+      "darts": 248,
+      "pats": 266,
+      "combined": 0,
+      "total": 514
+    },
+    {
+      "key": 2015,
+      "darts": 190,
+      "pats": 160,
+      "combined": 1,
+      "total": 351
+    },
+    {
+      "key": 2016,
+      "darts": 102,
+      "pats": 93,
+      "combined": 0,
+      "total": 195
+    },
+    {
+      "key": 2017,
+      "darts": 69,
+      "pats": 100,
+      "combined": 0,
+      "total": 169
+    },
+    {
+      "key": 2018,
+      "darts": 73,
+      "pats": 58,
+      "combined": 0,
+      "total": 131
+    },
+    {
+      "key": 2019,
+      "darts": 63,
+      "pats": 48,
+      "combined": 0,
+      "total": 111
+    },
+    {
+      "key": 2020,
+      "darts": 42,
+      "pats": 39,
+      "combined": 0,
+      "total": 81
+    },
+    {
+      "key": 2021,
+      "darts": 50,
+      "pats": 56,
+      "combined": 0,
+      "total": 106
+    },
+    {
+      "key": 2022,
+      "darts": 67,
+      "pats": 48,
+      "combined": 0,
+      "total": 115
+    },
+    {
+      "key": 2023,
+      "darts": 59,
+      "pats": 53,
+      "combined": 0,
+      "total": 112
+    },
+    {
+      "key": 2024,
+      "darts": 57,
+      "pats": 59,
+      "combined": 0,
+      "total": 116
+    },
+    {
+      "key": 2025,
+      "darts": 46,
+      "pats": 46,
+      "combined": 0,
+      "total": 92
+    },
+    {
+      "key": 2026,
+      "darts": 27,
+      "pats": 26,
+      "combined": 0,
+      "total": 53
+    }
+  ],
+  "issues": [
+    {
+      "key": "1991-08-26",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "1991-08-29",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "1991-09-03",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "1991-09-05",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "1991-09-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-09-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-09-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-09-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-09-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-09-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-09-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-10-31",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-11-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-11-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-11-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-11-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-11-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-11-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1991-12-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-01-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-02-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-03-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-03-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-03-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-03-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-03-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-03-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-04-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-04-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-04-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-04-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-04-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-09-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-10-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-11-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-11-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-11-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-11-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-11-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-11-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-12-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-12-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1992-12-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-01-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-01-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-01-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-01-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-02-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-03-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-03-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-03-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-03-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-03-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-03-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-04-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-09-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-09-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-09-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-09-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-09-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-10-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-10-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-10-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-10-28",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "1993-11-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "1993-11-08",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "1993-11-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-11-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-12-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1993-12-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-01-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-01-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-02-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-02-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-02-17",
+      "darts": 0,
+      "pats": 6,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-02-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-03-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-03-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-04-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-04-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-04-14",
+      "darts": 9,
+      "pats": 9,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "1994-04-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-04-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-08-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-09-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-10-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-11-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-11-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-11-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-11-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-12-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-12-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1994-12-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-01-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-01-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-01-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-02-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-03-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-03-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-03-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-03-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-03-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-03-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-04-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-08-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-08-31",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-09-28",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-19",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-26",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-10-30",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-11-02",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-11-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-11-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-11-16",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-11-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-11-30",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1995-12-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1995-12-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-01-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-01-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-01-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-01-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-01-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-02-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-03-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-03-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-03-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-03-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-03-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-04-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-08-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-08-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-09-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-10-31",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-11-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-11-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-11-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-11-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-11-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1996-12-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-01-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-02-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-03-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-03-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-03-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-04-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-08-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-08-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-09-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-10-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-11-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-11-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-11-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-11-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-11-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-11-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1997-12-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-01-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-01-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-01-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-01-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-02-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-03-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-03-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-03-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-03-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-03-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-08",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-04-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-04-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "1998-09-03",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-09-08",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-09-14",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-09-17",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-09-21",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-09-24",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-09-28",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-01",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-05",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-08",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-15",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-19",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-22",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-26",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-10-29",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-11-02",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-11-05",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-11-12",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-11-16",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-11-23",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-12-03",
+      "darts": 2,
+      "pats": 5,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-12-07",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1998-12-10",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-01-14",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-01-18",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-01-21",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-01-25",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-01-28",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-01",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-04",
+      "darts": 2,
+      "pats": 5,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-08",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-11",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-15",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-18",
+      "darts": 2,
+      "pats": 5,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-22",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-02-25",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-03-01",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-03-04",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-03-22",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-03-25",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-03-29",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-04-12",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-04-15",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-04-19",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-04-22",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-04-26",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-04-29",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-08-30",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-02",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-07",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-09",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-13",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-16",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-20",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-23",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-27",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-09-30",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-04",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-07",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-11",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-14",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-21",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-25",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-10-29",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-11-04",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-11-08",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-11-11",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-11-18",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-11-22",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-12-02",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-12-06",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "1999-12-09",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-01-13",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-01-17",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-01-20",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-01-24",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-01-27",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-01-31",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-03",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-07",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-10",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-14",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-17",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-21",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-24",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-02-28",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-03-02",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-03-23",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2000-03-27",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-03-30",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2000-04-03",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-04-06",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-04-10",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-04-13",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-04-17",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-04-20",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-04-27",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-08-28",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-08-31",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-05",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-07",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-11",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-14",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-18",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-21",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-25",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-09-28",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-02",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-05",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-09",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-12",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-19",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-23",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-10-26",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2000-10-30",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2000-11-02",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2000-11-06",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2000-11-09",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-11-16",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-11-20",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-11-30",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-12-04",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2000-12-07",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-01-16",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-01-18",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-01-22",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-01-25",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-01-29",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-02-05",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-02-08",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-02-12",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-02-15",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-02-19",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-02-22",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2001-02-26",
+      "darts": 4,
+      "pats": 6,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-03-01",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-03-15",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-03-19",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-03-22",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2001-03-26",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-03-29",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-04-02",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-04-05",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-04-09",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2001-04-12",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-04-19",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-04-23",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2001-04-26",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2001-08-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-08-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-09-06",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2001-09-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-09-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-09-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-09-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-09-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-10-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-11-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-12-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2001-12-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-01-10",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2002-01-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-01-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-01-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-01-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-01-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-01-31",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-02-28",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2002-03-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-03-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-03-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-03-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-03-28",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2002-04-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-04-08",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-04-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-04-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-04-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-04-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-04-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-08-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2002-08-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-09-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-10-31",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-11-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-11-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-11-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-11-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-11-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-11-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2002-12-05",
+      "darts": 1,
+      "pats": 2,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2003-01-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-01-21",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-01-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-01-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-01-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-02-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-03-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-03-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-03-20",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2003-03-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-08-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-08",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2003-09-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-09-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-10-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-10-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-10-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-10-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-10-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-10-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-11-13",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-11-17",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-11-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-11-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2003-12-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-01-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-01-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-01-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-01-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-01-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-02-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-03-01",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2004-03-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-03-18",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-03-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-03-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-03-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-04-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-04-05",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2004-04-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-04-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-04-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-04-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-04-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-08-23",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-08-30",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-02",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-13",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-20",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2004-09-23",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2004-09-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-09-30",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-10-04",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-10-07",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2004-10-11",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2004-10-25",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-10-28",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2004-11-01",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-11-04",
+      "darts": 2,
+      "pats": 5,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2004-11-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-11-15",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-11-18",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2004-11-22",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2004-12-02",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2005-01-13",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-01-18",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-01-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-01-24",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-01-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2005-01-31",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2005-02-03",
+      "darts": 0,
+      "pats": 6,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-02-07",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2005-02-10",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-02-14",
+      "darts": 1,
+      "pats": 4,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2005-02-17",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-02-21",
+      "darts": 6,
+      "pats": 0,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-02-24",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-02-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-03-03",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-03-17",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2005-03-21",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2005-03-24",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-03-31",
+      "darts": 7,
+      "pats": 1,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-04-04",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2005-04-25",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-04-28",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-08-29",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-01",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-06",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-08",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-12",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-15",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-19",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-22",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-26",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-09-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-10-03",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-10-06",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-10-10",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-10-13",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-10-17",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-10-20",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-10-27",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2005-10-31",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-11-03",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-11-07",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-11-10",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-11-14",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-11-17",
+      "darts": 7,
+      "pats": 1,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-11-21",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2005-12-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-12-05",
+      "darts": 1,
+      "pats": 5,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2005-12-08",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-01-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-01-17",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-01-19",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-01-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-01-26",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-01-30",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2006-02-02",
+      "darts": 6,
+      "pats": 0,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-06",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-09",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-13",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-16",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-20",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-23",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-02-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-03-02",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-03-16",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-03-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-03-23",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-03-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-03-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-03",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-06",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-10",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-13",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-17",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-24",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-04-27",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-08-31",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-09-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-09-07",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-09-11",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-09-14",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2006-09-18",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-09-21",
+      "darts": 6,
+      "pats": 0,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-09-25",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2006-09-28",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-10-02",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2006-10-05",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-10-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-10-12",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-10-19",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2006-10-23",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2006-10-26",
+      "darts": 8,
+      "pats": 0,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2006-10-30",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2006-11-02",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-11-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-11-09",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-11-13",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-11-16",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-11-20",
+      "darts": 0,
+      "pats": 1,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2006-11-21",
+      "darts": 1,
+      "pats": 0,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2006-11-22",
+      "darts": 0,
+      "pats": 1,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2006-11-23",
+      "darts": 0,
+      "pats": 1,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2006-11-24",
+      "darts": 1,
+      "pats": 0,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2006-11-25",
+      "darts": 0,
+      "pats": 1,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2006-11-30",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2006-12-04",
+      "darts": 6,
+      "pats": 1,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2006-12-07",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-01-11",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-01-16",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-01-18",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-01-22",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-01-25",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-01-29",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-12",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-15",
+      "darts": 6,
+      "pats": 0,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-19",
+      "darts": 8,
+      "pats": 4,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2007-02-22",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-02-26",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-03-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-03-15",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-03-19",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-03-22",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-03-26",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-03-29",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-04-02",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-04-05",
+      "darts": 6,
+      "pats": 0,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-04-12",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2007-04-16",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-04-19",
+      "darts": 0,
+      "pats": 8,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-04-23",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-04-26",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-08-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2007-08-30",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-09-04",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2007-09-07",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-09-10",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-09-13",
+      "darts": 8,
+      "pats": 1,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2007-09-17",
+      "darts": 3,
+      "pats": 6,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2007-09-20",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-09-24",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2007-09-27",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2007-10-01",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-10-04",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2007-10-08",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2007-10-11",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-10-15",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2007-10-18",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-10-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-10-29",
+      "darts": 6,
+      "pats": 1,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2007-11-01",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2007-11-05",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-11-08",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2007-11-12",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2007-11-15",
+      "darts": 7,
+      "pats": 2,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2007-11-19",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2007-11-29",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2007-12-03",
+      "darts": 8,
+      "pats": 7,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2007-12-06",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2008-01-14",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2008-01-17",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2008-01-22",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2008-01-24",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2008-01-28",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2008-01-31",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2008-02-04",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2008-02-07",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2008-02-11",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2008-02-14",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2008-02-18",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2008-02-21",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2008-02-25",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2008-02-28",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2008-03-17",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2008-03-20",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2008-03-27",
+      "darts": 2,
+      "pats": 8,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2008-03-31",
+      "darts": 6,
+      "pats": 5,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2008-04-03",
+      "darts": 11,
+      "pats": 13,
+      "combined": 0,
+      "total": 24
+    },
+    {
+      "key": "2008-04-07",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2008-04-10",
+      "darts": 9,
+      "pats": 7,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2008-04-14",
+      "darts": 7,
+      "pats": 11,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2008-04-17",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2008-04-21",
+      "darts": 7,
+      "pats": 4,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2008-04-24",
+      "darts": 8,
+      "pats": 7,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2008-08-25",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2008-09-22",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2008-09-25",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2008-09-29",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2008-10-02",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2008-10-06",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2008-10-09",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2008-10-13",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2008-10-16",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2008-10-20",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2008-10-23",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2008-10-27",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2008-10-30",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2008-11-03",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2008-11-06",
+      "darts": 11,
+      "pats": 3,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2008-11-10",
+      "darts": 6,
+      "pats": 5,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2008-11-13",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2008-11-17",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2008-11-20",
+      "darts": 3,
+      "pats": 6,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2008-12-04",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2009-01-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2009-01-20",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2009-01-22",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2009-01-26",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2009-01-29",
+      "darts": 4,
+      "pats": 7,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2009-02-02",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2009-02-05",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2009-02-09",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2009-02-12",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2009-02-16",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2009-02-19",
+      "darts": 6,
+      "pats": 1,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-02-23",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2009-02-26",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2009-03-02",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2009-03-05",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2009-03-19",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2009-03-23",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2009-03-26",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-03-30",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2009-04-02",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-04-06",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-04-09",
+      "darts": 5,
+      "pats": 0,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2009-04-16",
+      "darts": 6,
+      "pats": 1,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-04-20",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-04-23",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2009-04-27",
+      "darts": 8,
+      "pats": 3,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2009-04-30",
+      "darts": 7,
+      "pats": 4,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2009-08-24",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2009-08-27",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2009-08-31",
+      "darts": 7,
+      "pats": 4,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2009-09-03",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2009-09-08",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2009-09-10",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2009-09-14",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2009-09-17",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2009-09-21",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2009-09-24",
+      "darts": 13,
+      "pats": 7,
+      "combined": 0,
+      "total": 20
+    },
+    {
+      "key": "2009-09-28",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2009-10-01",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-10-05",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-10-08",
+      "darts": 11,
+      "pats": 4,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2009-10-12",
+      "darts": 8,
+      "pats": 2,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2009-10-15",
+      "darts": 7,
+      "pats": 2,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2009-10-19",
+      "darts": 13,
+      "pats": 3,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2009-10-22",
+      "darts": 6,
+      "pats": 8,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2009-10-26",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2009-10-29",
+      "darts": 13,
+      "pats": 4,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2009-11-02",
+      "darts": 10,
+      "pats": 6,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2009-11-05",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2009-11-09",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2009-11-12",
+      "darts": 10,
+      "pats": 3,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2009-11-16",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2009-11-19",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2009-12-03",
+      "darts": 8,
+      "pats": 7,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2010-01-14",
+      "darts": 10,
+      "pats": 2,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2010-01-19",
+      "darts": 15,
+      "pats": 6,
+      "combined": 0,
+      "total": 21
+    },
+    {
+      "key": "2010-01-21",
+      "darts": 11,
+      "pats": 2,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-01-25",
+      "darts": 9,
+      "pats": 4,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-01-28",
+      "darts": 9,
+      "pats": 4,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-02-01",
+      "darts": 9,
+      "pats": 2,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2010-02-04",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2010-02-09",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-02-12",
+      "darts": 13,
+      "pats": 9,
+      "combined": 0,
+      "total": 22
+    },
+    {
+      "key": "2010-02-15",
+      "darts": 13,
+      "pats": 5,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2010-02-18",
+      "darts": 7,
+      "pats": 6,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-02-22",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-02-25",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2010-03-01",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2010-03-04",
+      "darts": 9,
+      "pats": 4,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-03-18",
+      "darts": 14,
+      "pats": 10,
+      "combined": 0,
+      "total": 24
+    },
+    {
+      "key": "2010-03-22",
+      "darts": 8,
+      "pats": 6,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-03-25",
+      "darts": 9,
+      "pats": 7,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2010-03-29",
+      "darts": 8,
+      "pats": 2,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2010-04-01",
+      "darts": 11,
+      "pats": 3,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-04-06",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2010-04-08",
+      "darts": 11,
+      "pats": 4,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2010-04-12",
+      "darts": 12,
+      "pats": 4,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2010-04-15",
+      "darts": 10,
+      "pats": 9,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2010-04-19",
+      "darts": 11,
+      "pats": 6,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2010-04-22",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-04-26",
+      "darts": 7,
+      "pats": 3,
+      "combined": 1,
+      "total": 11
+    },
+    {
+      "key": "2010-04-29",
+      "darts": 6,
+      "pats": 8,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-08-30",
+      "darts": 3,
+      "pats": 8,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2010-09-07",
+      "darts": 12,
+      "pats": 3,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2010-09-09",
+      "darts": 4,
+      "pats": 9,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-09-13",
+      "darts": 3,
+      "pats": 9,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2010-09-16",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2010-09-20",
+      "darts": 8,
+      "pats": 6,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-09-23",
+      "darts": 11,
+      "pats": 8,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2010-09-27",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2010-09-30",
+      "darts": 6,
+      "pats": 7,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-10-04",
+      "darts": 5,
+      "pats": 7,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2010-10-07",
+      "darts": 6,
+      "pats": 8,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2010-10-11",
+      "darts": 5,
+      "pats": 7,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2010-10-14",
+      "darts": 9,
+      "pats": 6,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2010-10-18",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2010-10-21",
+      "darts": 10,
+      "pats": 5,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2010-10-25",
+      "darts": 8,
+      "pats": 4,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2010-10-28",
+      "darts": 3,
+      "pats": 10,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-11-01",
+      "darts": 7,
+      "pats": 4,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2010-11-04",
+      "darts": 5,
+      "pats": 8,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-11-08",
+      "darts": 7,
+      "pats": 6,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-11-11",
+      "darts": 7,
+      "pats": 11,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2010-11-15",
+      "darts": 6,
+      "pats": 7,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-11-18",
+      "darts": 6,
+      "pats": 9,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2010-12-02",
+      "darts": 5,
+      "pats": 8,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2010-12-06",
+      "darts": 4,
+      "pats": 12,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2010-12-09",
+      "darts": 15,
+      "pats": 4,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2011-01-13",
+      "darts": 7,
+      "pats": 9,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2011-01-18",
+      "darts": 5,
+      "pats": 8,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2011-01-20",
+      "darts": 11,
+      "pats": 7,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2011-01-24",
+      "darts": 11,
+      "pats": 10,
+      "combined": 0,
+      "total": 21
+    },
+    {
+      "key": "2011-01-27",
+      "darts": 9,
+      "pats": 10,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2011-01-31",
+      "darts": 10,
+      "pats": 6,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2011-02-03",
+      "darts": 9,
+      "pats": 3,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2011-02-07",
+      "darts": 6,
+      "pats": 5,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2011-02-10",
+      "darts": 9,
+      "pats": 4,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2011-02-14",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-02-17",
+      "darts": 10,
+      "pats": 6,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2011-02-21",
+      "darts": 5,
+      "pats": 12,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2011-02-28",
+      "darts": 7,
+      "pats": 9,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2011-03-03",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2011-03-17",
+      "darts": 9,
+      "pats": 6,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2011-03-21",
+      "darts": 3,
+      "pats": 12,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2011-03-24",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2011-03-28",
+      "darts": 6,
+      "pats": 5,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2011-04-04",
+      "darts": 4,
+      "pats": 7,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2011-04-07",
+      "darts": 7,
+      "pats": 6,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2011-04-11",
+      "darts": 6,
+      "pats": 8,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2011-04-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2011-04-21",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2011-04-26",
+      "darts": 10,
+      "pats": 7,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2011-04-28",
+      "darts": 0,
+      "pats": 23,
+      "combined": 0,
+      "total": 23
+    },
+    {
+      "key": "2011-08-29",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2011-09-01",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-09-05",
+      "darts": 4,
+      "pats": 6,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-09-08",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2011-09-12",
+      "darts": 4,
+      "pats": 6,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-09-15",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2011-09-19",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2011-09-22",
+      "darts": 13,
+      "pats": 13,
+      "combined": 0,
+      "total": 26
+    },
+    {
+      "key": "2011-09-26",
+      "darts": 10,
+      "pats": 6,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2011-09-29",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2011-10-03",
+      "darts": 9,
+      "pats": 8,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2011-10-06",
+      "darts": 6,
+      "pats": 5,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2011-10-10",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-10-13",
+      "darts": 4,
+      "pats": 6,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-10-17",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2011-10-20",
+      "darts": 7,
+      "pats": 7,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2011-10-24",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2011-10-27",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-10-31",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-11-03",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-11-07",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-11-10",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2011-11-14",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2011-11-17",
+      "darts": 2,
+      "pats": 7,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2011-12-01",
+      "darts": 8,
+      "pats": 4,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2011-12-05",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2011-12-08",
+      "darts": 7,
+      "pats": 6,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-01-12",
+      "darts": 5,
+      "pats": 7,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-01-17",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2012-01-19",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-01-23",
+      "darts": 7,
+      "pats": 2,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2012-01-26",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2012-01-30",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2012-02-02",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2012-02-06",
+      "darts": 5,
+      "pats": 7,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-02-09",
+      "darts": 4,
+      "pats": 8,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-02-13",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2012-02-16",
+      "darts": 10,
+      "pats": 5,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2012-02-20",
+      "darts": 3,
+      "pats": 7,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2012-02-23",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2012-02-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2012-03-01",
+      "darts": 6,
+      "pats": 4,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2012-03-15",
+      "darts": 7,
+      "pats": 7,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2012-03-19",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2012-03-22",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2012-03-26",
+      "darts": 3,
+      "pats": 7,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2012-04-02",
+      "darts": 9,
+      "pats": 7,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2012-04-05",
+      "darts": 7,
+      "pats": 6,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-04-10",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2012-04-12",
+      "darts": 6,
+      "pats": 7,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-04-16",
+      "darts": 7,
+      "pats": 6,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-04-19",
+      "darts": 4,
+      "pats": 9,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-04-23",
+      "darts": 11,
+      "pats": 4,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2012-08-27",
+      "darts": 4,
+      "pats": 3,
+      "combined": 1,
+      "total": 8
+    },
+    {
+      "key": "2012-08-30",
+      "darts": 4,
+      "pats": 7,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2012-09-03",
+      "darts": 9,
+      "pats": 4,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-09-06",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-09-10",
+      "darts": 11,
+      "pats": 5,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2012-09-13",
+      "darts": 6,
+      "pats": 10,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2012-09-17",
+      "darts": 10,
+      "pats": 7,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2012-09-20",
+      "darts": 6,
+      "pats": 11,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2012-09-27",
+      "darts": 11,
+      "pats": 8,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2012-10-01",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-10-04",
+      "darts": 9,
+      "pats": 7,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2012-10-08",
+      "darts": 11,
+      "pats": 7,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2012-10-11",
+      "darts": 7,
+      "pats": 8,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2012-10-15",
+      "darts": 11,
+      "pats": 7,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2012-10-18",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2012-10-22",
+      "darts": 4,
+      "pats": 10,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2012-10-25",
+      "darts": 9,
+      "pats": 6,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2012-10-29",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2012-11-01",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2012-11-05",
+      "darts": 9,
+      "pats": 4,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2012-11-08",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2012-11-12",
+      "darts": 10,
+      "pats": 11,
+      "combined": 0,
+      "total": 21
+    },
+    {
+      "key": "2012-11-15",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2012-11-29",
+      "darts": 11,
+      "pats": 7,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2012-12-03",
+      "darts": 3,
+      "pats": 7,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2012-12-06",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2013-01-10",
+      "darts": 7,
+      "pats": 11,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2013-01-14",
+      "darts": 5,
+      "pats": 7,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2013-01-17",
+      "darts": 11,
+      "pats": 8,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2013-01-22",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2013-01-24",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2013-01-28",
+      "darts": 7,
+      "pats": 5,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2013-01-31",
+      "darts": 6,
+      "pats": 10,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2013-02-04",
+      "darts": 8,
+      "pats": 9,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-02-07",
+      "darts": 6,
+      "pats": 9,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-02-11",
+      "darts": 9,
+      "pats": 6,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-02-14",
+      "darts": 6,
+      "pats": 7,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2013-02-18",
+      "darts": 10,
+      "pats": 10,
+      "combined": 0,
+      "total": 20
+    },
+    {
+      "key": "2013-02-21",
+      "darts": 10,
+      "pats": 3,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2013-02-25",
+      "darts": 10,
+      "pats": 5,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-03-14",
+      "darts": 6,
+      "pats": 9,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-03-18",
+      "darts": 8,
+      "pats": 9,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-03-21",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2013-03-25",
+      "darts": 7,
+      "pats": 8,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-03-28",
+      "darts": 9,
+      "pats": 7,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2013-04-02",
+      "darts": 12,
+      "pats": 7,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2013-04-04",
+      "darts": 8,
+      "pats": 7,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-04-08",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2013-04-11",
+      "darts": 9,
+      "pats": 5,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2013-04-15",
+      "darts": 8,
+      "pats": 6,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2013-08-26",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2013-08-29",
+      "darts": 8,
+      "pats": 7,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-09-05",
+      "darts": 6,
+      "pats": 9,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2013-09-09",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2013-09-12",
+      "darts": 4,
+      "pats": 9,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2013-09-16",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2013-09-19",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2013-09-23",
+      "darts": 8,
+      "pats": 9,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-09-26",
+      "darts": 1,
+      "pats": 8,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2013-09-30",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2013-10-03",
+      "darts": 10,
+      "pats": 7,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-10-07",
+      "darts": 3,
+      "pats": 6,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2013-10-10",
+      "darts": 9,
+      "pats": 10,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2013-10-14",
+      "darts": 7,
+      "pats": 9,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2013-10-17",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2013-10-21",
+      "darts": 8,
+      "pats": 9,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-10-24",
+      "darts": 11,
+      "pats": 7,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2013-10-28",
+      "darts": 7,
+      "pats": 10,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-10-31",
+      "darts": 8,
+      "pats": 6,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2013-11-04",
+      "darts": 5,
+      "pats": 12,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2013-11-07",
+      "darts": 10,
+      "pats": 4,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2013-11-11",
+      "darts": 5,
+      "pats": 11,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2013-11-14",
+      "darts": 9,
+      "pats": 3,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2013-11-18",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2013-12-05",
+      "darts": 10,
+      "pats": 5,
+      "combined": 0,
+      "total": 15
+    },
+    {
+      "key": "2014-01-16",
+      "darts": 7,
+      "pats": 12,
+      "combined": 0,
+      "total": 19
+    },
+    {
+      "key": "2014-01-21",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2014-01-23",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-01-27",
+      "darts": 6,
+      "pats": 7,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2014-01-30",
+      "darts": 3,
+      "pats": 7,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2014-02-03",
+      "darts": 11,
+      "pats": 6,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2014-02-06",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-02-10",
+      "darts": 5,
+      "pats": 11,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2014-02-14",
+      "darts": 3,
+      "pats": 10,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2014-02-17",
+      "darts": 4,
+      "pats": 6,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2014-02-20",
+      "darts": 7,
+      "pats": 7,
+      "combined": 0,
+      "total": 14
+    },
+    {
+      "key": "2014-02-24",
+      "darts": 5,
+      "pats": 15,
+      "combined": 0,
+      "total": 20
+    },
+    {
+      "key": "2014-02-27",
+      "darts": 13,
+      "pats": 5,
+      "combined": 0,
+      "total": 18
+    },
+    {
+      "key": "2014-03-03",
+      "darts": 7,
+      "pats": 3,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2014-03-06",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2014-03-20",
+      "darts": 10,
+      "pats": 6,
+      "combined": 0,
+      "total": 16
+    },
+    {
+      "key": "2014-03-24",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-03-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2014-03-31",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-04-03",
+      "darts": 4,
+      "pats": 7,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2014-04-07",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-04-14",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2014-04-17",
+      "darts": 4,
+      "pats": 9,
+      "combined": 0,
+      "total": 13
+    },
+    {
+      "key": "2014-04-22",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-04-24",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-04-28",
+      "darts": 2,
+      "pats": 5,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2014-05-01",
+      "darts": 3,
+      "pats": 6,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-08-25",
+      "darts": 5,
+      "pats": 6,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2014-08-28",
+      "darts": 6,
+      "pats": 5,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2014-09-01",
+      "darts": 8,
+      "pats": 3,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2014-09-04",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-09-08",
+      "darts": 7,
+      "pats": 4,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2014-09-11",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-09-15",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-09-18",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2014-09-22",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-09-25",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-09-29",
+      "darts": 3,
+      "pats": 6,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-10-02",
+      "darts": 1,
+      "pats": 5,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2014-10-06",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-10-09",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-10-13",
+      "darts": 1,
+      "pats": 1,
+      "combined": 0,
+      "total": 2
+    },
+    {
+      "key": "2014-10-16",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-10-20",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-10-23",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-10-27",
+      "darts": 0,
+      "pats": 4,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2014-10-30",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-11-03",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2014-11-06",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-11-10",
+      "darts": 1,
+      "pats": 1,
+      "combined": 0,
+      "total": 2
+    },
+    {
+      "key": "2014-11-13",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2014-11-17",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2014-11-20",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2014-12-04",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-01-15",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-01-20",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-01-22",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-01-26",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2015-01-29",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-02-02",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-02-05",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-02-09",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-02-12",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-02-16",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-02-19",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-02-23",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-02-26",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-03-02",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-03-05",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-03-19",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2015-03-23",
+      "darts": 3,
+      "pats": 0,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2015-03-26",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2015-03-30",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-04-07",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-04-09",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-04-13",
+      "darts": 0,
+      "pats": 5,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2015-04-16",
+      "darts": 2,
+      "pats": 7,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2015-04-20",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-04-23",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-04-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-04-30",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2015-05-07",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-09-03",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-09-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-09-10",
+      "darts": 1,
+      "pats": 1,
+      "combined": 0,
+      "total": 2
+    },
+    {
+      "key": "2015-09-14",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-09-17",
+      "darts": 5,
+      "pats": 5,
+      "combined": 0,
+      "total": 10
+    },
+    {
+      "key": "2015-09-21",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-09-24",
+      "darts": 0,
+      "pats": 2,
+      "combined": 0,
+      "total": 2
+    },
+    {
+      "key": "2015-09-28",
+      "darts": 6,
+      "pats": 6,
+      "combined": 0,
+      "total": 12
+    },
+    {
+      "key": "2015-10-01",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-10-05",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-10-08",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-10-12",
+      "darts": 6,
+      "pats": 2,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-10-15",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-10-19",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-10-22",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-10-26",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-10-29",
+      "darts": 11,
+      "pats": 6,
+      "combined": 0,
+      "total": 17
+    },
+    {
+      "key": "2015-11-02",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-11-05",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-11-09",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2015-11-12",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2015-11-16",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2015-11-19",
+      "darts": 3,
+      "pats": 2,
+      "combined": 1,
+      "total": 6
+    },
+    {
+      "key": "2015-12-03",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2015-12-07",
+      "darts": 6,
+      "pats": 3,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2015-12-10",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2016-01-14",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2016-01-21",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2016-01-28",
+      "darts": 4,
+      "pats": 7,
+      "combined": 0,
+      "total": 11
+    },
+    {
+      "key": "2016-02-04",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2016-02-11",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2016-02-18",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2016-02-25",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2016-03-03",
+      "darts": 3,
+      "pats": 4,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2016-03-17",
+      "darts": 4,
+      "pats": 5,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2016-03-24",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2016-03-31",
+      "darts": 4,
+      "pats": 4,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2016-04-07",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2016-04-14",
+      "darts": 5,
+      "pats": 3,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2016-04-21",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2016-04-28",
+      "darts": 1,
+      "pats": 4,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2016-05-02",
+      "darts": 2,
+      "pats": 6,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2016-08-25",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2016-09-01",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-09-08",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-09-15",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-09-22",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-09-29",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-10-06",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2016-10-13",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-10-20",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-10-27",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-11-03",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-11-10",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-11-17",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2016-12-01",
+      "darts": 5,
+      "pats": 2,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2016-12-08",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2017-01-12",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-01-19",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-01-26",
+      "darts": 1,
+      "pats": 5,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-02-02",
+      "darts": 0,
+      "pats": 6,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-02-09",
+      "darts": 5,
+      "pats": 4,
+      "combined": 0,
+      "total": 9
+    },
+    {
+      "key": "2017-02-16",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-02-23",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-03-02",
+      "darts": 1,
+      "pats": 4,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2017-03-16",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-03-23",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-03-30",
+      "darts": 1,
+      "pats": 5,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-04-06",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-04-13",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-04-20",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2017-04-27",
+      "darts": 3,
+      "pats": 5,
+      "combined": 0,
+      "total": 8
+    },
+    {
+      "key": "2017-08-31",
+      "darts": 4,
+      "pats": 3,
+      "combined": 0,
+      "total": 7
+    },
+    {
+      "key": "2017-09-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-09-14",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-09-21",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2017-09-28",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-10-05",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-10-12",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-10-19",
+      "darts": 1,
+      "pats": 5,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-10-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2017-11-02",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-11-16",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2017-11-30",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2017-12-07",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-01-11",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-01-18",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2018-01-25",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-02-01",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-02-08",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2018-02-15",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-02-22",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-03-01",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2018-03-15",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-03-22",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-03-29",
+      "darts": 1,
+      "pats": 4,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2018-04-05",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2018-04-12",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2018-04-19",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-04-26",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-08-23",
+      "darts": 2,
+      "pats": 4,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-08-30",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-09-06",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-09-13",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-09-20",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-09-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-10-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-10-11",
+      "darts": 5,
+      "pats": 1,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2018-10-18",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-10-25",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2018-11-01",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-11-08",
+      "darts": 0,
+      "pats": 4,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-11-29",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2018-12-06",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-01-10",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-01-17",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-01-24",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-01-31",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2019-02-07",
+      "darts": 1,
+      "pats": 2,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2019-02-14",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-02-21",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-03-14",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-03-28",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-04-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-04-11",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-04-18",
+      "darts": 0,
+      "pats": 4,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-04-25",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-08-22",
+      "darts": 4,
+      "pats": 2,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2019-08-29",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-09-05",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2019-09-12",
+      "darts": 4,
+      "pats": 1,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2019-09-19",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2019-09-26",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-10-03",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-10-10",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-10-17",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-10-24",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-10-31",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-11-07",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-11-14",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2019-12-05",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-01-16",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-01-23",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-01-30",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-02-06",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-02-13",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-02-20",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-02-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-08-21",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-09-03",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-09-10",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-09-17",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-09-24",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-10-01",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-10-08",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-10-15",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-10-22",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-10-29",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-11-05",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-11-12",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-12-03",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2020-12-10",
+      "darts": 0,
+      "pats": 1,
+      "combined": 0,
+      "total": 1
+    },
+    {
+      "key": "2021-01-21",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-01-28",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-02-04",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-02-18",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-02-25",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-03-04",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-03-25",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-04-08",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-04-15",
+      "darts": 1,
+      "pats": 2,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2021-04-22",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-04-29",
+      "darts": 1,
+      "pats": 1,
+      "combined": 0,
+      "total": 2
+    },
+    {
+      "key": "2021-08-19",
+      "darts": 2,
+      "pats": 1,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2021-08-26",
+      "darts": 0,
+      "pats": 3,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2021-09-02",
+      "darts": 0,
+      "pats": 3,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2021-09-09",
+      "darts": 1,
+      "pats": 2,
+      "combined": 0,
+      "total": 3
+    },
+    {
+      "key": "2021-09-16",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-09-23",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-09-30",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-10-07",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-10-14",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-10-21",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-10-28",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-11-04",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-11-11",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2021-12-02",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2021-12-09",
+      "darts": 3,
+      "pats": 3,
+      "combined": 0,
+      "total": 6
+    },
+    {
+      "key": "2022-01-20",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-01-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-02-03",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-02-10",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2022-02-17",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2022-02-24",
+      "darts": 2,
+      "pats": 3,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2022-03-03",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-03-24",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-03-31",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-04-07",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-04-14",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-04-21",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-04-28",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-05-05",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-08-18",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-08-25",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-09-01",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-09-08",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-09-15",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-09-22",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-09-29",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-10-06",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-10-20",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-10-27",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-11-03",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-11-10",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-12-01",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2022-12-08",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-01-19",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-01-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-02-02",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-02-09",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-02-16",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-02-23",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-03-02",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-03-23",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-03-30",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-04-06",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-04-13",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-04-20",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-04-27",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-05-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-08-17",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-08-24",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-08-31",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-09-07",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-09-14",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-09-21",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-09-28",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-10-05",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-10-12",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-10-26",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-11-02",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-11-09",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-11-30",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2023-12-07",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-01-18",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-01-25",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-02-01",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-02-08",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-02-15",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-02-22",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-02-29",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-03-21",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-03-28",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-04-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-04-11",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-04-18",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-04-25",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-05-01",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-05-02",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-08-15",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-08-22",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-08-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-08-29",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-09-05",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-09-12",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-09-19",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-09-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-10-03",
+      "darts": 4,
+      "pats": 0,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-10-10",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-10-24",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-10-31",
+      "darts": 0,
+      "pats": 4,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-11-07",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-11-14",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2024-12-05",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-01-23",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-01-30",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-02-06",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-02-14",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-02-20",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-02-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-03-06",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-03-27",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-04-03",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-04-10",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-04-17",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-04-24",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-08-14",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-08-21",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-08-28",
+      "darts": 3,
+      "pats": 1,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-09-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-09-11",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-09-18",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-10-02",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-10-09",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-10-30",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-11-06",
+      "darts": 1,
+      "pats": 3,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2025-12-04",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-01-22",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-01-29",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-02-05",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-02-12",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-02-19",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-02-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-03-05",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-03-26",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-04-02",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-04-09",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-04-16",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    },
+    {
+      "key": "2026-04-23",
+      "darts": 3,
+      "pats": 2,
+      "combined": 0,
+      "total": 5
+    },
+    {
+      "key": "2026-04-30",
+      "darts": 2,
+      "pats": 2,
+      "combined": 0,
+      "total": 4
+    }
+  ]
+}
