@@ -10,6 +10,8 @@ The named entity recognition runs in the visitor's browser using the transparent
 
 ## Run the website locally
 
+Visitors can find any recognized entity by its name or alias. Selecting a search result brings it into the cloud and loads its records; an incompatible year or type filter is reset with a visible explanation. Scramble favors entities outside the current set while keeping the selected entity visible when it matches the current filters. The Breeze and WXJM are grouped with Organizations.
+
 ```powershell
 pnpm install
 pnpm dev

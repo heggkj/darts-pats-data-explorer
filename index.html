@@ -67,13 +67,19 @@
               </div>
               <p><strong>Size</strong> shows mention frequency. <strong>Color</strong> shows entity type.</p>
             </div>
-            <nav class="cloud-pagination" aria-label="Browse entity sets">
-              <p id="cloud-page-status" role="status">Loading entities…</p>
-              <div>
-                <button id="cloud-previous" type="button" disabled aria-controls="word-cloud">← Previous</button>
-                <button id="cloud-next" type="button" disabled aria-controls="word-cloud">Next set →</button>
-              </div>
-            </nav>
+            <div class="cloud-toolbar">
+              <form id="entity-search-form" role="search" aria-label="Find an entity">
+                <label for="entity-search">Find an entity</label>
+                <div class="entity-search-row">
+                  <input id="entity-search" type="search" placeholder="Try Carrier, UREC, or The Breeze…" autocomplete="off" aria-controls="entity-search-results" aria-describedby="entity-search-status" />
+                  <button type="submit">Find</button>
+                </div>
+              </form>
+              <button id="cloud-scramble" type="button" disabled aria-controls="word-cloud">Scramble</button>
+              <div id="entity-search-results" class="entity-search-results" hidden></div>
+              <p id="entity-search-status" role="status"></p>
+              <p id="cloud-set-status" role="status">Loading entities…</p>
+            </div>
             <div class="word-cloud" id="word-cloud" aria-live="polite">
               <p class="loading-note">Reading the live archive and recognizing entities…</p>
             </div>
@@ -129,7 +135,7 @@
         <section class="methods-panel" aria-labelledby="methods-title">
           <div><p class="eyebrow eyebrow--dark">Method</p><h2 id="methods-title">How entities are recognized</h2></div>
           <div>
-            <p>The page reads the shared Google Sheet when it loads and checks the published text, parsed target, and parsed sender against a versioned JMU-specific dictionary of organizations, academic units, buildings, places, housing communities, businesses, publications, groups, and the mascot.</p>
+            <p>The page reads the shared Google Sheet when it loads and checks the published text, parsed target, and parsed sender against a versioned JMU-specific dictionary of people, organizations, academic units, buildings, places, housing communities, businesses, groups, and the mascot. The Breeze and WXJM are grouped under Organizations.</p>
             <p>Counts represent records containing an entity, not the number of times its name repeats inside one record. Historical aliases are grouped under one stable name. This controlled method favors interpretable, campus-specific results over speculative name extraction from OCR text.</p>
             <p><a href="https://docs.google.com/spreadsheets/d/1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA/edit?usp=sharing">View the live source spreadsheet</a></p>
           </div>

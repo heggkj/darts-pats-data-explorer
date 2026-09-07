@@ -2,7 +2,7 @@
 // Keep canonical names stable so counts remain comparable when aliases expand.
 export const ENTITY_DICTIONARY = [
   { id: "jmu", name: "James Madison University", type: "University", aliases: ["james madison university", "jmu", "madison college"] },
-  { id: "the-breeze", name: "The Breeze", type: "Publication", aliases: ["the breeze", "breeze staff", "breeze editorial board"] },
+  { id: "the-breeze", name: "The Breeze", type: "Organization", aliases: ["the breeze", "breeze staff", "breeze editorial board"] },
   { id: "jmu-dining", name: "JMU Dining Services", type: "Organization", aliases: ["jmu dining services", "jmu dining", "dining services", "food services", "aramark"] },
   { id: "parking-services", name: "JMU Parking Services", type: "Organization", aliases: ["jmu parking services", "parking services", "parking office"] },
   { id: "jmu-police", name: "JMU Police", type: "Organization", aliases: ["jmu police", "campus police", "public safety office", "jmu public safety"] },
@@ -27,7 +27,7 @@ export const ENTITY_DICTIONARY = [
   { id: "greek-life", name: "Greek Life", type: "Group", aliases: ["greek life", "greek row", "interfraternity council", "panhellenic council"] },
   { id: "alpha-phi-omega", name: "Alpha Phi Omega", type: "Organization", aliases: ["alpha phi omega", "apo"] },
   { id: "choices", name: "CHOICES", type: "Organization", aliases: ["choices program", "choices"] },
-  { id: "wxjm", name: "WXJM", type: "Publication", aliases: ["wxjm"] },
+  { id: "wxjm", name: "WXJM", type: "Organization", aliases: ["wxjm"] },
   { id: "jmu-it", name: "JMU Information Technology", type: "Organization", aliases: ["jmu information technology", "jmu computing", "computing support", "it help desk"] },
   { id: "computing-services", name: "JMU Computing Services", type: "Organization", aliases: ["jmu computing services", "computing services"] },
   { id: "jacard", name: "JACard Services", type: "Organization", aliases: ["jacard services", "jacard", "j a card", "one card services"] },
@@ -120,7 +120,6 @@ export const ENTITY_DICTIONARY = [
 
 export const ENTITY_TYPE_COLORS = {
   University: "#351c75",
-  Publication: "#6d3cb1",
   Organization: "#1b6f76",
   Group: "#8b4f00",
   "Academic unit": "#3b5c9a",

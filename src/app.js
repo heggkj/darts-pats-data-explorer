@@ -1,12 +1,13 @@
 import cloud from "d3-cloud";
 import "./styles.css";
 import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
+import { searchEntities, chooseCloudEntities, scrambleOrder } from "./entityBrowsing.js";
 
 const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
 const SHEET_NAME = "parsed_rows";
 const SHEET_QUERY = "select A,D,E,F,G,H,K,L,Q,T where A is not null";
 const PAGE_SIZE = 18;
-const CLOUD_PAGE_SIZE = 80;
+const CLOUD_SET_SIZE = 80;
 let activeCloudLayout;
 let webMcpRegistered = false;
 
@@ -19,7 +20,9 @@ const state = {
   visibleCount: PAGE_SIZE,
   source: "loading",
   cloudRenderId: 0,
-  cloudPage: 0,
+  cloudOrder: [],
+  cloudIds: [],
+  cloudSeed: 0,
 };
 
 const elements = {
@@ -31,9 +34,12 @@ const elements = {
   refreshData: document.querySelector("#refresh-data"),
   entityType: document.querySelector("#entity-type"),
   wordCloud: document.querySelector("#word-cloud"),
-  cloudPageStatus: document.querySelector("#cloud-page-status"),
-  cloudPrevious: document.querySelector("#cloud-previous"),
-  cloudNext: document.querySelector("#cloud-next"),
+  cloudSetStatus: document.querySelector("#cloud-set-status"),
+  cloudScramble: document.querySelector("#cloud-scramble"),
+  entitySearch: document.querySelector("#entity-search"),
+  searchForm: document.querySelector("#entity-search-form"),
+  searchResults: document.querySelector("#entity-search-results"),
+  searchStatus: document.querySelector("#entity-search-status"),
   entityLegend: document.querySelector("#entity-legend"),
   frequencyEntity: document.querySelector("#frequency-entity"),
   frequencyTotal: document.querySelector("#frequency-total"),
@@ -225,21 +231,47 @@ function cloudEntities() {
   return [...counts.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 }
 
-function cloudPageEntities(entities) {
-  const lastPage = Math.max(0, Math.ceil(entities.length / CLOUD_PAGE_SIZE) - 1);
-  state.cloudPage = Math.max(0, Math.min(state.cloudPage, lastPage));
-  const start = state.cloudPage * CLOUD_PAGE_SIZE;
-  elements.cloudPrevious.disabled = state.cloudPage === 0;
-  elements.cloudNext.disabled = state.cloudPage === lastPage;
-  elements.cloudPageStatus.textContent = entities.length
-    ? `Entities ${start + 1}–${Math.min(start + CLOUD_PAGE_SIZE, entities.length)} of ${formatNumber(entities.length)} · Most frequent first`
-    : "No matching entities";
-  return entities.slice(start, start + CLOUD_PAGE_SIZE);
+function scrambleCloud() {
+  state.cloudOrder = scrambleOrder(cloudEntities(), state.cloudIds);
+  state.cloudSeed += 1;
+  renderCloud();
 }
 
-function changeCloudPage(direction) {
-  state.cloudPage += direction;
-  renderCloud();
+function matchingEntities() {
+  return searchEntities([...state.entityStats.values()], elements.entitySearch.value);
+}
+
+function renderEntitySearch() {
+  const query = elements.entitySearch.value.trim();
+  const matches = matchingEntities();
+  elements.searchResults.hidden = !query || !matches.length;
+  elements.searchResults.innerHTML = matches.map((entity) =>
+    `<button type="button" data-search-entity="${escapeHtml(entity.id)}"><strong>${escapeHtml(entity.name)}</strong><span>${escapeHtml(entity.type)} · ${formatNumber(entity.count)} records</span></button>`
+  ).join("");
+  elements.searchStatus.textContent = !query ? "" : matches.length
+    ? `${matches.length} matching ${matches.length === 1 ? "entity" : "entities"} across all years and types. Select a name or press Find.`
+    : "No recognized entity matches. Try another name or abbreviation.";
+}
+
+function selectSearchEntity(entityId) {
+  const entity = state.entityStats.get(entityId);
+  if (!entity) return;
+  const adjustments = [];
+  if (state.entityType !== "all" && state.entityType !== entity.type) {
+    state.entityType = "all";
+    elements.entityType.value = "all";
+    adjustments.push("all entity types");
+  }
+  if (state.selectedYear !== null && !entity.byYear.has(state.selectedYear)) {
+    state.selectedYear = null;
+    adjustments.push("all years");
+  }
+  state.cloudOrder = [entityId, ...matchingEntities().filter((item) => item.id !== entityId).map((item) => item.id)];
+  state.cloudSeed += 1;
+  elements.entitySearch.value = entity.name;
+  elements.searchResults.hidden = true;
+  elements.searchStatus.textContent = `Selected ${entity.name}.${adjustments.length ? ` Showing ${adjustments.join(" and ")}.` : ""}`;
+  selectEntity(entityId);
 }
 
 function seededRandom(seed = 1729) {
@@ -252,7 +284,12 @@ function seededRandom(seed = 1729) {
 
 function renderCloud() {
   const allEntities = cloudEntities();
-  const entities = cloudPageEntities(allEntities);
+  const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId, CLOUD_SET_SIZE);
+  state.cloudIds = entities.map((entity) => entity.id);
+  elements.cloudScramble.disabled = allEntities.length < 2;
+  elements.cloudSetStatus.textContent = allEntities.length
+    ? `Showing ${entities.length} of ${formatNumber(allEntities.length)} entities · Search all entities or scramble this set`
+    : "No entities match the current year and type. Search can find entities across the archive.";
   activeCloudLayout?.stop();
   const renderId = ++state.cloudRenderId;
   elements.wordCloud.replaceChildren();
@@ -261,7 +298,7 @@ function renderCloud() {
     return;
   }
   const width = Math.max(280, Math.round(elements.wordCloud.getBoundingClientRect().width || 760) - 16);
-  const height = Math.max(280, Math.min(600, Math.round(width * 0.72 * Math.sqrt(entities.length / CLOUD_PAGE_SIZE))));
+  const height = Math.max(280, Math.min(600, Math.round(width * 0.72 * Math.sqrt(entities.length / CLOUD_SET_SIZE))));
   const counts = allEntities.map((entity) => entity.count);
   const minCount = Math.min(...counts);
   const maxCount = Math.max(...counts);
@@ -276,7 +313,7 @@ function renderCloud() {
 
   activeCloudLayout = cloud().size([width, height]).words(words).padding(3).rotate(() => 0).spiral("rectangular")
     .font("Fraunces").fontWeight(600).fontSize((word) => word.size)
-    .random(seededRandom(entities.length * 31 + (state.selectedYear || 0)))
+    .random(seededRandom(entities.length * 31 + (state.selectedYear || 0) + state.cloudSeed * 7919))
     .on("end", (placedWords) => {
       if (renderId !== state.cloudRenderId) return;
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -453,7 +490,7 @@ function selectEntity(entityId) {
 
 function selectYear(year) {
   state.selectedYear = Number(year);
-  state.cloudPage = 0;
+  state.cloudOrder = [];
   renderSelection();
 }
 
@@ -477,7 +514,7 @@ function registerWebMcpTool() {
       if (!match) throw new Error("Entity is not available in the current live data.");
       state.selectedEntityId = match.id;
       state.selectedYear = year;
-      state.cloudPage = Math.max(0, Math.floor(cloudEntities().findIndex((item) => item.id === match.id) / CLOUD_PAGE_SIZE));
+      state.cloudOrder = [match.id];
       renderSelection();
       return { entity, year, matchingRecords: matchingRecords().length };
     },
@@ -504,12 +541,13 @@ async function refreshData() {
       document.body.dataset.source = "cached";
     }
     analyzeRecords(records);
-    state.cloudPage = 0;
+    state.cloudOrder = [];
     configureYearControls();
     populateEntityTypes();
     updateSummary();
     renderLegend();
     renderSelection();
+    renderEntitySearch();
     registerWebMcpTool();
   } catch (error) {
     elements.sourceStatus.textContent = "The archive could not be loaded.";
@@ -522,11 +560,28 @@ async function refreshData() {
 }
 
 elements.refreshData.addEventListener("click", refreshData);
-elements.entityType.addEventListener("change", (event) => { state.entityType = event.target.value; state.cloudPage = 0; renderCloud(); });
-elements.cloudPrevious.addEventListener("click", () => changeCloudPage(-1));
-elements.cloudNext.addEventListener("click", () => changeCloudPage(1));
+elements.entityType.addEventListener("change", (event) => { state.entityType = event.target.value; state.cloudOrder = []; renderCloud(); });
+elements.cloudScramble.addEventListener("click", scrambleCloud);
+elements.entitySearch.addEventListener("input", renderEntitySearch);
+elements.entitySearch.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") elements.searchResults.hidden = true;
+  if (event.key === "ArrowDown" && !elements.searchResults.hidden) {
+    event.preventDefault();
+    elements.searchResults.querySelector("button")?.focus();
+  }
+});
+elements.searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const match = matchingEntities()[0];
+  if (match) selectSearchEntity(match.id);
+  else renderEntitySearch();
+});
+elements.searchResults.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-search-entity]");
+  if (button) selectSearchEntity(button.dataset.searchEntity);
+});
 elements.yearSlider.addEventListener("input", (event) => selectYear(event.target.value));
-elements.allYears.addEventListener("click", () => { state.selectedYear = null; state.cloudPage = 0; renderSelection(); });
+elements.allYears.addEventListener("click", () => { state.selectedYear = null; state.cloudOrder = []; renderSelection(); });
 elements.yearChart.addEventListener("click", (event) => {
   const button = event.target.closest("[data-year]");
   if (button) selectYear(button.dataset.year);
