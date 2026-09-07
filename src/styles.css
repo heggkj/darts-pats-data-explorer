@@ -80,7 +80,7 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .legend-pat { background: var(--pat); }
 .legend-combined { background: #a7a0b3; }
 
-.year-chart { --year-count: 36; display: grid; grid-template-columns: repeat(var(--year-count), minmax(0, 1fr)); align-items: end; gap: 2px; height: 11.5rem; margin-top: 1.75rem; padding: 0.25rem 0 1.35rem; border-bottom: 1px solid var(--border); }
+.year-chart { --year-count: 36; display: grid; grid-template-columns: repeat(var(--year-count), minmax(0, 1fr)); align-items: end; gap: 2px; height: 11.5rem; margin-top: 1.75rem; padding: 0.25rem 0 1.6rem; }
 .year-bar { position: relative; height: 100%; min-width: 0; padding: 0; background: transparent; border: 0; }
 .bar-stack { position: absolute; right: 1px; bottom: 0; left: 1px; display: flex; flex-direction: column-reverse; overflow: hidden; border-radius: 0.15rem 0.15rem 0 0; transition: opacity 120ms ease; }
 .bar-stack i { display: block; flex-basis: 0; min-height: 0; }
@@ -89,8 +89,10 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .bar-combined { background: #a7a0b3; }
 .year-bar:hover .bar-stack { opacity: 0.75; }
 .year-bar.is-selected { background: #eee6f8; border-radius: 0.2rem; box-shadow: 0 0 0 2px #b3a2d2; }
-.year-bar > span:last-child { position: absolute; bottom: -1.15rem; left: 50%; display: none; color: var(--muted-foreground); font-size: 0.65rem; transform: translateX(-50%) rotate(-55deg); }
+.year-bar > .bar-year { position: absolute; bottom: -1.4rem; left: 50%; display: none; color: var(--muted-foreground); font-size: 0.75rem; white-space: nowrap; transform: translateX(-50%); }
 .year-bar:nth-child(1) > span:last-child, .year-bar:nth-child(10) > span:last-child, .year-bar:nth-child(20) > span:last-child, .year-bar:nth-child(30) > span:last-child, .year-bar:last-child > span:last-child { display: block; }
+.year-bar:first-child > .bar-year { left: 0; transform: none; }
+.year-bar:last-child > .bar-year { right: 0; left: auto; transform: none; }
 .bar-count { position: absolute; left: 50%; bottom: calc(var(--bar-height, 50%) + 0.3rem); z-index: 2; padding: 0.12rem 0.3rem; color: var(--deep); background: #fff7b5; border: 1px solid #d4b400; border-radius: 0.3rem; font-size: 0.72rem; font-weight: 700; transform: translateX(-50%); }
 
 .year-control-heading { display: flex; justify-content: space-between; gap: 1rem; }
