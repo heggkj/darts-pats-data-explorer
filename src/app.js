@@ -32,15 +32,14 @@ const elements = {
   totalDarts: document.querySelector("#total-darts"),
   sourceStatus: document.querySelector("#source-status"),
   refreshData: document.querySelector("#refresh-data"),
-  entityType: document.querySelector("#entity-type"),
+  entityTypes: document.querySelector("#entity-types"),
   wordCloud: document.querySelector("#word-cloud"),
-  cloudSetStatus: document.querySelector("#cloud-set-status"),
+  cloudCount: document.querySelector("#cloud-count"),
   cloudScramble: document.querySelector("#cloud-scramble"),
   entitySearch: document.querySelector("#entity-search"),
   searchForm: document.querySelector("#entity-search-form"),
   searchResults: document.querySelector("#entity-search-results"),
   searchStatus: document.querySelector("#entity-search-status"),
-  entityLegend: document.querySelector("#entity-legend"),
   frequencyEntity: document.querySelector("#frequency-entity"),
   frequencyTotal: document.querySelector("#frequency-total"),
   yearChart: document.querySelector("#year-chart"),
@@ -194,12 +193,31 @@ function configureYearControls() {
 }
 
 function populateEntityTypes() {
-  const selected = elements.entityType.value || "all";
   const types = [...new Set([...state.entityStats.values()].map((entity) => entity.type))].sort();
-  elements.entityType.innerHTML = '<option value="all">All entity types</option>'
-    + types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("");
-  elements.entityType.value = types.includes(selected) ? selected : "all";
-  state.entityType = elements.entityType.value;
+  if (!types.includes(state.entityType)) state.entityType = "all";
+  elements.entityTypes.innerHTML = ["all", ...types].map((type) => {
+    const background = ENTITY_TYPE_COLORS[type] || "#351c75";
+    const channels = background.slice(1).match(/../g).map((hex) => {
+      const value = parseInt(hex, 16) / 255;
+      return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+    });
+    const luminance = channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+    const foreground = luminance > 0.179 ? "#000000" : "#ffffff";
+    return `<button type="button" class="entity-type-pill" data-entity-type="${escapeHtml(type)}" aria-pressed="${state.entityType === type}" style="--entity-color:${background};--entity-text:${foreground}">${escapeHtml(type === "all" ? "All" : type)}</button>`;
+  }).join("");
+}
+
+function syncEntityTypeSelection() {
+  for (const button of elements.entityTypes.querySelectorAll("[data-entity-type]")) {
+    button.setAttribute("aria-pressed", String(button.dataset.entityType === state.entityType));
+  }
+}
+
+function selectEntityType(type) {
+  state.entityType = type;
+  state.cloudOrder = [];
+  syncEntityTypeSelection();
+  renderCloud();
 }
 
 function updateSummary() {
@@ -249,7 +267,7 @@ function renderEntitySearch() {
     `<button type="button" data-search-entity="${escapeHtml(entity.id)}"><strong>${escapeHtml(entity.name)}</strong><span>${escapeHtml(entity.type)} · ${formatNumber(entity.count)} records</span></button>`
   ).join("");
   elements.searchStatus.textContent = !query ? "" : matches.length
-    ? `${matches.length} matching ${matches.length === 1 ? "entity" : "entities"} across all years and types. Select a name or press Find.`
+    ? `${matches.length} ${matches.length === 1 ? "match" : "matches"} across all years and types`
     : "No recognized entity matches. Try another name or abbreviation.";
 }
 
@@ -259,7 +277,7 @@ function selectSearchEntity(entityId) {
   const adjustments = [];
   if (state.entityType !== "all" && state.entityType !== entity.type) {
     state.entityType = "all";
-    elements.entityType.value = "all";
+    syncEntityTypeSelection();
     adjustments.push("all entity types");
   }
   if (state.selectedYear !== null && !entity.byYear.has(state.selectedYear)) {
@@ -270,7 +288,7 @@ function selectSearchEntity(entityId) {
   state.cloudSeed += 1;
   elements.entitySearch.value = entity.name;
   elements.searchResults.hidden = true;
-  elements.searchStatus.textContent = `Selected ${entity.name}.${adjustments.length ? ` Showing ${adjustments.join(" and ")}.` : ""}`;
+  elements.searchStatus.textContent = adjustments.length ? `Showing ${adjustments.join(" and ")} for ${entity.name}.` : "";
   selectEntity(entityId);
 }
 
@@ -287,9 +305,8 @@ function renderCloud() {
   const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId, CLOUD_SET_SIZE);
   state.cloudIds = entities.map((entity) => entity.id);
   elements.cloudScramble.disabled = allEntities.length < 2;
-  elements.cloudSetStatus.textContent = allEntities.length
-    ? `Showing ${entities.length} of ${formatNumber(allEntities.length)} entities · Search all entities or scramble this set`
-    : "No entities match the current year and type. Search can find entities across the archive.";
+  elements.cloudCount.textContent = `(${formatNumber(entities.length)} of ${formatNumber(allEntities.length)})`;
+  elements.cloudCount.setAttribute("aria-label", `${entities.length} of ${allEntities.length} entities shown for the current filters`);
   activeCloudLayout?.stop();
   const renderId = ++state.cloudRenderId;
   elements.wordCloud.replaceChildren();
@@ -384,11 +401,6 @@ function renderCloud() {
         group.prepend(highlight);
       }
     }).start();
-}
-
-function renderLegend() {
-  const types = [...new Set([...state.entityStats.values()].map((entity) => entity.type))].sort();
-  elements.entityLegend.innerHTML = types.map((type) => `<span><i style="background:${ENTITY_TYPE_COLORS[type]}"></i>${escapeHtml(type)}</span>`).join("");
 }
 
 function renderYearChart() {
@@ -545,7 +557,6 @@ async function refreshData() {
     configureYearControls();
     populateEntityTypes();
     updateSummary();
-    renderLegend();
     renderSelection();
     renderEntitySearch();
     registerWebMcpTool();
@@ -560,7 +571,10 @@ async function refreshData() {
 }
 
 elements.refreshData.addEventListener("click", refreshData);
-elements.entityType.addEventListener("change", (event) => { state.entityType = event.target.value; state.cloudOrder = []; renderCloud(); });
+elements.entityTypes.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-entity-type]");
+  if (button) selectEntityType(button.dataset.entityType);
+});
 elements.cloudScramble.addEventListener("click", scrambleCloud);
 elements.entitySearch.addEventListener("input", renderEntitySearch);
 elements.entitySearch.addEventListener("keydown", (event) => {

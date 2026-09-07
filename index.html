@@ -41,44 +41,29 @@
       </section>
 
       <section class="workspace" aria-label="Named entity explorer">
-        <div class="workspace-heading">
-          <div>
-            <p class="eyebrow eyebrow--dark">Named entity recognition</p>
-            <h2>Who and what shapes campus conversation?</h2>
-          </div>
-          <div class="cloud-controls">
-            <label for="entity-type">Entity type</label>
-            <select id="entity-type">
-              <option value="all">All entity types</option>
-            </select>
-            <details class="color-key">
-              <summary>Color key</summary>
-              <div class="entity-legend" id="entity-legend" aria-label="Entity type colors"></div>
-            </details>
+        <div class="entity-type-filter">
+          <span id="entity-types-label">Select Entity Type:</span>
+          <div id="entity-types" class="entity-type-pills" role="group" aria-labelledby="entity-types-label">
+            <button type="button" class="entity-type-pill" data-entity-type="all" aria-pressed="true">All</button>
           </div>
         </div>
 
         <div class="explorer-layout">
           <section class="cloud-panel" aria-labelledby="cloud-title">
             <div class="cloud-heading">
-              <div>
-                <p class="eyebrow eyebrow--dark">Clickable word cloud</p>
-                <h2 id="cloud-title">Entities in the archive</h2>
-              </div>
-              <p><strong>Size</strong> shows mention frequency. <strong>Color</strong> shows entity type.</p>
+              <h2 id="cloud-title">Entities in the archive <span id="cloud-count" role="status">(— of —)</span></h2>
             </div>
             <div class="cloud-toolbar">
               <form id="entity-search-form" role="search" aria-label="Find an entity">
-                <label for="entity-search">Find an entity</label>
+                <label class="sr-only" for="entity-search">Find an entity</label>
                 <div class="entity-search-row">
-                  <input id="entity-search" type="search" placeholder="Try Carrier, UREC, or The Breeze…" autocomplete="off" aria-controls="entity-search-results" aria-describedby="entity-search-status" />
+                  <input id="entity-search" type="search" placeholder="Find an entity…" autocomplete="off" aria-controls="entity-search-results" aria-describedby="entity-search-status" />
                   <button type="submit">Find</button>
                 </div>
               </form>
               <button id="cloud-scramble" type="button" disabled aria-controls="word-cloud">Scramble</button>
               <div id="entity-search-results" class="entity-search-results" hidden></div>
               <p id="entity-search-status" role="status"></p>
-              <p id="cloud-set-status" role="status">Loading entities…</p>
             </div>
             <div class="word-cloud" id="word-cloud" aria-live="polite">
               <p class="loading-note">Reading the live archive and recognizing entities…</p>
