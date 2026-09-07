@@ -396,6 +396,16 @@ function renderCloud() {
       const selectedWord = group.querySelector(".is-selected");
       if (selectedWord) {
         const bounds = selectedWord.getBBox();
+        const centerX = bounds.x + bounds.width / 2;
+        const centerY = bounds.y + bounds.height / 2;
+        const scale = Math.min(1.18, (width - 24) / (bounds.width + 14), (height - 24) / (bounds.height + 8));
+        const halfWidth = (bounds.width + 14) * scale / 2;
+        const halfHeight = (bounds.height + 8) * scale / 2;
+        const fittedX = Math.max(-width / 2 + 12 + halfWidth, Math.min(centerX, width / 2 - 12 - halfWidth));
+        const fittedY = Math.max(-height / 2 + 12 + halfHeight, Math.min(centerY, height / 2 - 12 - halfHeight));
+        const selectionLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        selectionLayer.setAttribute("class", "selected-entity-layer");
+        selectionLayer.setAttribute("transform", `translate(${fittedX},${fittedY}) scale(${scale}) translate(${-centerX},${-centerY})`);
         const highlight = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         highlight.setAttribute("class", "entity-highlight");
         highlight.setAttribute("x", bounds.x - 7);
@@ -404,7 +414,9 @@ function renderCloud() {
         highlight.setAttribute("height", bounds.height + 8);
         highlight.setAttribute("rx", "8");
         highlight.setAttribute("aria-hidden", "true");
-        group.prepend(highlight);
+        // Last in SVG paint order: enlarge the selection without changing frequency sizes.
+        selectionLayer.append(highlight, selectedWord);
+        group.append(selectionLayer);
       }
     }).start();
 }
