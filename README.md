@@ -12,7 +12,7 @@ The explorer includes only `DART` and `PAT` rows from either source. Combined en
 
 ## Run the website locally
 
-Visitors can find any recognized entity by its name or alias. Selecting a search result brings it into the cloud and loads its records; an incompatible year or type filter is reset with a visible explanation. Scramble favors entities outside the current set while keeping the selected entity visible when it matches the current filters. The Breeze and WXJM are grouped with Organizations.
+Visitors can find any recognized entity by its name or alias. Selecting a search result highlights it in the cloud and loads its records; an incompatible year or type filter is reset with a visible explanation. Every matching entity is included in one adaptive word cloud, and Scramble rearranges the full set. Long names are measured to fit; the cloud grows as needed instead of appending a separate list. The Breeze and WXJM are grouped with Organizations.
 
 ```powershell
 pnpm install

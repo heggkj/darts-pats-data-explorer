@@ -1,4 +1,4 @@
-import cloud from "d3-cloud";
+import { layoutEntityCloud } from "./cloudLayout.js";
 import "./styles.css";
 import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
 import { searchEntities, chooseCloudEntities, scrambleOrder } from "./entityBrowsing.js";
@@ -8,7 +8,6 @@ const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
 const SHEET_NAME = "parsed_rows";
 const SHEET_QUERY = "select A,D,E,F,G,H,K,L,Q,T where A is not null";
 const PAGE_SIZE = 18;
-const CLOUD_SET_SIZE = 80;
 let activeCloudLayout;
 let webMcpRegistered = false;
 
@@ -298,46 +297,31 @@ function selectSearchEntity(entityId) {
   selectEntity(entityId);
 }
 
-function seededRandom(seed = 1729) {
-  let value = seed % 2147483647;
-  return () => {
-    value = (value * 16807) % 2147483647;
-    return (value - 1) / 2147483646;
-  };
-}
-
-function renderCloud() {
+async function renderCloud() {
   const allEntities = cloudEntities();
-  const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId, CLOUD_SET_SIZE);
+  const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId, allEntities.length);
   state.cloudIds = entities.map((entity) => entity.id);
   elements.cloudScramble.disabled = allEntities.length < 2;
-  elements.cloudCount.textContent = `(${formatNumber(entities.length)} of ${formatNumber(allEntities.length)})`;
-  elements.cloudCount.setAttribute("aria-label", `${entities.length} of ${allEntities.length} entities shown for the current filters`);
+  elements.cloudCount.textContent = `(… of ${formatNumber(allEntities.length)})`;
+  elements.cloudCount.setAttribute("aria-label", `Arranging ${allEntities.length} entities for the current filters`);
   activeCloudLayout?.stop();
   const renderId = ++state.cloudRenderId;
-  elements.wordCloud.replaceChildren();
+  elements.wordCloud.setAttribute("aria-busy", "true");
   if (!entities.length) {
     elements.wordCloud.innerHTML = '<p class="empty-note">No recognized entities appear in this year and type.</p>';
+    elements.wordCloud.setAttribute("aria-busy", "false");
+    elements.cloudCount.textContent = "(0 of 0)";
+    elements.cloudCount.setAttribute("aria-label", "No entities match the current filters");
     return;
   }
-  const width = Math.max(280, Math.round(elements.wordCloud.getBoundingClientRect().width || 760) - 16);
-  const height = Math.max(280, Math.min(600, Math.round(width * 0.72 * Math.sqrt(entities.length / CLOUD_SET_SIZE))));
-  const counts = allEntities.map((entity) => entity.count);
-  const minCount = Math.min(...counts);
-  const maxCount = Math.max(...counts);
-  const fontSize = (count) => {
-    if (maxCount === minCount) return 22;
-    const position = (Math.log(count) - Math.log(minCount)) / (Math.log(maxCount) - Math.log(minCount));
-    return 16 + position * 30;
-  };
-  const words = entities.map((entity) => ({
-    ...entity, text: entity.name, size: fontSize(entity.count),
-  }));
-
-  activeCloudLayout = cloud().size([width, height]).words(words).padding(3).rotate(() => 0).spiral("rectangular")
-    .font("Fraunces").fontWeight(600).fontSize((word) => word.size)
-    .random(seededRandom(entities.length * 31 + (state.selectedYear || 0) + state.cloudSeed * 7919))
-    .on("end", (placedWords) => {
+  // Measure and render with the same loaded font so long names actually fit.
+  try { await document.fonts.load('600 16px "Fraunces"'); } catch { /* Use the browser's fallback font if needed. */ }
+  if (renderId !== state.cloudRenderId) return;
+  const availableWidth = Math.max(256, Math.round(elements.wordCloud.getBoundingClientRect().width || 760) - 16);
+  activeCloudLayout = layoutEntityCloud(entities, {
+    width: availableWidth,
+    seed: entities.length * 31 + (state.selectedYear || 0) + state.cloudSeed * 7919,
+    onEnd: ({ words: placedWords, width, height }) => {
       if (renderId !== state.cloudRenderId) return;
       const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
@@ -370,29 +354,10 @@ function renderCloud() {
         group.append(text);
       }
       svg.append(group);
-      elements.wordCloud.append(svg);
-      // D3 may omit labels that do not fit; keep every entity in this set reachable.
-      const placedIds = new Set(placedWords.map((word) => word.id));
-      const remaining = entities.filter((entity) => !placedIds.has(entity.id));
-      if (remaining.length) {
-        const overflow = document.createElement("div");
-        overflow.className = "cloud-overflow";
-        overflow.setAttribute("aria-label", "More entities in this set");
-        for (const entity of remaining) {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = `cloud-overflow-word${entity.id === state.selectedEntityId ? " is-selected" : ""}`;
-          button.textContent = entity.name;
-          button.style.color = ENTITY_TYPE_COLORS[entity.type] || "#351c75";
-          button.style.fontSize = `${fontSize(entity.count)}px`;
-          button.setAttribute("aria-pressed", String(entity.id === state.selectedEntityId));
-          button.setAttribute("aria-label", `${entity.name}: ${entity.count} mentions. Select to view records.`);
-          button.title = `${entity.name}: ${formatNumber(entity.count)} mentions`;
-          button.addEventListener("click", () => selectEntity(entity.id));
-          overflow.append(button);
-        }
-        elements.wordCloud.append(overflow);
-      }
+      elements.wordCloud.replaceChildren(svg);
+      elements.wordCloud.setAttribute("aria-busy", "false");
+      elements.cloudCount.textContent = `(${formatNumber(placedWords.length)} of ${formatNumber(allEntities.length)})`;
+      elements.cloudCount.setAttribute("aria-label", `${placedWords.length} of ${allEntities.length} entities shown for the current filters`);
       const selectedWord = group.querySelector(".is-selected");
       if (selectedWord) {
         const bounds = selectedWord.getBBox();
@@ -418,7 +383,16 @@ function renderCloud() {
         selectionLayer.append(highlight, selectedWord);
         group.append(selectionLayer);
       }
-    }).start();
+    },
+    onError: (error) => {
+      if (renderId !== state.cloudRenderId) return;
+      elements.wordCloud.innerHTML = '<p class="empty-note">Could not arrange the cloud. Select Scramble to try again.</p>';
+      elements.wordCloud.setAttribute("aria-busy", "false");
+      elements.cloudCount.textContent = `(0 of ${formatNumber(allEntities.length)})`;
+      elements.cloudCount.setAttribute("aria-label", "Cloud layout unavailable");
+      console.error(error);
+    },
+  });
 }
 
 function renderEntryBalance(darts, pats) {
