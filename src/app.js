@@ -302,7 +302,7 @@ async function renderCloud() {
   const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId, allEntities.length);
   state.cloudIds = entities.map((entity) => entity.id);
   elements.cloudScramble.disabled = allEntities.length < 2;
-  elements.cloudCount.textContent = `(… of ${formatNumber(allEntities.length)})`;
+  elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
   elements.cloudCount.setAttribute("aria-label", `Arranging ${allEntities.length} entities for the current filters`);
   activeCloudLayout?.stop();
   const renderId = ++state.cloudRenderId;
@@ -310,7 +310,7 @@ async function renderCloud() {
   if (!entities.length) {
     elements.wordCloud.innerHTML = '<p class="empty-note">No recognized entities appear in this year and type.</p>';
     elements.wordCloud.setAttribute("aria-busy", "false");
-    elements.cloudCount.textContent = "(0 of 0)";
+    elements.cloudCount.textContent = "(N=0)";
     elements.cloudCount.setAttribute("aria-label", "No entities match the current filters");
     return;
   }
@@ -356,8 +356,8 @@ async function renderCloud() {
       svg.append(group);
       elements.wordCloud.replaceChildren(svg);
       elements.wordCloud.setAttribute("aria-busy", "false");
-      elements.cloudCount.textContent = `(${formatNumber(placedWords.length)} of ${formatNumber(allEntities.length)})`;
-      elements.cloudCount.setAttribute("aria-label", `${placedWords.length} of ${allEntities.length} entities shown for the current filters`);
+      elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
+      elements.cloudCount.setAttribute("aria-label", `${allEntities.length} entities shown for the current filters`);
       const selectedWord = group.querySelector(".is-selected");
       if (selectedWord) {
         const bounds = selectedWord.getBBox();
@@ -388,7 +388,7 @@ async function renderCloud() {
       if (renderId !== state.cloudRenderId) return;
       elements.wordCloud.innerHTML = '<p class="empty-note">Could not arrange the cloud. Select Scramble to try again.</p>';
       elements.wordCloud.setAttribute("aria-busy", "false");
-      elements.cloudCount.textContent = `(0 of ${formatNumber(allEntities.length)})`;
+      elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
       elements.cloudCount.setAttribute("aria-label", "Cloud layout unavailable");
       console.error(error);
     },
