@@ -515,6 +515,12 @@ function selectYear(year) {
   renderSelection();
 }
 
+function toggleAllYears() {
+  state.selectedYear = state.selectedYear === null ? Number(elements.yearSlider.value) : null;
+  state.cloudOrder = [];
+  renderSelection();
+}
+
 function registerWebMcpTool() {
   const context = document.modelContext;
   if (!context?.registerTool || webMcpRegistered) return;
@@ -606,7 +612,7 @@ elements.searchResults.addEventListener("click", (event) => {
   if (button) selectSearchEntity(button.dataset.searchEntity);
 });
 elements.yearSlider.addEventListener("input", (event) => selectYear(event.target.value));
-elements.allYears.addEventListener("click", () => { state.selectedYear = null; state.cloudOrder = []; renderSelection(); });
+elements.allYears.addEventListener("click", toggleAllYears);
 elements.yearChart.addEventListener("click", (event) => {
   const button = event.target.closest("[data-year]");
   if (button) selectYear(button.dataset.year);
