@@ -144,7 +144,10 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .cloud-word:hover { opacity: 0.68; }
 .cloud-word.is-selected { fill: var(--deep) !important; }
 .entity-highlight { fill: #eee6f8; stroke: #c8b5e0; stroke-width: 1px; pointer-events: none; }
-.entity-legend { display: flex; flex-wrap: wrap; gap: 0.45rem 0.85rem; padding: 0 1.5rem 1.2rem; color: var(--muted-foreground); font-size: 0.72rem; }
+.color-key { position: relative; margin-top: 0.4rem; }
+.color-key summary { width: fit-content; padding: 0.25rem 0; color: var(--primary); font-size: 0.875rem; cursor: pointer; }
+.color-key summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 0.25rem; }
+.entity-legend { position: absolute; top: calc(100% + 0.3rem); right: 0; z-index: 5; width: min(24rem, calc(100vw - 3rem)); display: flex; flex-wrap: wrap; gap: 0.65rem 1rem; padding: 1rem; color: var(--foreground); background: var(--surface); border: 1px solid var(--border); border-radius: 0.65rem; box-shadow: var(--shadow); font-size: 0.875rem; }
 .entity-legend span { display: inline-flex; align-items: center; gap: 0.3rem; }
 .entity-legend i { width: 0.6rem; height: 0.6rem; border-radius: 50%; }
 .loading-note, .empty-note { margin: 0; color: var(--muted-foreground); text-align: center; }
