@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "d3-cloud": "^1.2.9"
   }
 }

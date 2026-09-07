@@ -3,222 +3,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Search and visualize Darts and Pats published in The Breeze from 1991 to 2026."
-    />
+    <meta name="description" content="Explore organizations, places, buildings, and other named entities in The Breeze's Darts and Pats archive." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Darts &amp; Pats Explorer | PL2 Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Names in Darts &amp; Pats | PL2 Lab</title>
   </head>
   <body>
-    <a class="skip-link" href="#explorer">Skip to the data explorer</a>
+    <a class="skip-link" href="#entity-explorer">Skip to the entity explorer</a>
 
     <header class="site-header">
       <a class="brand" href="https://pl2lab.org/" aria-label="PL2 Lab home">
         <img src="./pl2-logo.jpg" alt="" width="44" height="44" />
-        <span>
-          <strong>PL<sup>2</sup> Lab</strong>
-          <small>Power · Language · Leadership</small>
-        </span>
+        <span><strong>PL<sup>2</sup> Lab</strong><small>Power · Language · Leadership</small></span>
       </a>
       <nav aria-label="PL2 Lab navigation">
         <a href="https://pl2lab.org/">Home</a>
         <a href="https://pl2lab.org/projects">Projects</a>
         <a href="https://pl2lab.org/members">Lab Members</a>
         <a href="https://pl2lab.org/activities">Activities</a>
-        <a href="https://pl2lab.org/join">Join the Lab</a>
       </nav>
     </header>
 
-    <main id="explorer">
+    <main id="entity-explorer">
       <section class="project-intro" aria-labelledby="page-title">
         <div class="intro-copy">
           <p class="eyebrow">The Breeze archive · 1991–2026</p>
-          <h1 id="page-title">Darts <span>&amp;</span> Pats Explorer</h1>
-          <p>
-            Search decades of short grievances and public thanks to see how campus life,
-            language, and community concerns changed over time.
-          </p>
+          <h1 id="page-title">Names in Darts <span>&amp;</span> Pats</h1>
+          <p>See which campus places and organizations appear most often, when they were mentioned, and whether the mention was published as a Dart or a Pat.</p>
         </div>
-        <dl class="archive-stats" aria-label="Archive summary">
+        <dl class="archive-stats" aria-label="Live archive summary">
           <div><dt>Records</dt><dd id="total-records">—</dd></div>
-          <div><dt>Issues</dt><dd id="total-issues">—</dd></div>
+          <div><dt>Entities</dt><dd id="total-entities">—</dd></div>
           <div><dt>Pats</dt><dd id="total-pats">—</dd></div>
           <div><dt>Darts</dt><dd id="total-darts">—</dd></div>
         </dl>
       </section>
 
-      <section class="workspace" aria-label="Explore the archive">
-        <section class="audience-panel" aria-labelledby="ways-title">
-          <div class="audience-intro">
-            <p class="eyebrow eyebrow--dark">Choose a starting point</p>
-            <h2 id="ways-title">Find your way into the archive</h2>
-          </div>
-          <button class="audience-card" id="student-view" type="button">
-            <span>Current students</span>
-            <strong>What is campus talking about now?</strong>
-            <small>Explore the most recent six years.</small>
-          </button>
-          <div class="audience-card audience-card--alumni">
-            <span>Alumni</span>
-            <strong>Return to your JMU years</strong>
-            <label for="alumni-year">Graduation year</label>
-            <div class="alumni-control">
-              <select id="alumni-year" aria-label="Graduation year"></select>
-              <button id="alumni-view" type="button">Explore</button>
-            </div>
-            <small>Shows that year and the previous three.</small>
-          </div>
-          <a class="audience-card" href="#methods">
-            <span>Researchers</span>
-            <strong>Methods, data, and reproducible filters</strong>
-            <small>Review the coding approach and download records.</small>
-          </a>
-        </section>
+      <section class="live-strip" aria-live="polite">
+        <span class="live-dot" aria-hidden="true"></span>
+        <strong id="source-status">Connecting to the live Google Sheet…</strong>
+        <button id="refresh-data" type="button">Refresh data</button>
+      </section>
 
-        <form class="filter-panel" id="filter-form">
-          <div class="search-field">
-            <label for="search">Search the published text</label>
-            <div class="search-control">
-              <span aria-hidden="true">⌕</span>
-              <input id="search" name="search" type="search" placeholder="Try parking, dining hall, tuition…" autocomplete="off" />
-            </div>
-          </div>
-
-          <div class="select-field">
-            <label for="kind">Type</label>
-            <select id="kind" name="kind">
-              <option value="all">Darts and Pats</option>
-              <option value="DART">Darts only</option>
-              <option value="PAT">Pats only</option>
-              <option value="DART AND PAT">Combined entries</option>
-            </select>
-          </div>
-
-          <div class="select-field">
-            <label for="year">Year</label>
-            <select id="year" name="year">
-              <option value="all">All years</option>
-            </select>
-          </div>
-
-          <div class="select-field">
-            <label for="semester">Semester</label>
-            <select id="semester" name="semester">
-              <option value="all">Fall and Spring</option>
-              <option value="Fall">Fall</option>
-              <option value="Spring">Spring</option>
-            </select>
-          </div>
-
-          <div class="select-field">
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic">
-              <option value="all">All topics</option>
-            </select>
-          </div>
-
-          <button class="reset-button" id="reset-filters" type="reset">Reset</button>
-        </form>
-
-        <p class="active-scope" id="active-scope" aria-live="polite"></p>
-
-        <section class="timeline-panel" aria-labelledby="timeline-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow eyebrow--dark">Archive balance</p>
-              <h2 id="timeline-title">Positive share and publishing volume</h2>
-            </div>
-            <div class="chart-key" aria-label="Chart legend">
-              <span><i class="key key--pat"></i>Pat share</span>
-              <span><i class="key key--volume"></i>Records</span>
-            </div>
-          </div>
-          <div class="balance-callout" id="balance-summary">Calculating the archive balance…</div>
-          <p class="timeline-help">Each dot is the percentage of classified entries that were Pats. The pale bar shows how many records were published. Select a year to filter the archive.</p>
-          <div class="balance-chart-shell">
-            <span class="axis-label axis-label--top">100% Pats</span>
-            <span class="axis-label axis-label--middle">50% balance</span>
-            <span class="axis-label axis-label--bottom">0% Pats</span>
-            <div class="timeline balance-timeline" id="timeline" aria-live="polite">
-            <p class="loading-note">Loading the timeline…</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="analysis-grid" aria-label="Topic and entity analysis">
-          <section class="topic-panel" aria-labelledby="topic-title">
-            <div class="section-heading">
-              <div>
-                <p class="eyebrow eyebrow--dark">Topic analysis</p>
-                <h2 id="topic-title">What draws Darts and Pats?</h2>
-              </div>
-              <div class="chart-key" aria-label="Topic chart legend">
-                <span><i class="key key--dart"></i>Darts</span>
-                <span><i class="key key--pat"></i>Pats</span>
-              </div>
-            </div>
-            <p class="timeline-help">Select a topic to see its records. Bar length shows its Dart/Pat split; the number shows the amount of evidence.</p>
-            <div class="topic-bars" id="topic-bars"><p class="loading-note">Analyzing topics…</p></div>
-          </section>
-
-          <aside class="entity-panel" aria-labelledby="entity-title">
-            <p class="eyebrow eyebrow--dark">Named entities</p>
-            <h2 id="entity-title">Campus names in the archive</h2>
-            <p class="timeline-help">Organizations and places recognized with a campus-specific dictionary. Select one to filter the records.</p>
-            <div class="entity-list" id="entity-list"><p class="loading-note">Finding campus entities…</p></div>
-          </aside>
-        </section>
-
-        <section class="results-panel" aria-labelledby="results-title">
-          <div class="section-heading results-heading">
-            <div>
-              <p class="eyebrow eyebrow--dark">Published voices</p>
-              <h2 id="results-title"><span id="result-count">—</span> matching records</h2>
-            </div>
-            <label class="sort-control" for="sort">
-              <span>Sort</span>
-              <select id="sort" name="sort">
-                <option value="newest">Newest first</option>
-                <option value="oldest">Oldest first</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="status-message" id="status-message" role="status">Loading the archive…</div>
-          <div class="record-list" id="record-list"></div>
-          <button class="load-more" id="load-more" type="button" hidden>Show more records</button>
-        </section>
-
-        <section class="methods-panel" id="methods" aria-labelledby="methods-title">
+      <section class="workspace" aria-label="Named entity explorer">
+        <div class="workspace-heading">
           <div>
-            <p class="eyebrow eyebrow--dark">For researchers</p>
-            <h2 id="methods-title">Methods and downloads</h2>
+            <p class="eyebrow eyebrow--dark">Named entity recognition</p>
+            <h2>Who and what shapes campus conversation?</h2>
           </div>
-          <div class="methods-copy">
-            <p id="method-note">Loading the analysis method…</p>
-            <p><strong>Important:</strong> Dart and Pat are publication labels, not measurements of emotional intensity. Topic and entity labels are automated first-pass annotations and need human validation before formal inference.</p>
-            <p id="coverage-note"></p>
-            <div class="download-links">
-              <a href="./data/records.csv.gz" download>Download source records</a>
-              <a href="./data/analysis.json" download>Download aggregate analysis</a>
-              <a href="./data/enrichment.json" download>Download record annotations</a>
+          <div class="cloud-controls">
+            <label for="entity-type">Entity type</label>
+            <select id="entity-type">
+              <option value="all">All entity types</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="explorer-layout">
+          <aside class="entity-sidebar" aria-label="Selected entity records">
+            <section class="frequency-panel" aria-labelledby="frequency-title">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow eyebrow--dark">Mentions by year</p>
+                  <h3 id="frequency-title"><span id="frequency-entity">Select an entity</span></h3>
+                </div>
+                <strong id="frequency-total">—</strong>
+              </div>
+              <div class="year-chart" id="year-chart" aria-live="polite"></div>
+            </section>
+
+            <section class="year-control" aria-labelledby="year-filter-title">
+              <div class="year-control-heading">
+                <label id="year-filter-title" for="year-slider">Filter records by year</label>
+                <output id="selected-year" for="year-slider">All years</output>
+              </div>
+              <button class="all-years-button is-active" id="all-years" type="button" aria-pressed="true">All years</button>
+              <input id="year-slider" type="range" min="1991" max="2026" step="1" value="1991" list="year-ticks" aria-describedby="year-help" />
+              <datalist id="year-ticks"></datalist>
+              <div class="slider-labels" aria-hidden="true"><span>1991</span><span>2000</span><span>2010</span><span>2020</span><span>2026</span></div>
+              <p id="year-help">Move the slider or select a bar. Use “All years” to reset.</p>
+            </section>
+
+            <section class="matches-panel" aria-labelledby="matches-title">
+              <div class="matches-heading">
+                <div><p class="eyebrow eyebrow--dark">Published entries</p><h3 id="matches-title"><span id="match-count">—</span> matching Darts and Pats</h3></div>
+              </div>
+              <div class="status-message" id="status-message" role="status">Loading records…</div>
+              <div class="record-list" id="record-list"></div>
+              <button class="load-more" id="load-more" type="button" hidden>Show more</button>
+            </section>
+          </aside>
+
+          <section class="cloud-panel" aria-labelledby="cloud-title">
+            <div class="cloud-heading">
+              <div>
+                <p class="eyebrow eyebrow--dark">Clickable word cloud</p>
+                <h2 id="cloud-title">Entities in the archive</h2>
+              </div>
+              <p><strong>Size</strong> shows mention frequency. <strong>Color</strong> shows entity type.</p>
             </div>
+            <div class="word-cloud" id="word-cloud" aria-live="polite">
+              <p class="loading-note">Reading the live archive and recognizing entities…</p>
+            </div>
+            <div class="entity-legend" id="entity-legend" aria-label="Entity type colors"></div>
+          </section>
+        </div>
+
+        <section class="methods-panel" aria-labelledby="methods-title">
+          <div><p class="eyebrow eyebrow--dark">Method</p><h2 id="methods-title">How entities are recognized</h2></div>
+          <div>
+            <p>The page reads the shared Google Sheet when it loads and checks the published text, parsed target, and parsed sender against a versioned JMU-specific dictionary of organizations, academic units, buildings, places, housing communities, businesses, publications, groups, and the mascot.</p>
+            <p>Counts represent records containing an entity, not the number of times its name repeats inside one record. Historical aliases are grouped under one stable name. This controlled method favors interpretable, campus-specific results over speculative name extraction from OCR text.</p>
+            <p><a href="https://docs.google.com/spreadsheets/d/1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA/edit?usp=sharing">View the live source spreadsheet</a></p>
           </div>
         </section>
       </section>
     </main>
 
     <footer>
-      <div>
-        <strong>PL<sup>2</sup> Lab</strong>
-        <p>Power · Language · Leadership Lab</p>
-      </div>
+      <div><strong>PL<sup>2</sup> Lab</strong><p>Power · Language · Leadership Lab</p></div>
       <p>James Madison University · Department of Political Science</p>
     </footer>
 

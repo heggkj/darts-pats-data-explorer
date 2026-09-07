@@ -1,27 +1,46 @@
+import cloud from "d3-cloud";
 import "./styles.css";
+import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
 
-const PAGE_SIZE = 24;
+const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
+const SHEET_NAME = "parsed_rows";
+const SHEET_QUERY = "select A,D,E,F,G,H,K,L,Q,T where A is not null";
+const PAGE_SIZE = 18;
+let webMcpRegistered = false;
 
 const state = {
-  records: [], summary: null, analysis: null, enrichment: new Map(), filtered: [],
-  visibleCount: PAGE_SIZE, query: "", kind: "all", year: "all", yearRange: null,
-  semester: "all", topic: "all", entity: "all", sort: "newest",
+  records: [],
+  entityStats: new Map(),
+  selectedEntityId: null,
+  selectedYear: null,
+  entityType: "all",
+  visibleCount: PAGE_SIZE,
+  source: "loading",
+  cloudRenderId: 0,
 };
 
 const elements = {
-  form: document.querySelector("#filter-form"), search: document.querySelector("#search"),
-  kind: document.querySelector("#kind"), year: document.querySelector("#year"),
-  semester: document.querySelector("#semester"), topic: document.querySelector("#topic"),
-  sort: document.querySelector("#sort"), timeline: document.querySelector("#timeline"),
-  balanceSummary: document.querySelector("#balance-summary"), topicBars: document.querySelector("#topic-bars"),
-  entityList: document.querySelector("#entity-list"), recordList: document.querySelector("#record-list"),
-  resultCount: document.querySelector("#result-count"), status: document.querySelector("#status-message"),
-  loadMore: document.querySelector("#load-more"), totalRecords: document.querySelector("#total-records"),
-  totalDarts: document.querySelector("#total-darts"), totalPats: document.querySelector("#total-pats"),
-  totalIssues: document.querySelector("#total-issues"), activeScope: document.querySelector("#active-scope"),
-  studentView: document.querySelector("#student-view"), alumniYear: document.querySelector("#alumni-year"),
-  alumniView: document.querySelector("#alumni-view"), methodNote: document.querySelector("#method-note"),
-  coverageNote: document.querySelector("#coverage-note"),
+  totalRecords: document.querySelector("#total-records"),
+  totalEntities: document.querySelector("#total-entities"),
+  totalPats: document.querySelector("#total-pats"),
+  totalDarts: document.querySelector("#total-darts"),
+  sourceStatus: document.querySelector("#source-status"),
+  refreshData: document.querySelector("#refresh-data"),
+  entityType: document.querySelector("#entity-type"),
+  wordCloud: document.querySelector("#word-cloud"),
+  entityLegend: document.querySelector("#entity-legend"),
+  frequencyEntity: document.querySelector("#frequency-entity"),
+  frequencyTotal: document.querySelector("#frequency-total"),
+  yearChart: document.querySelector("#year-chart"),
+  yearSlider: document.querySelector("#year-slider"),
+  yearTicks: document.querySelector("#year-ticks"),
+  sliderLabels: document.querySelector(".slider-labels"),
+  selectedYear: document.querySelector("#selected-year"),
+  allYears: document.querySelector("#all-years"),
+  matchCount: document.querySelector("#match-count"),
+  status: document.querySelector("#status-message"),
+  recordList: document.querySelector("#record-list"),
+  loadMore: document.querySelector("#load-more"),
 };
 
 function escapeHtml(value = "") {
@@ -29,270 +48,413 @@ function escapeHtml(value = "") {
     .replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
 }
 
-function formatNumber(value) { return new Intl.NumberFormat("en-US").format(value); }
-function formatPercent(value, digits = 1) {
-  return new Intl.NumberFormat("en-US", { style: "percent", minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
-}
-function formatDate(value) {
-  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${value}T00:00:00`));
-}
-function normalize(value = "") { return String(value).toLowerCase().normalize("NFKD"); }
-function topicMetadata(topicId) {
-  return state.analysis.topics.find((topic) => topic.id === topicId) || { id: "unclassified", label: "Unclassified" };
-}
-function searchBlob(record) {
-  const annotation = record._analysis;
-  const entityNames = annotation.entities.map((entity) => entity.name);
-  const topicNames = [annotation.primaryTopic, ...annotation.secondaryTopics].map((topicId) => topicMetadata(topicId).label);
-  return normalize([record.text, record.target, record.sender, record.sourcePdf, ...entityNames, ...topicNames].filter(Boolean).join(" "));
+function formatNumber(value) {
+  return new Intl.NumberFormat("en-US").format(value);
 }
 
-function renderSummary() {
-  const counts = state.summary.kindCounts;
-  elements.totalRecords.textContent = formatNumber(state.summary.recordCount);
-  elements.totalDarts.textContent = formatNumber(counts.DART || 0);
-  elements.totalPats.textContent = formatNumber(counts.PAT || 0);
-  elements.totalIssues.textContent = formatNumber(state.summary.issues.length);
+function formatDate(value, year) {
+  if (!value) return String(year);
+  const parsed = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return String(year);
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(parsed);
 }
 
-function populateControls() {
-  const yearOptions = state.summary.years.slice().reverse().map((year) => `<option value="${year.key}">${year.key}</option>`).join("");
-  elements.year.insertAdjacentHTML("beforeend", yearOptions);
-  elements.alumniYear.innerHTML = yearOptions;
-  elements.alumniYear.value = state.summary.years.some((item) => item.key === 2000) ? "2000" : String(state.summary.years.at(-1).key);
-  const topicOptions = state.analysis.topics.filter((topic) => topic.id !== "unclassified")
-    .sort((a, b) => a.label.localeCompare(b.label))
-    .map((topic) => `<option value="${topic.id}">${escapeHtml(topic.label)}</option>`).join("");
-  elements.topic.insertAdjacentHTML("beforeend", `${topicOptions}<option value="unclassified">Unclassified</option>`);
-}
-
-function baseScope(record, ignored = new Set()) {
-  const query = normalize(state.query).trim();
-  const inRange = !state.yearRange || (record.year >= state.yearRange[0] && record.year <= state.yearRange[1]);
-  const hasEntity = state.entity === "all" || record._analysis.entities.some((entity) => entity.name === state.entity);
-  return (ignored.has("query") || !query || record._search.includes(query))
-    && (ignored.has("kind") || state.kind === "all" || record.kind === state.kind)
-    && (ignored.has("year") || state.year === "all" || String(record.year) === state.year)
-    && (ignored.has("yearRange") || inRange)
-    && (ignored.has("semester") || state.semester === "all" || record.semester === state.semester)
-    && (ignored.has("topic") || state.topic === "all" || record._analysis.primaryTopic === state.topic)
-    && (ignored.has("entity") || hasEntity);
-}
-
-function patShare(records) {
-  const darts = records.filter((record) => record.kind === "DART").length;
-  const pats = records.filter((record) => record.kind === "PAT").length;
-  return { darts, pats, total: darts + pats, share: darts + pats ? pats / (darts + pats) : null };
-}
-
-function renderTimeline() {
-  const scopedRecords = state.records.filter((record) => baseScope(record, new Set(["kind", "year", "yearRange"])));
-  const overall = patShare(scopedRecords);
-  const yearCounts = new Map(state.summary.years.map(({ key }) => [key, scopedRecords.filter((record) => record.year === key).length]));
-  const maxCount = Math.max(1, ...yearCounts.values());
-  const issueBalance = state.analysis.editorialBalance;
-  elements.balanceSummary.innerHTML = overall.share === null
-    ? "No classified Darts or Pats match this analytical scope."
-    : `<strong>${formatPercent(overall.share)}</strong> Pats among <strong>${formatNumber(overall.total)}</strong> classified records in this scope.
-      <span>Across the full archive, ${formatPercent(issueBalance.exactlyBalancedShare)} of issues published equal numbers of Darts and Pats—evidence that editorial format shaped the ratio.</span>`;
-  elements.timeline.innerHTML = state.summary.years.map((item) => {
-    const yearRecords = scopedRecords.filter((record) => record.year === item.key);
-    const balance = patShare(yearRecords);
-    const total = yearCounts.get(item.key);
-    const dotPosition = balance.share === null ? 50 : balance.share * 100;
-    const volumeHeight = total ? Math.max(4, (total / maxCount) * 88) : 0;
-    const isActive = String(item.key) === state.year;
-    const label = balance.share === null ? `${item.key}: no matching classified records`
-      : `${item.key}: ${formatPercent(balance.share)} Pats among ${balance.total} classified records`;
-    return `<button class="balance-year${isActive ? " is-active" : ""}" type="button" data-year="${item.key}" aria-pressed="${isActive}" aria-label="${label}" title="${label}">
-      <span class="volume-bar" style="height:${volumeHeight}%" aria-hidden="true"></span>
-      ${balance.share === null ? "" : `<span class="balance-dot" style="bottom:${dotPosition}%" aria-hidden="true"></span>`}
-      <small>${String(item.key).slice(2)}</small></button>`;
-  }).join("");
-}
-
-function renderTopicChart() {
-  const scopedRecords = state.records.filter((record) => baseScope(record, new Set(["kind", "topic"])));
-  const counts = new Map();
-  for (const record of scopedRecords) {
-    const id = record._analysis.primaryTopic;
-    if (!counts.has(id)) counts.set(id, { darts: 0, pats: 0 });
-    if (record.kind === "DART") counts.get(id).darts += 1;
-    if (record.kind === "PAT") counts.get(id).pats += 1;
-  }
-  const rows = state.analysis.topics.filter((topic) => topic.id !== "unclassified")
-    .map((topic) => ({ ...topic, ...(counts.get(topic.id) || { darts: 0, pats: 0 }) }))
-    .map((topic) => ({ ...topic, classified: topic.darts + topic.pats }))
-    .filter((topic) => topic.classified).sort((a, b) => b.classified - a.classified);
-  if (!rows.length) {
-    elements.topicBars.innerHTML = '<p class="loading-note">No topic results match this scope.</p>';
-    return;
-  }
-  elements.topicBars.innerHTML = rows.map((topic) => {
-    const dartPercent = topic.darts / topic.classified;
-    const patPercent = topic.pats / topic.classified;
-    const isActive = state.topic === topic.id;
-    return `<button class="topic-row${isActive ? " is-active" : ""}" type="button" data-topic="${topic.id}" aria-pressed="${isActive}">
-      <span class="topic-label"><strong>${escapeHtml(topic.label)}</strong><small>${formatNumber(topic.classified)} records</small></span>
-      <span class="diverging-track" aria-hidden="true"><i class="topic-dart" style="width:${dartPercent * 100}%"></i><i class="topic-pat" style="width:${patPercent * 100}%"></i></span>
-      <span class="topic-share">${formatPercent(patPercent, 0)} Pats</span></button>`;
-  }).join("");
-}
-
-function renderEntities() {
-  const scopedRecords = state.records.filter((record) => baseScope(record, new Set(["kind", "entity"])));
-  const counts = new Map();
-  for (const record of scopedRecords) {
-    for (const entity of record._analysis.entities) {
-      if (!counts.has(entity.name)) counts.set(entity.name, { type: entity.type, darts: 0, pats: 0, total: 0 });
-      const row = counts.get(entity.name);
-      row.total += 1;
-      if (record.kind === "DART") row.darts += 1;
-      if (record.kind === "PAT") row.pats += 1;
+function parseGoogleDate(value, formattedValue) {
+  if (formattedValue) {
+    const parsed = new Date(formattedValue);
+    if (!Number.isNaN(parsed.getTime())) {
+      const month = String(parsed.getMonth() + 1).padStart(2, "0");
+      const day = String(parsed.getDate()).padStart(2, "0");
+      return `${parsed.getFullYear()}-${month}-${day}`;
     }
   }
-  const entities = [...counts.entries()].map(([name, values]) => ({ name, ...values }))
-    .filter((entity) => entity.total >= 5).sort((a, b) => b.total - a.total).slice(0, 16);
-  if (!entities.length) {
-    elements.entityList.innerHTML = '<p class="loading-note">No recognized entities match this scope.</p>';
-    return;
+  const match = String(value || "").match(/^Date\((\d{4}),(\d{1,2}),(\d{1,2})\)$/);
+  if (!match) return null;
+  return `${match[1]}-${String(Number(match[2]) + 1).padStart(2, "0")}-${match[3].padStart(2, "0")}`;
+}
+
+function gvizRecords(response) {
+  if (response?.status !== "ok" || !response.table) throw new Error("Google Sheets returned an invalid response.");
+  const columns = new Map(response.table.cols.map((column, index) => [column.label, index]));
+  const required = ["count", "year", "date", "semester", "pl2_pdf", "page_in_breeze", "kind", "text_full", "target_short", "sender_short"];
+  for (const label of required) {
+    if (!columns.has(label)) throw new Error(`The live sheet is missing the ${label} column.`);
   }
-  elements.entityList.innerHTML = entities.map((entity) => {
-    const classified = entity.darts + entity.pats;
-    const share = classified ? entity.pats / classified : 0;
-    const isActive = state.entity === entity.name;
-    return `<button class="entity-chip${isActive ? " is-active" : ""}" type="button" data-entity="${escapeHtml(entity.name)}" aria-pressed="${isActive}">
-      <span>${escapeHtml(entity.name)}</span><small>${entity.type} · ${formatNumber(entity.total)} · ${formatPercent(share, 0)} Pats</small></button>`;
-  }).join("");
+  const cell = (row, label) => row.c[columns.get(label)] || null;
+  return response.table.rows.map((row) => {
+    const dateCell = cell(row, "date");
+    return {
+      id: Number(cell(row, "count")?.v),
+      year: Number(cell(row, "year")?.v),
+      date: parseGoogleDate(dateCell?.v, dateCell?.f),
+      semester: cell(row, "semester")?.v || null,
+      sourcePdf: cell(row, "pl2_pdf")?.v || null,
+      newspaperPage: Number(cell(row, "page_in_breeze")?.v) || null,
+      kind: cell(row, "kind")?.v || null,
+      text: cell(row, "text_full")?.v || "",
+      target: cell(row, "target_short")?.v || null,
+      sender: cell(row, "sender_short")?.v || null,
+    };
+  }).filter((record) => Number.isFinite(record.id) && Number.isFinite(record.year) && record.kind && record.text);
 }
 
-function recordCard(record) {
-  const cardClass = record.kind === "PAT" ? "record-card--pat" : "record-card--dart";
-  const annotation = record._analysis;
-  const topic = topicMetadata(annotation.primaryTopic);
-  const sourceParts = [record.sourcePdf, record.newspaperPage ? `newspaper p. ${record.newspaperPage}` : null, record.pdfPage ? `PDF p. ${record.pdfPage}` : null].filter(Boolean).join(" · ");
-  const entityMarkup = annotation.entities.length ? `<div class="record-entities" aria-label="Recognized entities">${annotation.entities.map((entity) => `<span>${escapeHtml(entity.name)}</span>`).join("")}</div>` : "";
-  return `<article class="record-card ${cardClass}"><div class="record-meta"><span class="kind-badge">${escapeHtml(record.kind)}</span><time datetime="${record.date}">${escapeHtml(formatDate(record.date))}</time></div>
-    <p class="record-text">${escapeHtml(record.text)}</p>
-    <div class="annotation-line"><span class="topic-badge">${escapeHtml(topic.label)}</span><small>${escapeHtml(annotation.topicConfidence)} confidence</small></div>${entityMarkup}
-    <div class="record-details">${record.target ? `<div>Target: <span>${escapeHtml(record.target)}</span></div>` : ""}${record.sender ? `<div>Sender: <span>${escapeHtml(record.sender)}</span></div>` : ""}${sourceParts ? `<div>Source: <span>${escapeHtml(sourceParts)}</span></div>` : ""}</div></article>`;
-}
+function loadLiveSheet() {
+  return new Promise((resolve, reject) => {
+    const callbackName = `dartsPatsSheet_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+    const script = document.createElement("script");
+    const timeout = window.setTimeout(() => finish(new Error("The Google Sheet took too long to respond.")), 45000);
+    let completed = false;
 
-function renderRecords() {
-  elements.resultCount.textContent = formatNumber(state.filtered.length);
-  elements.recordList.innerHTML = state.filtered.slice(0, state.visibleCount).map(recordCard).join("");
-  elements.status.textContent = state.filtered.length ? "" : "No records match these filters. Try a broader search.";
-  elements.loadMore.hidden = state.visibleCount >= state.filtered.length;
-  if (!elements.loadMore.hidden) elements.loadMore.textContent = `Show more records (${formatNumber(state.filtered.length - state.visibleCount)} remaining)`;
-}
+    function cleanup() {
+      window.clearTimeout(timeout);
+      script.remove();
+      delete window[callbackName];
+    }
 
-function renderActiveScope() {
-  const parts = [];
-  if (state.yearRange) parts.push(`${state.yearRange[0]}–${state.yearRange[1]}`);
-  if (state.year !== "all") parts.push(state.year);
-  if (state.semester !== "all") parts.push(state.semester);
-  if (state.topic !== "all") parts.push(topicMetadata(state.topic).label);
-  if (state.entity !== "all") parts.push(state.entity);
-  if (state.kind !== "all") parts.push(state.kind === "PAT" ? "Pats only" : state.kind === "DART" ? "Darts only" : "Combined entries");
-  if (state.query.trim()) parts.push(`“${state.query.trim()}”`);
-  elements.activeScope.textContent = parts.length ? `Active view: ${parts.join(" · ")}` : "";
-}
+    function finish(error, records) {
+      if (completed) return;
+      completed = true;
+      cleanup();
+      if (error) reject(error); else resolve(records);
+    }
 
-function renderMethods() {
-  const unclassified = state.analysis.confidenceCounts.unclassified || 0;
-  const classified = state.summary.recordCount - unclassified;
-  elements.methodNote.textContent = state.analysis.methodNote;
-  elements.coverageNote.textContent = `${formatNumber(classified)} of ${formatNumber(state.summary.recordCount)} records (${formatPercent(classified / state.summary.recordCount)}) received a first-pass topic label.`;
-}
-
-function renderAll() { renderTimeline(); renderTopicChart(); renderEntities(); renderActiveScope(); renderRecords(); }
-function applyFilters() {
-  state.filtered = state.records.filter((record) => baseScope(record)).sort((a, b) => state.sort === "oldest" ? a.id - b.id : b.id - a.id);
-  state.visibleCount = PAGE_SIZE;
-  renderAll();
-}
-function scrollToAnalysis() { document.querySelector(".timeline-panel")?.scrollIntoView({ behavior: "smooth", block: "start" }); }
-function clearAudienceRange() { state.yearRange = null; }
-
-function registerWebMcpTools() {
-  const context = document.modelContext;
-  if (!context?.registerTool) return;
-  const allowedKinds = new Set(["all", "DART", "PAT", "DART AND PAT"]);
-  const allowedSemesters = new Set(["all", "Fall", "Spring"]);
-  const allowedYears = new Set(["all", ...state.summary.years.map((item) => String(item.key))]);
-  const allowedTopics = new Set(["all", ...state.analysis.topics.map((topic) => topic.id)]);
-  const allowedEntities = new Set(["all", ...state.analysis.entities.map((entity) => entity.name)]);
-  context.registerTool({
-    name: "filter_archive", title: "Filter the Darts and Pats archive",
-    description: "Filter the visible archive by text, publication label, year range, semester, topic, or recognized campus entity.",
-    inputSchema: { type: "object", properties: {
-      query: { type: "string", description: "Words to search for in the published text and annotations." },
-      kind: { type: "string", enum: ["all", "DART", "PAT", "DART AND PAT"] },
-      year: { type: "string", description: "A year from 1991 through 2026, or all." },
-      yearFrom: { type: "integer", minimum: 1991, maximum: 2026 }, yearTo: { type: "integer", minimum: 1991, maximum: 2026 },
-      semester: { type: "string", enum: ["all", "Fall", "Spring"] },
-      topic: { type: "string", description: "A controlled topic ID, or all." },
-      entity: { type: "string", description: "A recognized campus entity name, or all." },
-    }, additionalProperties: false }, annotations: { readOnlyHint: false, untrustedContentHint: false },
-    execute(input = {}) {
-      if (input.kind !== undefined && !allowedKinds.has(input.kind)) throw new Error("Unsupported kind filter.");
-      if (input.year !== undefined && !allowedYears.has(input.year)) throw new Error("Unsupported year filter.");
-      if (input.semester !== undefined && !allowedSemesters.has(input.semester)) throw new Error("Unsupported semester filter.");
-      if (input.topic !== undefined && !allowedTopics.has(input.topic)) throw new Error("Unsupported topic filter.");
-      if (input.entity !== undefined && !allowedEntities.has(input.entity)) throw new Error("Unsupported entity filter.");
-      if (input.query !== undefined && typeof input.query !== "string") throw new Error("Search query must be text.");
-      if (input.yearFrom !== undefined && input.yearTo !== undefined && input.yearFrom > input.yearTo) throw new Error("yearFrom must not be later than yearTo.");
-      if (input.query !== undefined) state.query = input.query;
-      if (input.kind !== undefined) state.kind = input.kind;
-      if (input.year !== undefined) { state.year = input.year; state.yearRange = null; }
-      if (input.yearFrom !== undefined || input.yearTo !== undefined) {
-        state.yearRange = [input.yearFrom ?? state.summary.years[0].key, input.yearTo ?? state.summary.years.at(-1).key]; state.year = "all";
-      }
-      if (input.semester !== undefined) state.semester = input.semester;
-      if (input.topic !== undefined) state.topic = input.topic;
-      if (input.entity !== undefined) state.entity = input.entity;
-      elements.search.value = state.query; elements.kind.value = state.kind; elements.year.value = state.year;
-      elements.semester.value = state.semester; elements.topic.value = state.topic; applyFilters();
-      return { matchingRecords: state.filtered.length, filters: { query: state.query, kind: state.kind, year: state.year, yearRange: state.yearRange, semester: state.semester, topic: state.topic, entity: state.entity } };
-    },
+    window[callbackName] = (response) => {
+      try { finish(null, gvizRecords(response)); }
+      catch (error) { finish(error); }
+    };
+    script.onerror = () => finish(new Error("The live Google Sheet could not be reached."));
+    const params = new URLSearchParams({
+      sheet: SHEET_NAME,
+      headers: "1",
+      tq: SHEET_QUERY,
+      tqx: `responseHandler:${callbackName}`,
+      cache: String(Date.now()),
+    });
+    script.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?${params}`;
+    document.head.append(script);
   });
 }
 
-let searchTimer;
-elements.search.addEventListener("input", (event) => { window.clearTimeout(searchTimer); searchTimer = window.setTimeout(() => { state.query = event.target.value; applyFilters(); }, 150); });
-elements.kind.addEventListener("change", (event) => { state.kind = event.target.value; applyFilters(); });
-elements.year.addEventListener("change", (event) => { state.year = event.target.value; clearAudienceRange(); applyFilters(); });
-elements.semester.addEventListener("change", (event) => { state.semester = event.target.value; applyFilters(); });
-elements.topic.addEventListener("change", (event) => { state.topic = event.target.value; applyFilters(); });
-elements.sort.addEventListener("change", (event) => { state.sort = event.target.value; applyFilters(); });
-elements.form.addEventListener("reset", () => { window.setTimeout(() => { Object.assign(state, { query: "", kind: "all", year: "all", yearRange: null, semester: "all", topic: "all", entity: "all" }); applyFilters(); }); });
-elements.timeline.addEventListener("click", (event) => { const button = event.target.closest("[data-year]"); if (!button) return; state.year = state.year === button.dataset.year ? "all" : button.dataset.year; clearAudienceRange(); elements.year.value = state.year; applyFilters(); });
-elements.topicBars.addEventListener("click", (event) => { const button = event.target.closest("[data-topic]"); if (!button) return; state.topic = state.topic === button.dataset.topic ? "all" : button.dataset.topic; elements.topic.value = state.topic; applyFilters(); document.querySelector(".results-panel")?.scrollIntoView({ behavior: "smooth", block: "start" }); });
-elements.entityList.addEventListener("click", (event) => { const button = event.target.closest("[data-entity]"); if (!button) return; state.entity = state.entity === button.dataset.entity ? "all" : button.dataset.entity; applyFilters(); document.querySelector(".results-panel")?.scrollIntoView({ behavior: "smooth", block: "start" }); });
-elements.studentView.addEventListener("click", () => { const maxYear = state.summary.years.at(-1).key; state.yearRange = [maxYear - 5, maxYear]; state.year = "all"; elements.year.value = "all"; applyFilters(); scrollToAnalysis(); });
-elements.alumniView.addEventListener("click", () => { const graduationYear = Number(elements.alumniYear.value); state.yearRange = [Math.max(state.summary.years[0].key, graduationYear - 3), graduationYear]; state.year = "all"; elements.year.value = "all"; applyFilters(); scrollToAnalysis(); });
-elements.loadMore.addEventListener("click", () => { state.visibleCount += PAGE_SIZE; renderRecords(); });
+async function loadFallback() {
+  const response = await fetch(`${import.meta.env.BASE_URL}data/records.json`);
+  if (!response.ok) throw new Error("The cached archive could not be loaded.");
+  return response.json();
+}
 
-async function start() {
-  try {
-    const base = import.meta.env.BASE_URL;
-    const responses = await Promise.all(["records.json", "summary.json", "enrichment.json", "analysis.json"].map((name) => fetch(`${base}data/${name}`)));
-    if (!responses.every((response) => response.ok)) throw new Error("Data files could not be loaded.");
-    const [records, summary, enrichment, analysis] = await Promise.all(responses.map((response) => response.json()));
-    state.summary = summary; state.analysis = analysis; state.enrichment = new Map(enrichment.records.map((row) => [row.id, row]));
-    state.records = records.map((record) => {
-      const annotation = state.enrichment.get(record.id);
-      if (!annotation) throw new Error(`Missing analysis for record ${record.id}.`);
-      const enriched = { ...record, _analysis: annotation }; enriched._search = searchBlob(enriched); return enriched;
-    });
-    renderSummary(); populateControls(); renderMethods(); applyFilters(); registerWebMcpTools();
-  } catch (error) {
-    elements.status.textContent = "The archive could not be loaded. Please refresh the page and try again.";
-    elements.timeline.innerHTML = '<p class="loading-note">Timeline unavailable.</p>';
-    elements.topicBars.innerHTML = '<p class="loading-note">Topic analysis unavailable.</p>';
-    elements.entityList.innerHTML = '<p class="loading-note">Entity analysis unavailable.</p>';
-    console.error(error);
+function analyzeRecords(records) {
+  const stats = new Map(ENTITY_DICTIONARY.map((entity) => [entity.id, {
+    ...entity, count: 0, darts: 0, pats: 0, combined: 0, records: [], byYear: new Map(),
+  }]));
+  state.records = records.map((record) => {
+    const entities = recognizeEntities(record);
+    const enriched = { ...record, entities };
+    for (const entity of entities) {
+      const item = stats.get(entity.id);
+      item.count += 1;
+      item.records.push(enriched);
+      item.byYear.set(record.year, (item.byYear.get(record.year) || 0) + 1);
+      if (record.kind === "DART") item.darts += 1;
+      else if (record.kind === "PAT") item.pats += 1;
+      else item.combined += 1;
+    }
+    return enriched;
+  });
+  state.entityStats = new Map([...stats].filter(([, entity]) => entity.count > 0));
+  const defaultEntity = [...state.entityStats.values()].sort((a, b) => b.count - a.count)[0];
+  if (!state.entityStats.has(state.selectedEntityId)) state.selectedEntityId = defaultEntity?.id || null;
+}
+
+function availableYears() {
+  const years = [...new Set(state.records.map((record) => record.year))].sort((a, b) => a - b);
+  return years;
+}
+
+function configureYearControls() {
+  const years = availableYears();
+  const minYear = years[0];
+  const maxYear = years.at(-1);
+  elements.yearSlider.min = String(minYear);
+  elements.yearSlider.max = String(maxYear);
+  elements.yearSlider.value = String(state.selectedYear || minYear);
+  elements.yearTicks.innerHTML = years.map((year) => `<option value="${year}"></option>`).join("");
+  const labelYears = [minYear, ...years.filter((year) => year % 10 === 0), maxYear].filter((year, index, list) => list.indexOf(year) === index);
+  elements.sliderLabels.innerHTML = labelYears.map((year) => `<span>${year}</span>`).join("");
+}
+
+function populateEntityTypes() {
+  const selected = elements.entityType.value || "all";
+  const types = [...new Set([...state.entityStats.values()].map((entity) => entity.type))].sort();
+  elements.entityType.innerHTML = '<option value="all">All entity types</option>'
+    + types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("");
+  elements.entityType.value = types.includes(selected) ? selected : "all";
+  state.entityType = elements.entityType.value;
+}
+
+function updateSummary() {
+  const darts = state.records.filter((record) => record.kind === "DART").length;
+  const pats = state.records.filter((record) => record.kind === "PAT").length;
+  elements.totalRecords.textContent = formatNumber(state.records.length);
+  elements.totalEntities.textContent = formatNumber(state.entityStats.size);
+  elements.totalDarts.textContent = formatNumber(darts);
+  elements.totalPats.textContent = formatNumber(pats);
+}
+
+function selectedEntity() {
+  return state.entityStats.get(state.selectedEntityId) || null;
+}
+
+function cloudEntities() {
+  const counts = new Map();
+  for (const record of state.records) {
+    if (state.selectedYear !== null && record.year !== state.selectedYear) continue;
+    for (const entity of record.entities) {
+      if (state.entityType !== "all" && entity.type !== state.entityType) continue;
+      if (!counts.has(entity.id)) counts.set(entity.id, { ...entity, count: 0, darts: 0, pats: 0 });
+      const item = counts.get(entity.id);
+      item.count += 1;
+      if (record.kind === "DART") item.darts += 1;
+      if (record.kind === "PAT") item.pats += 1;
+    }
+  }
+  return [...counts.values()].sort((a, b) => b.count - a.count).slice(0, 70);
+}
+
+function seededRandom(seed = 1729) {
+  let value = seed % 2147483647;
+  return () => {
+    value = (value * 16807) % 2147483647;
+    return (value - 1) / 2147483646;
+  };
+}
+
+function renderCloud() {
+  const entities = cloudEntities();
+  const renderId = ++state.cloudRenderId;
+  elements.wordCloud.replaceChildren();
+  if (!entities.length) {
+    elements.wordCloud.innerHTML = '<p class="empty-note">No recognized entities appear in this year and type.</p>';
+    return;
+  }
+  const width = Math.max(520, Math.round(elements.wordCloud.getBoundingClientRect().width || 760));
+  const height = Math.max(520, Math.min(700, Math.round(width * 0.72)));
+  const counts = entities.map((entity) => entity.count);
+  const minCount = Math.min(...counts);
+  const maxCount = Math.max(...counts);
+  const fontSize = (count) => {
+    if (maxCount === minCount) return 32;
+    const position = (Math.log(count) - Math.log(minCount)) / (Math.log(maxCount) - Math.log(minCount));
+    return 15 + position * 54;
+  };
+  const words = entities.map((entity) => ({
+    ...entity, text: entity.name, size: fontSize(entity.count),
+  }));
+
+  cloud().size([width, height]).words(words).padding(5).rotate(() => 0)
+    .font("Fraunces").fontWeight(600).fontSize((word) => word.size)
+    .random(seededRandom(entities.length * 31 + (state.selectedYear || 0)))
+    .on("end", (placedWords) => {
+      if (renderId !== state.cloudRenderId) return;
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.setAttribute("role", "group");
+      svg.setAttribute("aria-label", `Clickable entities for ${state.selectedYear || "all years"}`);
+      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.setAttribute("transform", `translate(${width / 2},${height / 2})`);
+      for (const word of placedWords) {
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("class", `cloud-word${word.id === state.selectedEntityId ? " is-selected" : ""}`);
+        text.setAttribute("x", word.x);
+        text.setAttribute("y", word.y);
+        text.setAttribute("text-anchor", "middle");
+        text.setAttribute("transform", `rotate(${word.rotate})`);
+        text.setAttribute("style", `font-size:${word.size}px;fill:${ENTITY_TYPE_COLORS[word.type] || "#351c75"}`);
+        text.setAttribute("role", "button");
+        text.setAttribute("tabindex", "0");
+        text.setAttribute("aria-label", `${word.name}: ${word.count} mentions. Select to view records.`);
+        const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        title.textContent = `${word.name}: ${formatNumber(word.count)} mentions`;
+        text.append(title, document.createTextNode(word.text));
+        const choose = () => selectEntity(word.id);
+        text.addEventListener("click", choose);
+        text.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") { event.preventDefault(); choose(); }
+        });
+        group.append(text);
+      }
+      svg.append(group);
+      elements.wordCloud.append(svg);
+    }).start();
+}
+
+function renderLegend() {
+  const types = [...new Set([...state.entityStats.values()].map((entity) => entity.type))].sort();
+  elements.entityLegend.innerHTML = types.map((type) => `<span><i style="background:${ENTITY_TYPE_COLORS[type]}"></i>${escapeHtml(type)}</span>`).join("");
+}
+
+function renderYearChart() {
+  const entity = selectedEntity();
+  const years = availableYears();
+  if (!entity) {
+    elements.frequencyEntity.textContent = "Select an entity";
+    elements.frequencyTotal.textContent = "—";
+    elements.yearChart.replaceChildren();
+    return;
+  }
+  const maxCount = Math.max(1, ...years.map((year) => entity.byYear.get(year) || 0));
+  elements.frequencyEntity.textContent = entity.name;
+  elements.frequencyTotal.textContent = state.selectedYear === null
+    ? `${formatNumber(entity.count)} total`
+    : `${formatNumber(entity.byYear.get(state.selectedYear) || 0)} in ${state.selectedYear}`;
+  elements.yearChart.style.setProperty("--year-count", years.length);
+  elements.yearChart.innerHTML = years.map((year) => {
+    const count = entity.byYear.get(year) || 0;
+    const height = count ? Math.max(4, count / maxCount * 100) : 1;
+    const selected = state.selectedYear === year;
+    return `<button class="year-bar${selected ? " is-selected" : ""}" type="button" data-year="${year}" aria-label="${year}: ${count} mentions" aria-pressed="${selected}" style="--bar-height:${height}%">
+      ${selected ? `<span class="bar-count">${formatNumber(count)}</span>` : ""}
+      <i style="height:${height}%"></i><span>${year}</span></button>`;
+  }).join("");
+}
+
+function matchingRecords() {
+  const entity = selectedEntity();
+  if (!entity) return [];
+  return entity.records.filter((record) => state.selectedYear === null || record.year === state.selectedYear)
+    .sort((a, b) => b.id - a.id);
+}
+
+function recordCard(record) {
+  const className = record.kind === "PAT" ? "record-card--pat" : record.kind === "DART" ? "record-card--dart" : "record-card--combined";
+  const source = [record.sourcePdf, record.newspaperPage ? `newspaper p. ${record.newspaperPage}` : null].filter(Boolean).join(" · ");
+  return `<article class="record-card ${className}">
+    <div class="record-meta"><span class="kind-badge">${escapeHtml(record.kind)}</span><time datetime="${record.date || ""}">${escapeHtml(formatDate(record.date, record.year))}</time></div>
+    <p>${escapeHtml(record.text)}</p>
+    ${record.target ? `<div class="record-target">Target: <strong>${escapeHtml(record.target)}</strong></div>` : ""}
+    ${source ? `<div class="record-source">${escapeHtml(source)}</div>` : ""}
+  </article>`;
+}
+
+function renderRecords() {
+  const entity = selectedEntity();
+  const records = matchingRecords();
+  elements.matchCount.textContent = formatNumber(records.length);
+  if (!entity) {
+    elements.status.textContent = "Select an entity in the word cloud to view its records.";
+    elements.recordList.replaceChildren();
+    elements.loadMore.hidden = true;
+    return;
+  }
+  elements.status.textContent = records.length ? "" : `${entity.name} has no records in ${state.selectedYear}.`;
+  elements.recordList.innerHTML = records.slice(0, state.visibleCount).map(recordCard).join("");
+  elements.loadMore.hidden = state.visibleCount >= records.length;
+  if (!elements.loadMore.hidden) elements.loadMore.textContent = `Show more (${formatNumber(records.length - state.visibleCount)} remaining)`;
+}
+
+function renderYearSelection() {
+  elements.selectedYear.textContent = state.selectedYear === null ? "All years" : String(state.selectedYear);
+  elements.allYears.classList.toggle("is-active", state.selectedYear === null);
+  elements.allYears.setAttribute("aria-pressed", String(state.selectedYear === null));
+  if (state.selectedYear !== null) elements.yearSlider.value = String(state.selectedYear);
+}
+
+function renderSelection({ redrawCloud = true } = {}) {
+  state.visibleCount = PAGE_SIZE;
+  renderYearSelection();
+  renderYearChart();
+  renderRecords();
+  if (redrawCloud) renderCloud();
+}
+
+function selectEntity(entityId) {
+  if (!state.entityStats.has(entityId)) return;
+  state.selectedEntityId = entityId;
+  renderSelection();
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    document.querySelector(".entity-sidebar")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
-start();
+function selectYear(year) {
+  state.selectedYear = Number(year);
+  renderSelection();
+}
+
+function registerWebMcpTool() {
+  const context = document.modelContext;
+  if (!context?.registerTool || webMcpRegistered) return;
+  const entityNames = [...state.entityStats.values()].map((entity) => entity.name);
+  const minYear = availableYears()[0];
+  const maxYear = availableYears().at(-1);
+  context.registerTool({
+    name: "explore_named_entity",
+    title: "Explore a named entity in Darts and Pats",
+    description: "Select a recognized organization, place, building, business, group, or academic unit and optionally filter its records to one year.",
+    inputSchema: { type: "object", properties: {
+      entity: { type: "string", enum: entityNames },
+      year: { anyOf: [{ type: "integer", minimum: minYear, maximum: maxYear }, { type: "null" }], description: "Publication year, or null for all years." },
+    }, required: ["entity"], additionalProperties: false },
+    annotations: { readOnlyHint: false, untrustedContentHint: false },
+    execute({ entity, year = null }) {
+      const match = [...state.entityStats.values()].find((item) => item.name === entity);
+      if (!match) throw new Error("Entity is not available in the current live data.");
+      state.selectedEntityId = match.id;
+      state.selectedYear = year;
+      renderSelection();
+      return { entity, year, matchingRecords: matchingRecords().length };
+    },
+  });
+  webMcpRegistered = true;
+}
+
+async function refreshData() {
+  elements.refreshData.disabled = true;
+  elements.sourceStatus.textContent = "Connecting to the live Google Sheet…";
+  try {
+    let records;
+    try {
+      records = await loadLiveSheet();
+      state.source = "live";
+      const loadedAt = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date());
+      elements.sourceStatus.textContent = `Live Google Sheet · ${formatNumber(records.length)} records loaded at ${loadedAt}`;
+      document.body.dataset.source = "live";
+    } catch (liveError) {
+      console.warn(liveError);
+      records = await loadFallback();
+      state.source = "cached";
+      elements.sourceStatus.textContent = "Cached archive shown · select Refresh data to retry the live sheet";
+      document.body.dataset.source = "cached";
+    }
+    analyzeRecords(records);
+    configureYearControls();
+    populateEntityTypes();
+    updateSummary();
+    renderLegend();
+    renderSelection();
+    registerWebMcpTool();
+  } catch (error) {
+    elements.sourceStatus.textContent = "The archive could not be loaded.";
+    elements.status.textContent = "Please check the source sharing settings and try again.";
+    elements.wordCloud.innerHTML = '<p class="empty-note">Data unavailable.</p>';
+    console.error(error);
+  } finally {
+    elements.refreshData.disabled = false;
+  }
+}
+
+elements.refreshData.addEventListener("click", refreshData);
+elements.entityType.addEventListener("change", (event) => { state.entityType = event.target.value; renderCloud(); });
+elements.yearSlider.addEventListener("input", (event) => selectYear(event.target.value));
+elements.allYears.addEventListener("click", () => { state.selectedYear = null; renderSelection(); });
+elements.yearChart.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-year]");
+  if (button) selectYear(button.dataset.year);
+});
+elements.loadMore.addEventListener("click", () => { state.visibleCount += PAGE_SIZE; renderRecords(); });
+
+let resizeTimer;
+new ResizeObserver(() => {
+  window.clearTimeout(resizeTimer);
+  resizeTimer = window.setTimeout(() => { if (state.records.length) renderCloud(); }, 160);
+}).observe(elements.wordCloud);
+
+refreshData();

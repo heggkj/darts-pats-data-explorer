@@ -1,17 +1,12 @@
-# Darts and Pats Data Explorer
+# Darts and Pats Named Entity Explorer
 
-A static, PL2-styled explorer for Darts and Pats published in *The Breeze*. It includes linked sentiment-balance, controlled-topic, and campus-entity views alongside the searchable source records.
+A PL2-styled, static web app for exploring named people, organizations, campus groups, buildings, places, and businesses mentioned in Darts and Pats published in *The Breeze*.
 
-## Refresh the data
+## Live data and entity analysis
 
-Run the source conversion first, then the transparent first-pass analysis:
+On every page load—and whenever a visitor selects **Refresh data**—the app reads the public `parsed_rows` tab from the project Google Sheet through Google's read-only visualization endpoint. No API key or write access is stored in the site.
 
-```powershell
-python scripts/build_data.py "..\Darts-and-Pats_dataset_parsed.xlsx"
-python scripts/enrich_data.py
-```
-
-The analysis vocabulary is defined near the top of `scripts/enrich_data.py`. Topic and entity labels require human validation before formal research use.
+The named entity recognition runs in the visitor's browser using the transparent, campus-specific vocabulary in `src/entityDictionary.js`. Aliases such as “JMU,” “James Madison University,” and historical building or organization names are grouped under canonical entities. This is a high-precision research aid, not a substitute for human validation. The cached `public/data/records.json` snapshot is used only when the live sheet is unavailable.
 
 ## Run the website locally
 
@@ -22,9 +17,9 @@ pnpm dev
 
 Open the local address printed by the development server. The production version is created with `pnpm build`.
 
-## Data files
+## Data files and historical scripts
 
-The website uses files generated from the source workbook:
+The repository retains these generated files for fallback, reproducibility, and earlier analyses:
 
 - `public/data/records.json`: web-ready records
 - `public/data/summary.json`: yearly and issue-level counts
@@ -32,4 +27,4 @@ The website uses files generated from the source workbook:
 - `public/data/enrichment.json`: record-level topic and entity annotations
 - `public/data/analysis.json`: aggregates and method metadata for the charts
 
-The original Excel workbook is not committed to this repository.
+The current named-entity interface does not require rebuilding these files when the Google Sheet changes. The original Excel workbook is not committed to this repository.
