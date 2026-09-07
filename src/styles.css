@@ -153,8 +153,8 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .entity-search-results span { flex-shrink: 0; font-size: 0.75rem; font-weight: 400; }
 .word-cloud { display: grid; place-items: center; padding: 0.5rem; }
 .word-cloud > .loading-note, .word-cloud > .empty-note { padding: 4rem 1rem; }
-.cloud-overflow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.2rem 0.35rem; padding: 0 0.5rem 0.8rem; }
-.cloud-overflow-word { padding: 0.2rem 0.4rem; font-family: var(--display); font-size: 1rem; background: transparent; border: 1px solid transparent; border-radius: 0.5rem; overflow-wrap: anywhere; }
+.cloud-overflow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.15rem 0.3rem; padding: 0 0.5rem 0.5rem; }
+.cloud-overflow-word { padding: 0.15rem 0.35rem; font-family: var(--display); font-size: 1rem; line-height: 1.05; background: transparent; border: 1px solid transparent; border-radius: 0.5rem; overflow-wrap: anywhere; }
 .cloud-overflow-word:hover { background: var(--muted); }
 .cloud-overflow-word.is-selected { position: relative; z-index: 1; max-width: calc(100% - 1.5rem); color: var(--deep) !important; background: rgb(238 230 248 / 60%); border-color: rgb(164 135 198 / 50%); transform: scale(1.08); }
 .word-cloud svg { display: block; width: 100%; height: auto; max-height: 44rem; }
