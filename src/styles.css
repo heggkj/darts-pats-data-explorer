@@ -84,14 +84,17 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .legend-dart { background: var(--dart); }
 .legend-pat { background: var(--pat); }
 .entry-balance { margin-top: 0.65rem; }
-.balance-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.2rem 0.5rem; font-size: 0.75rem; }
+.balance-caption { display: flex; justify-content: space-between; flex-wrap: wrap; align-content: flex-start; align-items: flex-start; gap: 0.2rem 0.5rem; min-block-size: calc(3em + 0.2rem); font-size: 0.75rem; }
 .balance-caption strong { color: var(--primary); }
 .balance-caption > span { color: var(--muted-foreground); }
 .balance-meter { position: relative; height: 0.55rem; margin: 0.5rem 0.3rem 0; border-radius: 999px; background: linear-gradient(to right, var(--dart), #eee6f8 50%, var(--pat)); }
 .balance-meter::before { content: ""; position: absolute; left: 50%; top: -0.15rem; bottom: -0.15rem; width: 1px; background: var(--muted-foreground); }
 .balance-marker { position: absolute; top: 50%; left: var(--pat-share, 50%); width: 0.8rem; height: 0.8rem; border: 2px solid white; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 1px var(--deep); transform: translate(-50%, -50%); }
 .balance-scale { display: flex; justify-content: space-between; margin-top: 0.2rem; color: var(--muted-foreground); font-size: 0.75rem; }
-.balance-meter[hidden], .balance-scale[hidden] { display: none; }
+/* Keep the chart and year controls still when there is no balance to display.
+   Visibility also keeps the empty meter out of the accessibility tree. */
+.balance-meter[hidden] { display: block; visibility: hidden; }
+.balance-scale[hidden] { display: flex; visibility: hidden; }
 
 .year-chart { --year-count: 36; display: grid; grid-template-columns: repeat(var(--year-count), minmax(0, 1fr)); align-items: end; gap: 2px; height: 11.5rem; margin-top: 1.75rem; padding: 0.25rem 0 1.6rem; }
 .year-bar { position: relative; height: 100%; min-width: 0; padding: 0; background: transparent; border: 0; }
