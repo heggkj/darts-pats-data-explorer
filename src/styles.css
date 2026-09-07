@@ -73,7 +73,10 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .panel-heading, .matches-heading { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
 .panel-heading h3, .matches-heading h3 { margin: 0; font-size: 1.28rem; line-height: 1.15; }
 .panel-heading > strong { flex: 0 0 auto; padding: 0.38rem 0.55rem; color: var(--primary); background: var(--muted); border-radius: 0.45rem; font-size: 0.78rem; }
-#frequency-entity { display: inline-block; padding: 0.4rem 0.6rem; background: #eee6f8; border-radius: 0.5rem; color: var(--primary); }
+.frequency-panel .panel-heading { flex-direction: row; align-items: center; gap: 0.5rem; }
+.frequency-panel .panel-heading .eyebrow { margin: 0; }
+#frequency-title { margin: 0.5rem 0 0; font-size: 1.28rem; line-height: 1.2; }
+#frequency-entity { display: block; width: 100%; padding: 0.5rem 0.65rem; background: #eee6f8; border-radius: 0.5rem; color: var(--primary); overflow-wrap: anywhere; }
 .chart-legend { display: flex; gap: 1rem; margin-top: 0.8rem; font-size: 0.8rem; color: var(--muted-foreground); }
 .chart-legend span { display: inline-flex; gap: 0.35rem; align-items: center; }
 .chart-legend [hidden] { display: none; }
