@@ -63,6 +63,13 @@
               </div>
               <p><strong>Size</strong> shows mention frequency. <strong>Color</strong> shows entity type.</p>
             </div>
+            <nav class="cloud-pagination" aria-label="Browse entity sets">
+              <p id="cloud-page-status" role="status">Loading entities…</p>
+              <div>
+                <button id="cloud-previous" type="button" disabled aria-controls="word-cloud">← Previous</button>
+                <button id="cloud-next" type="button" disabled aria-controls="word-cloud">Next set →</button>
+              </div>
+            </nav>
             <div class="word-cloud" id="word-cloud" aria-live="polite">
               <p class="loading-note">Reading the live archive and recognizing entities…</p>
             </div>

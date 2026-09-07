@@ -127,7 +127,18 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .cloud-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: 1.4rem 1.5rem 0; }
 .cloud-heading h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.6rem); }
 .cloud-heading > p { max-width: 22rem; margin: 0; color: var(--muted-foreground); font-size: 0.8rem; text-align: right; }
-.word-cloud { min-height: 34rem; display: grid; place-items: center; padding: 0.5rem; }
+.cloud-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; margin: 0.9rem 1.5rem 0; padding-bottom: 0.7rem; border-bottom: 1px solid var(--border); }
+.cloud-pagination p { margin: 0; color: var(--muted-foreground); font-size: 0.8rem; }
+.cloud-pagination > div { display: flex; gap: 0.4rem; }
+.cloud-pagination button { min-height: 2.5rem; padding: 0.4rem 0.7rem; color: var(--primary); background: var(--muted); border: 1px solid var(--border); border-radius: 0.5rem; font-size: 0.875rem; font-weight: 600; }
+.cloud-pagination button:hover:not(:disabled) { color: white; background: var(--primary); }
+.cloud-pagination button:disabled { opacity: 0.45; cursor: default; }
+.word-cloud { display: grid; place-items: center; padding: 0.5rem; }
+.word-cloud > .loading-note, .word-cloud > .empty-note { padding: 4rem 1rem; }
+.cloud-overflow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.2rem 0.35rem; padding: 0 0.5rem 0.8rem; }
+.cloud-overflow-word { padding: 0.2rem 0.4rem; font-family: var(--display); font-size: 1rem; background: transparent; border: 1px solid transparent; border-radius: 0.5rem; overflow-wrap: anywhere; }
+.cloud-overflow-word:hover { background: var(--muted); }
+.cloud-overflow-word.is-selected { color: var(--deep) !important; background: #eee6f8; border-color: #c8b5e0; }
 .word-cloud svg { display: block; width: 100%; height: auto; max-height: 44rem; }
 .cloud-word { cursor: pointer; paint-order: stroke fill; transition: opacity 120ms ease, stroke-width 120ms ease; }
 .cloud-word:hover { opacity: 0.68; }
@@ -178,7 +189,7 @@ footer p { margin: 0.25rem 0 0; }
   .workspace { width: min(100% - 1rem, 96rem); }
   .panel-heading { align-items: flex-start; flex-direction: column; }
   .cloud-heading { padding-inline: 1rem; }
-  .word-cloud { min-height: 28rem; }
+  .cloud-pagination { margin-inline: 1rem; }
   footer { align-items: flex-start; flex-direction: column; }
 }
 

@@ -6,6 +6,8 @@ const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
 const SHEET_NAME = "parsed_rows";
 const SHEET_QUERY = "select A,D,E,F,G,H,K,L,Q,T where A is not null";
 const PAGE_SIZE = 18;
+const CLOUD_PAGE_SIZE = 80;
+let activeCloudLayout;
 let webMcpRegistered = false;
 
 const state = {
@@ -17,6 +19,7 @@ const state = {
   visibleCount: PAGE_SIZE,
   source: "loading",
   cloudRenderId: 0,
+  cloudPage: 0,
 };
 
 const elements = {
@@ -28,6 +31,9 @@ const elements = {
   refreshData: document.querySelector("#refresh-data"),
   entityType: document.querySelector("#entity-type"),
   wordCloud: document.querySelector("#word-cloud"),
+  cloudPageStatus: document.querySelector("#cloud-page-status"),
+  cloudPrevious: document.querySelector("#cloud-previous"),
+  cloudNext: document.querySelector("#cloud-next"),
   entityLegend: document.querySelector("#entity-legend"),
   frequencyEntity: document.querySelector("#frequency-entity"),
   frequencyTotal: document.querySelector("#frequency-total"),
@@ -216,7 +222,24 @@ function cloudEntities() {
       if (record.kind === "PAT") item.pats += 1;
     }
   }
-  return [...counts.values()].sort((a, b) => b.count - a.count).slice(0, 70);
+  return [...counts.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+}
+
+function cloudPageEntities(entities) {
+  const lastPage = Math.max(0, Math.ceil(entities.length / CLOUD_PAGE_SIZE) - 1);
+  state.cloudPage = Math.max(0, Math.min(state.cloudPage, lastPage));
+  const start = state.cloudPage * CLOUD_PAGE_SIZE;
+  elements.cloudPrevious.disabled = state.cloudPage === 0;
+  elements.cloudNext.disabled = state.cloudPage === lastPage;
+  elements.cloudPageStatus.textContent = entities.length
+    ? `Entities ${start + 1}–${Math.min(start + CLOUD_PAGE_SIZE, entities.length)} of ${formatNumber(entities.length)} · Most frequent first`
+    : "No matching entities";
+  return entities.slice(start, start + CLOUD_PAGE_SIZE);
+}
+
+function changeCloudPage(direction) {
+  state.cloudPage += direction;
+  renderCloud();
 }
 
 function seededRandom(seed = 1729) {
@@ -228,28 +251,30 @@ function seededRandom(seed = 1729) {
 }
 
 function renderCloud() {
-  const entities = cloudEntities();
+  const allEntities = cloudEntities();
+  const entities = cloudPageEntities(allEntities);
+  activeCloudLayout?.stop();
   const renderId = ++state.cloudRenderId;
   elements.wordCloud.replaceChildren();
   if (!entities.length) {
     elements.wordCloud.innerHTML = '<p class="empty-note">No recognized entities appear in this year and type.</p>';
     return;
   }
-  const width = Math.max(520, Math.round(elements.wordCloud.getBoundingClientRect().width || 760));
-  const height = Math.max(520, Math.min(700, Math.round(width * 0.72)));
-  const counts = entities.map((entity) => entity.count);
+  const width = Math.max(280, Math.round(elements.wordCloud.getBoundingClientRect().width || 760) - 16);
+  const height = Math.max(280, Math.min(600, Math.round(width * 0.72 * Math.sqrt(entities.length / CLOUD_PAGE_SIZE))));
+  const counts = allEntities.map((entity) => entity.count);
   const minCount = Math.min(...counts);
   const maxCount = Math.max(...counts);
   const fontSize = (count) => {
-    if (maxCount === minCount) return 32;
+    if (maxCount === minCount) return 22;
     const position = (Math.log(count) - Math.log(minCount)) / (Math.log(maxCount) - Math.log(minCount));
-    return 15 + position * 54;
+    return 16 + position * 30;
   };
   const words = entities.map((entity) => ({
     ...entity, text: entity.name, size: fontSize(entity.count),
   }));
 
-  cloud().size([width, height]).words(words).padding(5).rotate(() => 0)
+  activeCloudLayout = cloud().size([width, height]).words(words).padding(3).rotate(() => 0).spiral("rectangular")
     .font("Fraunces").fontWeight(600).fontSize((word) => word.size)
     .random(seededRandom(entities.length * 31 + (state.selectedYear || 0)))
     .on("end", (placedWords) => {
@@ -286,6 +311,28 @@ function renderCloud() {
       }
       svg.append(group);
       elements.wordCloud.append(svg);
+      // D3 may omit labels that do not fit; keep every entity in this set reachable.
+      const placedIds = new Set(placedWords.map((word) => word.id));
+      const remaining = entities.filter((entity) => !placedIds.has(entity.id));
+      if (remaining.length) {
+        const overflow = document.createElement("div");
+        overflow.className = "cloud-overflow";
+        overflow.setAttribute("aria-label", "More entities in this set");
+        for (const entity of remaining) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `cloud-overflow-word${entity.id === state.selectedEntityId ? " is-selected" : ""}`;
+          button.textContent = entity.name;
+          button.style.color = ENTITY_TYPE_COLORS[entity.type] || "#351c75";
+          button.style.fontSize = `${fontSize(entity.count)}px`;
+          button.setAttribute("aria-pressed", String(entity.id === state.selectedEntityId));
+          button.setAttribute("aria-label", `${entity.name}: ${entity.count} mentions. Select to view records.`);
+          button.title = `${entity.name}: ${formatNumber(entity.count)} mentions`;
+          button.addEventListener("click", () => selectEntity(entity.id));
+          overflow.append(button);
+        }
+        elements.wordCloud.append(overflow);
+      }
       const selectedWord = group.querySelector(".is-selected");
       if (selectedWord) {
         const bounds = selectedWord.getBBox();
@@ -406,6 +453,7 @@ function selectEntity(entityId) {
 
 function selectYear(year) {
   state.selectedYear = Number(year);
+  state.cloudPage = 0;
   renderSelection();
 }
 
@@ -429,6 +477,7 @@ function registerWebMcpTool() {
       if (!match) throw new Error("Entity is not available in the current live data.");
       state.selectedEntityId = match.id;
       state.selectedYear = year;
+      state.cloudPage = Math.max(0, Math.floor(cloudEntities().findIndex((item) => item.id === match.id) / CLOUD_PAGE_SIZE));
       renderSelection();
       return { entity, year, matchingRecords: matchingRecords().length };
     },
@@ -455,6 +504,7 @@ async function refreshData() {
       document.body.dataset.source = "cached";
     }
     analyzeRecords(records);
+    state.cloudPage = 0;
     configureYearControls();
     populateEntityTypes();
     updateSummary();
@@ -472,9 +522,11 @@ async function refreshData() {
 }
 
 elements.refreshData.addEventListener("click", refreshData);
-elements.entityType.addEventListener("change", (event) => { state.entityType = event.target.value; renderCloud(); });
+elements.entityType.addEventListener("change", (event) => { state.entityType = event.target.value; state.cloudPage = 0; renderCloud(); });
+elements.cloudPrevious.addEventListener("click", () => changeCloudPage(-1));
+elements.cloudNext.addEventListener("click", () => changeCloudPage(1));
 elements.yearSlider.addEventListener("input", (event) => selectYear(event.target.value));
-elements.allYears.addEventListener("click", () => { state.selectedYear = null; renderSelection(); });
+elements.allYears.addEventListener("click", () => { state.selectedYear = null; state.cloudPage = 0; renderSelection(); });
 elements.yearChart.addEventListener("click", (event) => {
   const button = event.target.closest("[data-year]");
   if (button) selectYear(button.dataset.year);
@@ -482,7 +534,10 @@ elements.yearChart.addEventListener("click", (event) => {
 elements.loadMore.addEventListener("click", () => { state.visibleCount += PAGE_SIZE; renderRecords(); });
 
 let resizeTimer;
-new ResizeObserver(() => {
+let cloudWidth = 0;
+new ResizeObserver(([entry]) => {
+  if (entry.contentRect.width === cloudWidth) return;
+  cloudWidth = entry.contentRect.width;
   window.clearTimeout(resizeTimer);
   resizeTimer = window.setTimeout(() => { if (state.records.length) renderCloud(); }, 160);
 }).observe(elements.wordCloud);
