@@ -220,9 +220,10 @@ function syncEntityTypeSelection() {
 
 function selectEntityType(type) {
   state.entityType = type;
+  state.selectedYear = null;
   state.cloudOrder = [];
   syncEntityTypeSelection();
-  renderCloud();
+  renderSelection();
 }
 
 function updateSummary() {
