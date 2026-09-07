@@ -13,6 +13,8 @@ The primary source is the public Google Sheet tab `parsed_rows`. The app request
 
 The live values are normalized in `src/app.js`. Named entities are recognized client-side from the published text, target, and sender using canonical names and aliases in `src/entityDictionary.js`. Counts by year and associated-record lists are derived in memory, so they update whenever the live sheet is reloaded.
 
+Only rows with `kind` equal to `DART` or `PAT` enter the explorer's analysis. Combined and other kinds are excluded from both the live source and cached fallback at the shared analysis step. The Dart/Pat legend and balance gauge summarize the selected entity's records for the selected year, or all years when no year is selected.
+
 ## Cached fallback
 
 Each record in `public/data/records.json` contains:

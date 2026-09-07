@@ -2,6 +2,7 @@ import cloud from "d3-cloud";
 import "./styles.css";
 import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
 import { searchEntities, chooseCloudEntities, scrambleOrder } from "./entityBrowsing.js";
+import { entryBalance } from "./entryBalance.js";
 
 const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
 const SHEET_NAME = "parsed_rows";
@@ -43,6 +44,12 @@ const elements = {
   frequencyEntity: document.querySelector("#frequency-entity"),
   frequencyTotal: document.querySelector("#frequency-total"),
   yearChart: document.querySelector("#year-chart"),
+  legendDarts: document.querySelector("#legend-darts"),
+  legendPats: document.querySelector("#legend-pats"),
+  balanceLabel: document.querySelector("#balance-label"),
+  balanceShare: document.querySelector("#balance-share"),
+  balanceMeter: document.querySelector("#balance-meter"),
+  balanceScale: document.querySelector("#balance-scale"),
   yearSlider: document.querySelector("#year-slider"),
   yearTicks: document.querySelector("#year-ticks"),
   sliderLabels: document.querySelector(".slider-labels"),
@@ -154,9 +161,9 @@ async function loadFallback() {
 
 function analyzeRecords(records) {
   const stats = new Map(ENTITY_DICTIONARY.map((entity) => [entity.id, {
-    ...entity, count: 0, darts: 0, pats: 0, combined: 0, records: [], byYear: new Map(),
+    ...entity, count: 0, darts: 0, pats: 0, records: [], byYear: new Map(),
   }]));
-  state.records = records.map((record) => {
+  state.records = records.filter((record) => record.kind === "DART" || record.kind === "PAT").map((record) => {
     const entities = recognizeEntities(record);
     const enriched = { ...record, entities };
     for (const entity of entities) {
@@ -166,7 +173,6 @@ function analyzeRecords(records) {
       item.byYear.set(record.year, (item.byYear.get(record.year) || 0) + 1);
       if (record.kind === "DART") item.darts += 1;
       else if (record.kind === "PAT") item.pats += 1;
-      else item.combined += 1;
     }
     return enriched;
   });
@@ -403,6 +409,22 @@ function renderCloud() {
     }).start();
 }
 
+function renderEntryBalance(darts, pats) {
+  const balance = entryBalance(darts, pats);
+  elements.legendDarts.textContent = `Darts (${formatNumber(darts)})`;
+  elements.legendPats.textContent = `Pats (${formatNumber(pats)})`;
+  elements.balanceLabel.textContent = balance.label;
+  elements.balanceShare.textContent = balance.detail;
+  elements.balanceMeter.hidden = !balance.total;
+  elements.balanceScale.hidden = !balance.total;
+  if (balance.total) {
+    const percent = balance.patShare * 100;
+    elements.balanceMeter.style.setProperty("--pat-share", `${percent}%`);
+    elements.balanceMeter.setAttribute("aria-valuenow", percent.toFixed(1));
+    elements.balanceMeter.setAttribute("aria-valuetext", `${balance.label}. ${balance.detail}. ${balance.total} entries, ${state.selectedYear ?? "all years"}.`);
+  }
+}
+
 function renderYearChart() {
   const entity = selectedEntity();
   const years = availableYears();
@@ -410,17 +432,18 @@ function renderYearChart() {
     elements.frequencyEntity.textContent = "Select an entity";
     elements.frequencyTotal.textContent = "—";
     elements.yearChart.replaceChildren();
+    renderEntryBalance(0, 0);
     return;
   }
   const maxCount = Math.max(1, ...years.map((year) => entity.byYear.get(year) || 0));
-  const countsByYear = new Map(years.map((year) => [year, { darts: 0, pats: 0, combined: 0 }]));
+  const countsByYear = new Map(years.map((year) => [year, { darts: 0, pats: 0 }]));
   for (const record of entity.records) {
     const counts = countsByYear.get(record.year);
     if (record.kind === "DART") counts.darts += 1;
     else if (record.kind === "PAT") counts.pats += 1;
-    else counts.combined += 1;
   }
-  document.querySelector("#combined-legend").hidden = entity.combined === 0;
+  const periodCounts = state.selectedYear === null ? entity : countsByYear.get(state.selectedYear) || { darts: 0, pats: 0 };
+  renderEntryBalance(periodCounts.darts, periodCounts.pats);
   elements.frequencyEntity.textContent = entity.name;
   elements.frequencyTotal.textContent = state.selectedYear === null
     ? `${formatNumber(entity.count)} total`
@@ -429,14 +452,13 @@ function renderYearChart() {
   elements.yearChart.innerHTML = years.map((year) => {
     const count = entity.byYear.get(year) || 0;
     const height = count / maxCount * 100;
-    const { darts, pats, combined } = countsByYear.get(year);
-    const description = `${year}: ${darts} Darts, ${pats} Pats${combined ? `, ${combined} combined` : ""}; ${count} total mentions`;
+    const { darts, pats } = countsByYear.get(year);
+    const description = `${year}: ${darts} Darts, ${pats} Pats; ${count} total mentions`;
     const selected = state.selectedYear === year;
     return `<button class="year-bar${selected ? " is-selected" : ""}" type="button" data-year="${year}" aria-label="${description}" title="${description}" aria-pressed="${selected}" style="--bar-height:${height}%">
       ${selected ? `<span class="bar-count">${formatNumber(count)}</span>` : ""}
       <span class="bar-stack" aria-hidden="true" style="height:${height}%">
         <i class="bar-dart" style="flex-grow:${darts}"></i>
-        <i class="bar-combined" style="flex-grow:${combined}"></i>
         <i class="bar-pat" style="flex-grow:${pats}"></i>
       </span><span class="bar-year">${year}</span></button>`;
   }).join("");
@@ -450,7 +472,7 @@ function matchingRecords() {
 }
 
 function recordCard(record) {
-  const className = record.kind === "PAT" ? "record-card--pat" : record.kind === "DART" ? "record-card--dart" : "record-card--combined";
+  const className = record.kind === "PAT" ? "record-card--pat" : "record-card--dart";
   const source = [record.sourcePdf, record.newspaperPage ? `newspaper p. ${record.newspaperPage}` : null].filter(Boolean).join(" · ");
   return `<article class="record-card ${className}">
     <div class="record-meta"><span class="kind-badge">${escapeHtml(record.kind)}</span><time datetime="${record.date || ""}">${escapeHtml(formatDate(record.date, record.year))}</time></div>
@@ -542,8 +564,6 @@ async function refreshData() {
     try {
       records = await loadLiveSheet();
       state.source = "live";
-      const loadedAt = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date());
-      elements.sourceStatus.textContent = `Live Google Sheet · ${formatNumber(records.length)} records loaded at ${loadedAt}`;
       document.body.dataset.source = "live";
     } catch (liveError) {
       console.warn(liveError);
@@ -553,6 +573,10 @@ async function refreshData() {
       document.body.dataset.source = "cached";
     }
     analyzeRecords(records);
+    if (state.source === "live") {
+      const loadedAt = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date());
+      elements.sourceStatus.textContent = `Live Google Sheet · ${formatNumber(state.records.length)} Dart and Pat records loaded at ${loadedAt}`;
+    }
     state.cloudOrder = [];
     configureYearControls();
     populateEntityTypes();

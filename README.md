@@ -8,6 +8,8 @@ On every page load—and whenever a visitor selects **Refresh data**—the app r
 
 The named entity recognition runs in the visitor's browser using the transparent, campus-specific vocabulary in `src/entityDictionary.js`. Aliases such as “JMU,” “James Madison University,” and historical building or organization names are grouped under canonical entities. This is a high-precision research aid, not a substitute for human validation. The cached `public/data/records.json` snapshot is used only when the live sheet is unavailable.
 
+The explorer includes only `DART` and `PAT` rows from either source. Combined entries remain in the source but are excluded before entity analysis, so all displayed counts, search results, charts, and record lists use the same population. Chart legend counts and the balance gauge follow the selected entity and year. The gauge's descriptive bands are defined in `src/entryBalance.js` and explained in the page's Method section.
+
 ## Run the website locally
 
 Visitors can find any recognized entity by its name or alias. Selecting a search result brings it into the cloud and loads its records; an incompatible year or type filter is reset with a visible explanation. Scramble favors entities outside the current set while keeping the selected entity visible when it matches the current filters. The Breeze and WXJM are grouped with Organizations.

@@ -83,7 +83,15 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .chart-legend i { width: 0.7rem; height: 0.7rem; border-radius: 0.15rem; }
 .legend-dart { background: var(--dart); }
 .legend-pat { background: var(--pat); }
-.legend-combined { background: #a7a0b3; }
+.entry-balance { margin-top: 0.65rem; }
+.balance-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.2rem 0.5rem; font-size: 0.75rem; }
+.balance-caption strong { color: var(--primary); }
+.balance-caption > span { color: var(--muted-foreground); }
+.balance-meter { position: relative; height: 0.55rem; margin: 0.5rem 0.3rem 0; border-radius: 999px; background: linear-gradient(to right, var(--dart), #eee6f8 50%, var(--pat)); }
+.balance-meter::before { content: ""; position: absolute; left: 50%; top: -0.15rem; bottom: -0.15rem; width: 1px; background: var(--muted-foreground); }
+.balance-marker { position: absolute; top: 50%; left: var(--pat-share, 50%); width: 0.8rem; height: 0.8rem; border: 2px solid white; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 1px var(--deep); transform: translate(-50%, -50%); }
+.balance-scale { display: flex; justify-content: space-between; margin-top: 0.2rem; color: var(--muted-foreground); font-size: 0.75rem; }
+.balance-meter[hidden], .balance-scale[hidden] { display: none; }
 
 .year-chart { --year-count: 36; display: grid; grid-template-columns: repeat(var(--year-count), minmax(0, 1fr)); align-items: end; gap: 2px; height: 11.5rem; margin-top: 1.75rem; padding: 0.25rem 0 1.6rem; }
 .year-bar { position: relative; height: 100%; min-width: 0; padding: 0; background: transparent; border: 0; }
@@ -91,7 +99,6 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .bar-stack i { display: block; flex-basis: 0; min-height: 0; }
 .bar-dart { background: var(--dart); }
 .bar-pat { background: var(--pat); }
-.bar-combined { background: #a7a0b3; }
 .year-bar:hover .bar-stack { opacity: 0.75; }
 .year-bar.is-selected { background: #eee6f8; border-radius: 0.2rem; box-shadow: 0 0 0 2px #b3a2d2; }
 .year-bar > .bar-year { position: absolute; bottom: -1.4rem; left: 50%; display: none; color: var(--muted-foreground); font-size: 0.75rem; white-space: nowrap; transform: translateX(-50%); }
@@ -116,12 +123,10 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .record-card { padding: 0.9rem; background: var(--background); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 0.65rem; }
 .record-card--dart { border-left-color: var(--dart); }
 .record-card--pat { border-left-color: var(--pat); }
-.record-card--combined { border-left-color: var(--gold); }
 .record-meta { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
 .kind-badge { padding: 0.2rem 0.46rem; border-radius: 999px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; }
 .record-card--dart .kind-badge { color: var(--dart); background: var(--dart-soft); }
 .record-card--pat .kind-badge { color: #6e5600; background: var(--pat-soft); }
-.record-card--combined .kind-badge { color: #6e5600; background: #fff8c9; }
 .record-meta time { color: var(--muted-foreground); font-size: 0.75rem; }
 .record-card > p { margin: 0.65rem 0; font-family: var(--display); font-size: 1rem; line-height: 1.45; }
 .record-target, .record-source { color: var(--muted-foreground); font-size: 0.72rem; }
