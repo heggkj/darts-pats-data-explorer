@@ -266,6 +266,9 @@ function renderCloud() {
         text.setAttribute("x", word.x);
         text.setAttribute("y", word.y);
         text.setAttribute("text-anchor", "middle");
+        text.setAttribute("font-family", "Fraunces");
+        text.setAttribute("font-weight", "600");
+        text.setAttribute("aria-pressed", String(word.id === state.selectedEntityId));
         text.setAttribute("transform", `rotate(${word.rotate})`);
         text.setAttribute("style", `font-size:${word.size}px;fill:${ENTITY_TYPE_COLORS[word.type] || "#351c75"}`);
         text.setAttribute("role", "button");
@@ -283,6 +286,19 @@ function renderCloud() {
       }
       svg.append(group);
       elements.wordCloud.append(svg);
+      const selectedWord = group.querySelector(".is-selected");
+      if (selectedWord) {
+        const bounds = selectedWord.getBBox();
+        const highlight = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        highlight.setAttribute("class", "entity-highlight");
+        highlight.setAttribute("x", bounds.x - 7);
+        highlight.setAttribute("y", bounds.y - 4);
+        highlight.setAttribute("width", bounds.width + 14);
+        highlight.setAttribute("height", bounds.height + 8);
+        highlight.setAttribute("rx", "8");
+        highlight.setAttribute("aria-hidden", "true");
+        group.prepend(highlight);
+      }
     }).start();
 }
 
@@ -301,6 +317,14 @@ function renderYearChart() {
     return;
   }
   const maxCount = Math.max(1, ...years.map((year) => entity.byYear.get(year) || 0));
+  const countsByYear = new Map(years.map((year) => [year, { darts: 0, pats: 0, combined: 0 }]));
+  for (const record of entity.records) {
+    const counts = countsByYear.get(record.year);
+    if (record.kind === "DART") counts.darts += 1;
+    else if (record.kind === "PAT") counts.pats += 1;
+    else counts.combined += 1;
+  }
+  document.querySelector("#combined-legend").hidden = entity.combined === 0;
   elements.frequencyEntity.textContent = entity.name;
   elements.frequencyTotal.textContent = state.selectedYear === null
     ? `${formatNumber(entity.count)} total`
@@ -308,11 +332,17 @@ function renderYearChart() {
   elements.yearChart.style.setProperty("--year-count", years.length);
   elements.yearChart.innerHTML = years.map((year) => {
     const count = entity.byYear.get(year) || 0;
-    const height = count ? Math.max(4, count / maxCount * 100) : 1;
+    const height = count / maxCount * 100;
+    const { darts, pats, combined } = countsByYear.get(year);
+    const description = `${year}: ${darts} Darts, ${pats} Pats${combined ? `, ${combined} combined` : ""}; ${count} total mentions`;
     const selected = state.selectedYear === year;
-    return `<button class="year-bar${selected ? " is-selected" : ""}" type="button" data-year="${year}" aria-label="${year}: ${count} mentions" aria-pressed="${selected}" style="--bar-height:${height}%">
+    return `<button class="year-bar${selected ? " is-selected" : ""}" type="button" data-year="${year}" aria-label="${description}" title="${description}" aria-pressed="${selected}" style="--bar-height:${height}%">
       ${selected ? `<span class="bar-count">${formatNumber(count)}</span>` : ""}
-      <i style="height:${height}%"></i><span>${year}</span></button>`;
+      <span class="bar-stack" aria-hidden="true" style="height:${height}%">
+        <i class="bar-dart" style="flex-grow:${darts}"></i>
+        <i class="bar-combined" style="flex-grow:${combined}"></i>
+        <i class="bar-pat" style="flex-grow:${pats}"></i>
+      </span><span class="bar-year">${year}</span></button>`;
   }).join("");
 }
 

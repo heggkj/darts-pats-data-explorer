@@ -40,12 +40,6 @@
         </dl>
       </section>
 
-      <section class="live-strip" aria-live="polite">
-        <span class="live-dot" aria-hidden="true"></span>
-        <strong id="source-status">Connecting to the live Google Sheet…</strong>
-        <button id="refresh-data" type="button">Refresh data</button>
-      </section>
-
       <section class="workspace" aria-label="Named entity explorer">
         <div class="workspace-heading">
           <div>
@@ -61,40 +55,6 @@
         </div>
 
         <div class="explorer-layout">
-          <aside class="entity-sidebar" aria-label="Selected entity records">
-            <section class="frequency-panel" aria-labelledby="frequency-title">
-              <div class="panel-heading">
-                <div>
-                  <p class="eyebrow eyebrow--dark">Mentions by year</p>
-                  <h3 id="frequency-title"><span id="frequency-entity">Select an entity</span></h3>
-                </div>
-                <strong id="frequency-total">—</strong>
-              </div>
-              <div class="year-chart" id="year-chart" aria-live="polite"></div>
-            </section>
-
-            <section class="year-control" aria-labelledby="year-filter-title">
-              <div class="year-control-heading">
-                <label id="year-filter-title" for="year-slider">Filter records by year</label>
-                <output id="selected-year" for="year-slider">All years</output>
-              </div>
-              <button class="all-years-button is-active" id="all-years" type="button" aria-pressed="true">All years</button>
-              <input id="year-slider" type="range" min="1991" max="2026" step="1" value="1991" list="year-ticks" aria-describedby="year-help" />
-              <datalist id="year-ticks"></datalist>
-              <div class="slider-labels" aria-hidden="true"><span>1991</span><span>2000</span><span>2010</span><span>2020</span><span>2026</span></div>
-              <p id="year-help">Move the slider or select a bar. Use “All years” to reset.</p>
-            </section>
-
-            <section class="matches-panel" aria-labelledby="matches-title">
-              <div class="matches-heading">
-                <div><p class="eyebrow eyebrow--dark">Published entries</p><h3 id="matches-title"><span id="match-count">—</span> matching Darts and Pats</h3></div>
-              </div>
-              <div class="status-message" id="status-message" role="status">Loading records…</div>
-              <div class="record-list" id="record-list"></div>
-              <button class="load-more" id="load-more" type="button" hidden>Show more</button>
-            </section>
-          </aside>
-
           <section class="cloud-panel" aria-labelledby="cloud-title">
             <div class="cloud-heading">
               <div>
@@ -108,7 +68,53 @@
             </div>
             <div class="entity-legend" id="entity-legend" aria-label="Entity type colors"></div>
           </section>
+
+          <aside class="entity-sidebar" aria-label="Selected entity records">
+            <section class="frequency-panel" aria-labelledby="frequency-title">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow eyebrow--dark">Mentions by year</p>
+                  <h3 id="frequency-title"><span id="frequency-entity">Select an entity</span></h3>
+                </div>
+                <strong id="frequency-total">—</strong>
+              </div>
+              <div class="chart-legend" aria-label="Entry type colors">
+                <span><i class="legend-dart"></i>Darts</span>
+                <span><i class="legend-pat"></i>Pats</span>
+                <span id="combined-legend" hidden><i class="legend-combined"></i>Combined</span>
+              </div>
+              <div class="year-chart" id="year-chart" aria-live="polite"></div>
+            </section>
+
+            <section class="year-control" aria-labelledby="year-filter-title">
+              <div class="year-control-heading">
+                <label id="year-filter-title" for="year-slider">Filter records by year</label>
+                <output id="selected-year" for="year-slider">All years</output>
+              </div>
+              <button class="all-years-button is-active" id="all-years" type="button" aria-pressed="true">All years</button>
+              <input id="year-slider" type="range" min="1991" max="2026" step="1" value="1991" list="year-ticks" aria-describedby="year-help" />
+              <datalist id="year-ticks"></datalist>
+              <div class="slider-labels" aria-hidden="true"><span>1991</span><span>2000</span><span>2010</span><span>2020</span><span>2026</span></div>
+              <p id="year-help">Move the slider or select a year.</p>
+            </section>
+
+            <section class="matches-panel" aria-labelledby="matches-title">
+              <div class="matches-heading">
+                <div><p class="eyebrow eyebrow--dark">Published entries</p><h3 id="matches-title"><span id="match-count">—</span> matching Darts and Pats</h3></div>
+              </div>
+              <div class="status-message" id="status-message" role="status">Loading records…</div>
+              <div class="record-list" id="record-list"></div>
+              <button class="load-more" id="load-more" type="button" hidden>Show more</button>
+            </section>
+          </aside>
+
         </div>
+
+        <section class="live-strip" aria-live="polite">
+          <span class="live-dot" aria-hidden="true"></span>
+          <strong id="source-status">Connecting to the live Google Sheet…</strong>
+          <button id="refresh-data" type="button">Refresh data</button>
+        </section>
 
         <section class="methods-panel" aria-labelledby="methods-title">
           <div><p class="eyebrow eyebrow--dark">Method</p><h2 id="methods-title">How entities are recognized</h2></div>
