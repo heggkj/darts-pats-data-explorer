@@ -300,7 +300,7 @@ function selectSearchEntity(entityId) {
   elements.searchStatus.textContent = adjustments.length ? `Showing ${adjustments.join(" and ")} for ${entity.name}.` : "";
   state.cloudSpotlightId = entityId;
   state.spotlightAnimationPending = true;
-  selectEntity(entityId, { scrollSidebar: false });
+  selectEntity(entityId, { scrollSidebar: false, fromSearch: true });
 }
 
 async function renderCloud() {
@@ -516,8 +516,14 @@ function renderSelection({ redrawCloud = true } = {}) {
   if (redrawCloud) renderCloud();
 }
 
-function selectEntity(entityId, { scrollSidebar = true } = {}) {
+function selectEntity(entityId, { scrollSidebar = true, fromSearch = false } = {}) {
   if (!state.entityStats.has(entityId)) return;
+  if (!fromSearch && entityId !== state.selectedEntityId) {
+    elements.entitySearch.value = "";
+    elements.searchResults.hidden = true;
+    elements.searchResults.replaceChildren();
+    elements.searchStatus.textContent = "";
+  }
   if (state.cloudSpotlightId !== entityId) {
     state.cloudSpotlightId = null;
     state.spotlightAnimationPending = false;
