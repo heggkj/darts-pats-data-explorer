@@ -1,7 +1,7 @@
 import { layoutEntityCloud } from "./cloudLayout.js";
 import "./styles.css";
 import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
-import { searchEntities, chooseCloudEntities, scrambleOrder } from "./entityBrowsing.js";
+import { searchEntities, chooseCloudEntities, partitionCloudEntities, scrambleOrder } from "./entityBrowsing.js";
 import { entryBalance } from "./entryBalance.js";
 
 const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
@@ -23,6 +23,8 @@ const state = {
   cloudOrder: [],
   cloudIds: [],
   cloudSeed: 0,
+  cloudSpotlightId: null,
+  spotlightAnimationPending: false,
 };
 
 const elements = {
@@ -296,12 +298,35 @@ function selectSearchEntity(entityId) {
   elements.entitySearch.value = entity.name;
   elements.searchResults.hidden = true;
   elements.searchStatus.textContent = adjustments.length ? `Showing ${adjustments.join(" and ")} for ${entity.name}.` : "";
-  selectEntity(entityId);
+  state.cloudSpotlightId = entityId;
+  state.spotlightAnimationPending = true;
+  selectEntity(entityId, { scrollSidebar: false });
+}
+
+function createCloudSpotlight(entity) {
+  const row = document.createElement("div");
+  row.className = "cloud-spotlight-row";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "cloud-spotlight is-selected";
+  button.dataset.entityId = entity.id;
+  button.setAttribute("aria-pressed", "true");
+  button.setAttribute("aria-label", `${entity.name}: ${entity.count} mentions. Selected search result.`);
+  button.title = `${entity.name}: ${formatNumber(entity.count)} mentions`;
+  button.textContent = entity.name;
+  button.addEventListener("click", () => selectEntity(entity.id, { scrollSidebar: false }));
+  if (state.spotlightAnimationPending) {
+    button.classList.add("is-arriving");
+    state.spotlightAnimationPending = false;
+  }
+  row.append(button);
+  return row;
 }
 
 async function renderCloud() {
   const allEntities = cloudEntities();
-  const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId, allEntities.length);
+  const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId);
+  const { spotlight, packed } = partitionCloudEntities(entities, state.cloudSpotlightId);
   state.cloudIds = entities.map((entity) => entity.id);
   elements.cloudScramble.disabled = allEntities.length < 2;
   elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
@@ -320,7 +345,13 @@ async function renderCloud() {
   try { await document.fonts.load('600 16px "Fraunces"'); } catch { /* Use the browser's fallback font if needed. */ }
   if (renderId !== state.cloudRenderId) return;
   const availableWidth = Math.max(256, Math.round(elements.wordCloud.getBoundingClientRect().width || 760) - 16);
-  activeCloudLayout = layoutEntityCloud(entities, {
+  if (!packed.length) {
+    elements.wordCloud.replaceChildren(createCloudSpotlight(spotlight));
+    elements.wordCloud.setAttribute("aria-busy", "false");
+    elements.cloudCount.setAttribute("aria-label", `${entities.length} entities shown for the current filters`);
+    return;
+  }
+  activeCloudLayout = layoutEntityCloud(packed, {
     width: availableWidth,
     seed: entities.length * 31 + (state.selectedYear || 0) + state.cloudSeed * 7919,
     onEnd: ({ words: placedWords, width, height }) => {
@@ -356,7 +387,7 @@ async function renderCloud() {
         group.append(text);
       }
       svg.append(group);
-      elements.wordCloud.replaceChildren(svg);
+      elements.wordCloud.replaceChildren(...(spotlight ? [createCloudSpotlight(spotlight), svg] : [svg]));
       elements.wordCloud.setAttribute("aria-busy", "false");
       elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
       elements.cloudCount.setAttribute("aria-label", `${allEntities.length} entities shown for the current filters`);
@@ -504,11 +535,15 @@ function renderSelection({ redrawCloud = true } = {}) {
   if (redrawCloud) renderCloud();
 }
 
-function selectEntity(entityId) {
+function selectEntity(entityId, { scrollSidebar = true } = {}) {
   if (!state.entityStats.has(entityId)) return;
+  if (state.cloudSpotlightId !== entityId) {
+    state.cloudSpotlightId = null;
+    state.spotlightAnimationPending = false;
+  }
   state.selectedEntityId = entityId;
   renderSelection();
-  if (window.matchMedia("(max-width: 800px)").matches) {
+  if (scrollSidebar && window.matchMedia("(max-width: 800px)").matches) {
     document.querySelector(".entity-sidebar")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }

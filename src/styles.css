@@ -157,6 +157,14 @@ select:focus, button:focus-visible, input:focus-visible, .cloud-word:focus { out
 .word-cloud { display: grid; place-items: center; padding: 0.5rem; }
 .word-cloud > .loading-note, .word-cloud > .empty-note { padding: 4rem 1rem; }
 .word-cloud svg { display: block; width: 100%; height: auto; }
+.cloud-spotlight-row { width: 100%; display: flex; justify-content: center; padding: 0.5rem 0.5rem 0.75rem; }
+.cloud-spotlight { max-width: 100%; padding: 0.4rem 0.7rem; border: 1px solid rgb(164 135 198 / 65%); border-radius: 0.6rem; background: rgb(238 230 248 / 80%); color: var(--deep); font-family: var(--display); font-size: clamp(1.35rem, 2.8vw, 2rem); font-weight: 650; line-height: 1.08; overflow-wrap: anywhere; }
+.cloud-spotlight.is-arriving { animation: spotlight-arrive 850ms ease-out; }
+@keyframes spotlight-arrive {
+  0% { opacity: 0.4; transform: translateY(0.6rem) scale(0.96); box-shadow: 0 0 0 0 rgb(164 135 198 / 45%); }
+  45% { opacity: 1; transform: translateY(0) scale(1.025); box-shadow: 0 0 0 0.4rem rgb(164 135 198 / 15%); }
+  100% { transform: translateY(0) scale(1); box-shadow: 0 0 0 0.65rem transparent; }
+}
 .cloud-word { cursor: pointer; paint-order: stroke fill; transition: opacity 120ms ease, stroke-width 120ms ease; }
 .cloud-word:hover { opacity: 0.68; }
 .cloud-word.is-selected { fill: var(--deep) !important; opacity: 1; }
@@ -207,4 +215,5 @@ footer p { margin: 0.25rem 0 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .year-bar i, .cloud-word { transition: none; }
+  .cloud-spotlight.is-arriving { animation: none; }
 }

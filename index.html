@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // The source uses modules and must run over HTTP, not from a file tab.
+      if (window.location.protocol === "file:") {
+        window.location.replace("https://heggkj.github.io/darts-pats-data-explorer/");
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Explore organizations, places, buildings, and other named entities in The Breeze's Darts and Pats archive." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

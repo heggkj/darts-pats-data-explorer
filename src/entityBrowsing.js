@@ -15,14 +15,21 @@ export function searchEntities(entities, query) {
     .map(({ entity }) => entity);
 }
 
-export function chooseCloudEntities(entities, order, selectedId, limit) {
+export function chooseCloudEntities(entities, order, selectedId) {
   const rank = new Map(order.map((id, index) => [id, index]));
   return [...entities].sort((a, b) => {
     if (a.id === selectedId) return -1;
     if (b.id === selectedId) return 1;
     return (rank.get(a.id) ?? Infinity) - (rank.get(b.id) ?? Infinity)
       || b.count - a.count || a.name.localeCompare(b.name);
-  }).slice(0, limit);
+  });
+}
+
+// The searched entity is displayed once in the cloud's first row. Repack all
+// remaining entities, rather than leaving a hole at its old coordinates.
+export function partitionCloudEntities(entities, spotlightId) {
+  const spotlight = entities.find(entity => entity.id === spotlightId) || null;
+  return { spotlight, packed: entities.filter(entity => entity.id !== spotlight?.id) };
 }
 
 export function scrambleOrder(entities, previousIds, random = Math.random) {
