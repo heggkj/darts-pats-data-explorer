@@ -8,33 +8,61 @@ import { searchEntities, chooseCloudEntities } from '../src/entityBrowsing.js';
 const source = readFileSync(new URL('../src/app.js', import.meta.url), 'utf8');
 const records = JSON.parse(readFileSync(new URL('../public/data/records.json', import.meta.url), 'utf8'));
 class Element {
-  constructor() { this.children = []; this.attributes = {}; this.dataset = {}; this.classes = new Set(); this.classList = { add: name => this.classes.add(name) }; }
-  setAttribute(key, value) { this.attributes[key] = String(value); }
+  constructor() {
+    this.children = []; this.attributes = {}; this.dataset = {}; this.classes = new Set();
+    const syncClass = () => { this.attributes.class = [...this.classes].join(' '); };
+    this.classList = {
+      add: name => { this.classes.add(name); syncClass(); },
+      remove: name => { this.classes.delete(name); syncClass(); },
+      toggle: (name, force) => {
+        const enabled = force === undefined ? !this.classes.has(name) : Boolean(force);
+        if (enabled) this.classes.add(name); else this.classes.delete(name);
+        syncClass();
+        return enabled;
+      },
+    };
+  }
+  setAttribute(key, value) {
+    this.attributes[key] = String(value);
+    if (key === 'class') this.classes = new Set(String(value).split(/\s+/).filter(Boolean));
+  }
   append(...nodes) { for (const node of nodes) { if (node.parent) node.parent.children = node.parent.children.filter(child => child !== node); node.parent = this; this.children.push(node); } }
-  replaceChildren(...nodes) { this.children = nodes; }
+  replaceChildren(...nodes) { this.children = nodes; for (const node of nodes) node.parent = this; }
+  remove() { if (this.parent) this.parent.children = this.parent.children.filter(child => child !== this); this.parent = null; }
   addEventListener() {}
-  querySelector(selector) { for (const child of this.children) { if (child.attributes?.class?.split(' ').includes(selector.slice(1))) return child; const found = child.querySelector?.(selector); if (found) return found; } return null; }
+  querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
   getBBox() { return { x: Number(this.attributes.x) - 50, y: Number(this.attributes.y) - 12, width: 100, height: 16 }; }
-  querySelectorAll() { return []; }
+  querySelectorAll(selector) {
+    const found = [];
+    const className = selector.startsWith('.') ? selector.slice(1) : null;
+    for (const child of this.children) {
+      if (className && child.classes?.has(className)) found.push(child);
+      if (child.querySelectorAll) found.push(...child.querySelectorAll(selector));
+    }
+    return found;
+  }
   getBoundingClientRect() { return { width: 640 }; }
 }
 const elements = Object.fromEntries(['entityTypes', 'wordCloud', 'cloudCount', 'cloudScramble', 'entitySearch', 'searchResults', 'searchStatus', 'totalRecords', 'totalEntities', 'totalDarts', 'totalPats'].map(key => [key, new Element()]));
 const layouts = [];
+const spotlightIds = [];
+const selectionRenders = [];
 const context = vm.createContext({
   ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities, searchEntities, chooseCloudEntities,
   PAGE_SIZE: 18, elements, console,
   document: { fonts: { load: async () => {} }, createElement: () => new Element(), createElementNS: () => new Element(), createTextNode: text => ({ text }) },
   window: { matchMedia: () => { throw Error('Search must stay at the cloud instead of scrolling to the mobile sidebar'); } },
-  renderSelection() {},
+  renderSelection(options = {}) { selectionRenders.push(options); },
   layoutEntityCloud(entities, options) {
     layouts.push(entities);
+    spotlightIds.push(options.spotlightId);
     options.onEnd({ words: entities.map(entity => ({ ...entity, text: entity.name, size: 16, x: 0, y: 0, rotate: 0 })), width: 640, height: entities.length * 24 });
     return { stop() {} };
   },
 });
 const stateStart = source.indexOf('const state = {');
 const stateEnd = source.indexOf('\n};', stateStart) + 3;
-const names = ['formatNumber', 'escapeHtml', 'analyzeRecords', 'populateEntityTypes', 'syncEntityTypeSelection', 'updateSummary', 'cloudEntities', 'matchingEntities', 'selectSearchEntity', 'selectEntity', 'renderCloud'];
+const names = ['formatNumber', 'escapeHtml', 'analyzeRecords', 'populateEntityTypes', 'syncEntityTypeSelection', 'updateSummary', 'cloudEntities', 'matchingEntities', 'syncCloudSelection', 'selectSearchEntity', 'selectEntity', 'renderCloud'];
 const functions = names.map(name => {
   const match = new RegExp(`(?:async )?function ${name}\\(`).exec(source);
   assert.ok(match, name);
@@ -65,6 +93,7 @@ assert.equal(context.testState.selectedEntityId, 'canvas');
 assert.equal(context.testState.cloudSpotlightId, 'canvas');
 assert.equal(elements.entitySearch.value, 'Canvas', 'Selecting a search result keeps its name in the search box');
 await context.renderCloud();
+assert.equal(spotlightIds.at(-1), 'canvas', 'Search selection keeps its anchored repositioning');
 const spotlight = elements.wordCloud.querySelector('.is-selected');
 assert.match(spotlight.attributes['aria-label'], /^Canvas:/);
 assert.ok(elements.wordCloud.querySelector('.entity-highlight').classes.has('is-arriving'));
@@ -92,13 +121,20 @@ assert.equal(elements.wordCloud.attributes['aria-busy'], 'false');
 // Direct cloud selection leaves search mode without changing the active filters.
 context.testState.selectedYear = 2014;
 context.selectEntity('duke-dog', { scrollSidebar: false });
-assert.equal(elements.entitySearch.value, 'Duke Dog', 'Reselecting the same entity preserves its search');
+assert.equal(context.testState.selectedEntityId, null, 'Selecting the active cloud word again clears the selection');
+assert.equal(elements.entitySearch.value, '', 'Clearing the selection also leaves search mode');
+assert.equal(selectionRenders.at(-1).redrawCloud, false, 'Clearing a selection must not rebuild the cloud');
+assert.equal(elements.wordCloud.querySelector('.is-selected'), null, 'Clearing removes the highlight in place');
 elements.searchResults.hidden = false;
 elements.searchResults.append(new Element());
 elements.searchStatus.textContent = 'Old search results';
 context.selectEntity('not-an-entity', { scrollSidebar: false });
-assert.equal(elements.entitySearch.value, 'Duke Dog', 'Invalid selections do not discard the search');
+assert.equal(elements.entitySearch.value, '', 'Invalid selections do not change the cleared search');
 context.testState.entityType = 'all';
+await context.renderCloud();
+const canvasBeforeSelection = elements.wordCloud.querySelectorAll('.cloud-word').find(word => word.dataset.entityId === 'canvas');
+const canvasPosition = [canvasBeforeSelection.attributes.x, canvasBeforeSelection.attributes.y];
+const layoutCountBeforeDirectSelection = layouts.length;
 context.selectEntity('canvas', { scrollSidebar: false });
 assert.equal(elements.entitySearch.value, '');
 assert.equal(elements.searchResults.hidden, true);
@@ -107,6 +143,12 @@ assert.equal(elements.searchStatus.textContent, '');
 assert.equal(context.testState.selectedEntityId, 'canvas');
 assert.equal(context.testState.cloudSpotlightId, null);
 assert.equal(context.testState.spotlightAnimationPending, false);
+assert.equal(layouts.length, layoutCountBeforeDirectSelection, 'Direct selection must keep the existing cloud layout');
+assert.equal(selectionRenders.at(-1).redrawCloud, false);
+const canvasAfterSelection = elements.wordCloud.querySelector('.is-selected');
+assert.equal(canvasAfterSelection, canvasBeforeSelection, 'Direct selection reuses the existing word node');
+assert.deepEqual([canvasAfterSelection.attributes.x, canvasAfterSelection.attributes.y], canvasPosition, 'Direct selection keeps the word coordinates');
+assert.ok(elements.wordCloud.querySelector('.entity-highlight'), 'Direct selection adds a highlight in place');
 assert.equal(context.testState.selectedYear, 2014, 'Cloud selection preserves the year filter');
 assert.equal(context.testState.entityType, 'all', 'Cloud selection preserves the type filter');
 elements.entitySearch.value = 'duke';
@@ -116,4 +158,6 @@ const many = Array.from({ length: 1500 }, (_, i) => ({ id: String(i), name: Stri
 assert.equal(chooseCloudEntities(many, [], null).length, 1500, 'No implicit cloud entity cap');
 const css = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.entity-highlight\.is-arriving \{ animation: none; \}/);
-console.log('Cloud search checks passed: Misc. pill, N=278, integrated search result, animation, filter reset, single-entity state, and clearing search on a different cloud selection.');
+assert.match(source, /function syncCloudSelection\(\)/);
+assert.doesNotMatch(source, /selectionLayer\.setAttribute\("transform"/);
+console.log('Cloud search checks passed: stable direct selections, click-again clearing, search spotlighting, filters, and entity counts.');

@@ -283,6 +283,46 @@ function renderEntitySearch() {
     : "No recognized entity matches. Try another name or abbreviation.";
 }
 
+function syncCloudSelection() {
+  const group = elements.wordCloud.querySelector(".cloud-words");
+  if (!group) return;
+
+  // Remove the previous highlight wrapper without changing the word's coordinates.
+  const previousLayer = group.querySelector(".selected-entity-layer");
+  if (previousLayer) {
+    const previousWord = previousLayer.querySelector(".cloud-word");
+    if (previousWord) group.append(previousWord);
+    previousLayer.remove();
+  }
+
+  let selectedWord = null;
+  for (const word of group.querySelectorAll(".cloud-word")) {
+    const isSelected = word.dataset.entityId === state.selectedEntityId;
+    word.classList.toggle("is-selected", isSelected);
+    word.setAttribute("aria-pressed", String(isSelected));
+    if (isSelected) selectedWord = word;
+  }
+  if (!selectedWord) return;
+
+  const bounds = selectedWord.getBBox();
+  const selectionLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  selectionLayer.setAttribute("class", "selected-entity-layer");
+  const highlight = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  highlight.setAttribute("class", "entity-highlight");
+  highlight.setAttribute("x", bounds.x - 7);
+  highlight.setAttribute("y", bounds.y - 4);
+  highlight.setAttribute("width", bounds.width + 14);
+  highlight.setAttribute("height", bounds.height + 8);
+  highlight.setAttribute("rx", "8");
+  highlight.setAttribute("aria-hidden", "true");
+  if (state.spotlightAnimationPending && state.cloudSpotlightId === state.selectedEntityId) {
+    highlight.classList.add("is-arriving");
+    state.spotlightAnimationPending = false;
+  }
+  selectionLayer.append(highlight, selectedWord);
+  group.append(selectionLayer);
+}
+
 function selectSearchEntity(entityId) {
   const entity = state.entityStats.get(entityId);
   if (!entity) return;
@@ -338,10 +378,12 @@ async function renderCloud() {
       svg.setAttribute("role", "group");
       svg.setAttribute("aria-label", `Clickable entities for ${state.selectedYear || "all years"}`);
       const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.setAttribute("class", "cloud-words");
       group.setAttribute("transform", `translate(${width / 2},${height / 2})`);
       for (const word of placedWords) {
         const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
         text.setAttribute("class", `cloud-word${word.id === state.selectedEntityId ? " is-selected" : ""}`);
+        text.dataset.entityId = word.id;
         text.setAttribute("x", word.x);
         text.setAttribute("y", word.y);
         text.setAttribute("text-anchor", "middle");
@@ -368,38 +410,7 @@ async function renderCloud() {
       elements.wordCloud.setAttribute("aria-busy", "false");
       elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
       elements.cloudCount.setAttribute("aria-label", `${allEntities.length} entities shown for the current filters`);
-      const selectedWord = group.querySelector(".is-selected");
-      if (selectedWord) {
-        const bounds = selectedWord.getBBox();
-        const centerX = bounds.x + bounds.width / 2;
-        const centerY = bounds.y + bounds.height / 2;
-        // Anchored search results are already enlarged and padded by the packer.
-        const isAnchored = state.cloudSpotlightId === state.selectedEntityId;
-        const scale = isAnchored ? 1
-          : Math.min(1.18, (width - 24) / (bounds.width + 14), (height - 24) / (bounds.height + 8));
-        const halfWidth = (bounds.width + 14) * scale / 2;
-        const halfHeight = (bounds.height + 8) * scale / 2;
-        const fittedX = isAnchored ? centerX : Math.max(-width / 2 + 12 + halfWidth, Math.min(centerX, width / 2 - 12 - halfWidth));
-        const fittedY = isAnchored ? centerY : Math.max(-height / 2 + 12 + halfHeight, Math.min(centerY, height / 2 - 12 - halfHeight));
-        const selectionLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        selectionLayer.setAttribute("class", "selected-entity-layer");
-        selectionLayer.setAttribute("transform", `translate(${fittedX},${fittedY}) scale(${scale}) translate(${-centerX},${-centerY})`);
-        const highlight = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        highlight.setAttribute("class", "entity-highlight");
-        highlight.setAttribute("x", bounds.x - 7);
-        highlight.setAttribute("y", bounds.y - 4);
-        highlight.setAttribute("width", bounds.width + 14);
-        highlight.setAttribute("height", bounds.height + 8);
-        highlight.setAttribute("rx", "8");
-        highlight.setAttribute("aria-hidden", "true");
-        if (state.spotlightAnimationPending && state.cloudSpotlightId === state.selectedEntityId) {
-          highlight.classList.add("is-arriving");
-          state.spotlightAnimationPending = false;
-        }
-        // Last in SVG paint order: enlarge the selection without changing frequency sizes.
-        selectionLayer.append(highlight, selectedWord);
-        group.append(selectionLayer);
-      }
+      syncCloudSelection();
     },
     onError: (error) => {
       if (renderId !== state.cloudRenderId) return;
@@ -521,6 +532,7 @@ function renderSelection({ redrawCloud = true } = {}) {
 
 function selectEntity(entityId, { scrollSidebar = true, fromSearch = false } = {}) {
   if (!state.entityStats.has(entityId)) return;
+  const clearsSelection = !fromSearch && entityId === state.selectedEntityId;
   if (!fromSearch && entityId !== state.selectedEntityId) {
     elements.entitySearch.value = "";
     elements.searchResults.hidden = true;
@@ -531,8 +543,21 @@ function selectEntity(entityId, { scrollSidebar = true, fromSearch = false } = {
     state.cloudSpotlightId = null;
     state.spotlightAnimationPending = false;
   }
-  state.selectedEntityId = entityId;
-  renderSelection();
+  state.selectedEntityId = clearsSelection ? null : entityId;
+  if (clearsSelection) {
+    state.cloudSpotlightId = null;
+    state.spotlightAnimationPending = false;
+    elements.entitySearch.value = "";
+    elements.searchResults.hidden = true;
+    elements.searchResults.replaceChildren();
+    elements.searchStatus.textContent = "";
+  }
+  if (fromSearch) renderSelection();
+  else {
+    // Direct cloud clicks must not rebuild the layout or move any word.
+    renderSelection({ redrawCloud: false });
+    syncCloudSelection();
+  }
   if (scrollSidebar && window.matchMedia("(max-width: 800px)").matches) {
     document.querySelector(".entity-sidebar")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
