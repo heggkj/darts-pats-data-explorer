@@ -176,8 +176,9 @@ function analyzeRecords(records) {
     return enriched;
   });
   state.entityStats = new Map([...stats].filter(([, entity]) => entity.count > 0));
-  const defaultEntity = [...state.entityStats.values()].sort((a, b) => b.count - a.count)[0];
-  if (!state.entityStats.has(state.selectedEntityId)) state.selectedEntityId = defaultEntity?.id || null;
+  // Start with the full cloud, not the most frequent entity preselected.
+  // Preserve an explicit selection on refresh only while it still exists.
+  if (!state.entityStats.has(state.selectedEntityId)) state.selectedEntityId = null;
 }
 
 function availableYears() {
@@ -420,6 +421,9 @@ function renderYearChart() {
     elements.frequencyTotal.textContent = "—";
     elements.yearChart.replaceChildren();
     renderEntryBalance(0, 0);
+    elements.legendDarts.textContent = "Darts (—)";
+    elements.legendPats.textContent = "Pats (—)";
+    elements.balanceLabel.textContent = "Select an entity to see its balance.";
     return;
   }
   const maxCount = Math.max(1, ...years.map((year) => entity.byYear.get(year) || 0));
@@ -472,7 +476,7 @@ function recordCard(record) {
 function renderRecords() {
   const entity = selectedEntity();
   const records = matchingRecords();
-  elements.matchCount.textContent = formatNumber(records.length);
+  elements.matchCount.textContent = entity ? formatNumber(records.length) : "—";
   if (!entity) {
     elements.status.textContent = "Select an entity in the word cloud to view its records.";
     elements.recordList.replaceChildren();
