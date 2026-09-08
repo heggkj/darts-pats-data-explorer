@@ -5,6 +5,14 @@ import { filterArchive, archiveCoverage, initArchiveExplorer } from '../src/arch
 import { recognizeEntities } from '../src/entityDictionary.js';
 import { recognizeTopics, topicCounts, TOPICS } from '../src/topics.js';
 
+// The entity visualization remains the landing view; full-archive access is secondary.
+const page = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+assert.match(page, /data-explorer-view="entities"[^>]*aria-pressed="true"/);
+assert.match(page, /<div id="entities-panel">/);
+assert.match(page, /<section id="archive-panel"[^>]* hidden>/);
+assert.match(page, /class="archive-link"[^>]*data-explorer-view="archive"[^>]*>Explore the full archive/);
+assert.match(fs.readFileSync(new URL('../src/archiveExplorer.js', import.meta.url), 'utf8'), /let view = 'entities'/);
+
 const source = JSON.parse(fs.readFileSync(new URL('../public/data/records.json',import.meta.url)));
 const records = source.filter(r=>['DART','PAT'].includes(r.kind)).map(r=>({...r,entities:recognizeEntities(r),topics:recognizeTopics(r)}));
 assert.equal(filterArchive(source).length,10860);

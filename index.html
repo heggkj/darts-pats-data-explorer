@@ -9,7 +9,7 @@
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Browse every Dart and Pat in The Breeze archive, explore named entities and events, and investigate recurring topics." />
+    <meta name="description" content="Explore named entities, campus events and recurring topics in The Breeze's Darts and Pats archive." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -36,7 +36,7 @@
         <div class="intro-copy">
           <p class="eyebrow">The Breeze archive · 1991–2026</p>
           <h1 id="page-title">Named entities in Darts <span>&amp;</span> Pats</h1>
-          <p>Browse every entry, explore campus names and events, or investigate recurring topics across the years.</p>
+          <p>Explore the people, places, organizations and events in campus conversation—and discover recurring topics across the years.</p>
         </div>
         <dl class="archive-stats" aria-label="Live archive summary">
           <div><dt>Records</dt><dd id="total-records">—</dd></div>
@@ -48,11 +48,11 @@
 
       <section class="workspace" aria-label="Archive explorer">
         <div class="explorer-views" role="group" aria-label="Explore the archive">
-          <button type="button" data-explorer-view="archive" aria-controls="archive-panel" aria-pressed="true">All entries</button>
-          <button type="button" data-explorer-view="entities" aria-controls="entities-panel" aria-pressed="false">Named entities</button>
+          <button type="button" data-explorer-view="entities" aria-controls="entities-panel" aria-pressed="true">Named entities</button>
           <button type="button" data-explorer-view="topics" aria-controls="archive-panel" aria-pressed="false">Topics · beta</button>
+          <button type="button" class="archive-link" data-explorer-view="archive" aria-controls="archive-panel" aria-pressed="false">Explore the full archive</button>
         </div>
-        <section id="archive-panel" class="archive-panel" aria-labelledby="archive-title" aria-busy="true">
+        <section id="archive-panel" class="archive-panel" aria-labelledby="archive-title" aria-busy="true" hidden>
           <h2 id="archive-title">All entries</h2>
           <p id="archive-coverage">Loading the complete Dart and Pat archive…</p>
           <section id="topics-panel" aria-label="Keyword-based topics" hidden>
@@ -72,7 +72,7 @@
           <div id="archive-records" class="archive-records"></div>
           <button id="archive-more" class="load-more" type="button" hidden>Show more</button>
         </section>
-        <div id="entities-panel" hidden>
+        <div id="entities-panel">
         <div class="entity-type-filter">
           <span id="entity-types-label">Select Entity Type:</span>
           <div id="entity-types" class="entity-type-pills" role="group" aria-labelledby="entity-types-label">

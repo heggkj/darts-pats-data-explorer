@@ -4,7 +4,8 @@ A PL2-styled, static web app for browsing every eligible Dart and Pat published 
 
 ## Explorer views
 
-- **All entries** is the default: full-text search across published text, target and sender; year and entry-type filters; and with/without recognized entity filters. Search terms are case/accent-insensitive and all space-separated terms must occur. This view does not depend on an entity or topic match. Show more reaches every result without a fixed cap.
+- **Named entities** is the starting view, with Topics beta alongside it. This visualization is one of a planned collection, not the collection's full-dataset landing page.
+- **Explore the full archive** is secondary navigation. Until a dedicated visualization's URL is available, it opens the local **All entries** view: full-text search across published text, target and sender; year and entry-type filters; and with/without recognized entity filters. Search terms are case/accent-insensitive and all space-separated terms must occur. This view does not depend on an entity or topic match. Show more reaches every result without a fixed cap. Replace this internal navigation with the dedicated destination when its URL is confirmed.
 - **Named entities** retains the cloud, search spotlight, year bars, balance meter and sidebar. It starts without an entity selection. Entity and archive filters are independent.
 - **Topics · beta** uses 16 transparent keyword categories in `src/topics.js`, with per-topic Dart/Pat bars, disclosed rules and per-entry matched keywords. It shares the archive search/year/type/recognition filters, but the selected topic is not applied in All entries. Counts overlap and are not validated topic-model outputs or sentiment toward a topic.
 

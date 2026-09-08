@@ -33,7 +33,7 @@ export function initArchiveExplorer({ recordCard, escapeHtml, onShowEntities }) 
   const topicPanel = document.querySelector('#topics-panel');
   const topicButtons = document.querySelector('#topic-buttons');
   const topicStatus = document.querySelector('#topic-status');
-  let view = 'archive';
+  let view = 'entities';
   let selectedTopic = 'all';
   let records = [];
   let visible = 30;
