@@ -3,6 +3,7 @@ import "./styles.css";
 import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
 import { searchEntities, chooseCloudEntities, scrambleOrder } from "./entityBrowsing.js";
 import { entryBalance } from "./entryBalance.js";
+import { initArchiveExplorer } from "./archiveExplorer.js";
 
 const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
 const SHEET_NAME = "parsed_rows";
@@ -61,6 +62,8 @@ const elements = {
   recordList: document.querySelector("#record-list"),
   loadMore: document.querySelector("#load-more"),
 };
+
+const archiveExplorer = initArchiveExplorer({ recordCard, escapeHtml, onShowEntities: () => { if (state.records.length) renderCloud(); } });
 
 function escapeHtml(value = "") {
   return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;")
@@ -478,10 +481,10 @@ function recordCard(record) {
   const className = record.kind === "PAT" ? "record-card--pat" : "record-card--dart";
   const source = [record.sourcePdf, record.newspaperPage ? `newspaper p. ${record.newspaperPage}` : null].filter(Boolean).join(" · ");
   return `<article class="record-card ${className}">
-    <div class="record-meta"><span class="kind-badge">${escapeHtml(record.kind)}</span><time datetime="${record.date || ""}">${escapeHtml(formatDate(record.date, record.year))}</time></div>
+    <div class="record-meta"><span class="kind-badge">${escapeHtml(record.kind)}</span><time datetime="${escapeHtml(record.date || "")}">${escapeHtml(formatDate(record.date, record.year))}</time></div>
     <p>${escapeHtml(record.text)}</p>
     ${record.target ? `<div class="record-target">Target: <strong>${escapeHtml(record.target)}</strong></div>` : ""}
-    ${source ? `<div class="record-source">${escapeHtml(source)}</div>` : ""}
+    <div class="record-source">Record ${escapeHtml(record.id)}${source ? ` · ${escapeHtml(source)}` : ""}</div>
   </article>`;
 }
 
@@ -568,6 +571,7 @@ function registerWebMcpTool() {
       state.selectedEntityId = match.id;
       state.selectedYear = year;
       state.cloudOrder = [match.id];
+      archiveExplorer.showEntities();
       renderSelection();
       return { entity, year, matchingRecords: matchingRecords().length };
     },
@@ -592,6 +596,7 @@ async function refreshData() {
       document.body.dataset.source = "cached";
     }
     analyzeRecords(records);
+    archiveExplorer.setRecords(state.records);
     if (state.source === "live") {
       const loadedAt = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date());
       elements.sourceStatus.textContent = `Live Google Sheet · ${formatNumber(state.records.length)} Dart and Pat records loaded at ${loadedAt}`;
@@ -600,10 +605,11 @@ async function refreshData() {
     configureYearControls();
     populateEntityTypes();
     updateSummary();
-    renderSelection();
+    renderSelection({ redrawCloud: !document.querySelector('#entities-panel').hidden });
     renderEntitySearch();
     registerWebMcpTool();
   } catch (error) {
+    archiveExplorer.showError();
     elements.sourceStatus.textContent = "The archive could not be loaded.";
     elements.status.textContent = "Please check the source sharing settings and try again.";
     elements.wordCloud.innerHTML = '<p class="empty-note">Data unavailable.</p>';
@@ -648,6 +654,7 @@ elements.loadMore.addEventListener("click", () => { state.visibleCount += PAGE_S
 let resizeTimer;
 let cloudWidth = 0;
 new ResizeObserver(([entry]) => {
+  if (!entry.contentRect.width) return;
   if (entry.contentRect.width === cloudWidth) return;
   cloudWidth = entry.contentRect.width;
   window.clearTimeout(resizeTimer);

@@ -1,8 +1,11 @@
 // Campus-specific named entities and historical aliases found in the archive.
 // Keep canonical names stable so counts remain comparable when aliases expand.
 import { REVIEWED_ENTITIES } from "./reviewedEntities.js";
+import { applyLookupUpdates } from "./lookupUpdates.js";
+import { createEntityRecognizer, normalizeMatchText } from "./entityMatching.js";
+import REVIEWED_OCCURRENCES from './reviewedOccurrences.json' with { type: 'json' };
 
-export const ENTITY_DICTIONARY = [
+export const ENTITY_DICTIONARY = applyLookupUpdates([
   { id: "jmu", name: "James Madison University", type: "University", aliases: ["james madison university", "jmu", "madison college"] },
   { id: "the-breeze", name: "The Breeze", type: "Organization", aliases: ["the breeze", "breeze staff", "breeze editorial board"] },
   { id: "jmu-dining", name: "JMU Dining Services", type: "Organization", aliases: ["jmu dining services", "jmu dining", "dining services", "food services", "aramark"] },
@@ -119,7 +122,7 @@ export const ENTITY_DICTIONARY = [
   { id: "andy-uhlig", name: "Andy Uhlig", type: "Person", aliases: ["andy uhlig"] },
   { id: "halle-groter", name: "Halle Groter", type: "Person", aliases: ["halle groter"] },
   ...REVIEWED_ENTITIES,
-];
+]);
 
 export const ENTITY_TYPE_COLORS = {
   University: "#351c75",
@@ -133,34 +136,11 @@ export const ENTITY_TYPE_COLORS = {
   Mascot: "#4d6f35",
   Person: "#7d315f",
   "Misc.": "#526078",
+  Events: "#8a376a",
 };
 
 export function normalizeForMatch(value = "") {
   return normalizeMatchText(value, false);
 }
 
-function normalizeMatchText(value = "", preserveCase = false) {
-  const text = preserveCase ? String(value) : String(value).toLowerCase();
-  return text
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/&/g, " and ")
-    .replace(/[^a-zA-Z0-9]+/g, " ")
-    .trim()
-    .replace(/\s+/g, " ");
-}
-
-const MATCHERS = ENTITY_DICTIONARY.map((entity) => ({
-  ...entity,
-  aliases: entity.aliases.map(alias => normalizeMatchText(alias, entity.caseSensitive)).sort((a, b) => b.length - a.length),
-}));
-
-export function recognizeEntities(record) {
-  // Test fields independently so an alias cannot span a text/target/sender boundary.
-  const fields = [record.text, record.target, record.sender].filter(Boolean);
-  const haystacks = fields.map(value => ` ${normalizeForMatch(value)} `);
-  const caseHaystacks = fields.map(value => ` ${normalizeMatchText(value, true)} `);
-  return MATCHERS.filter((entity) => entity.aliases.some((alias) =>
-    (entity.caseSensitive ? caseHaystacks : haystacks).some(text => text.includes(` ${alias} `))))
-    .map(({ id, name, type }) => ({ id, name, type }));
-}
+export const recognizeEntities = createEntityRecognizer(ENTITY_DICTIONARY, REVIEWED_OCCURRENCES);

@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {ENTITY_DICTIONARY,ENTITY_TYPE_COLORS,recognizeEntities} from '../src/entityDictionary.js';
+import {createEntityRecognizer} from '../src/entityMatching.js';
+const rows=JSON.parse(fs.readFileSync(new URL('../public/data/records.json',import.meta.url)));
+const byId=new Map(rows.map(r=>[r.id,r]));
+const ids=r=>new Set(recognizeEntities(r).map(e=>e.id));
+assert.equal(new Set(ENTITY_DICTIONARY.map(e=>e.id)).size,ENTITY_DICTIONARY.length);
+for(const e of ENTITY_DICTIONARY) assert.ok(ENTITY_TYPE_COLORS[e.type]);
+assert.equal(ENTITY_DICTIONARY.filter(e=>e.type==='Events').length,15);
+for(const [id,expected] of [[1251,'taylor-hall'],[2212,'miller-hall'],[1542,'chandler-hall'],[9191,'harrison-hall'],[3762,'friends-tv-series'],[2420,'george-w-bush'],[3279,'jmu-community-dukes']]) assert.ok(!ids(byId.get(id)).has(expected),`False alias ${expected} in ${id}`);
+for(const [id,expected] of [[9191,'the-harrison'],[365,'miller-hall'],[8411,'taylor-hall'],[1240,'friends-tv-series'],[265,'d-hall'],[9562,'d-hall'],[10827,'jmu-dining'],[4506,'jacard-card'],[2148,'jacard']]) assert.ok(ids(byId.get(id)).has(expected),`Missing ${expected} in ${id}`);
+assert.ok(!ids(byId.get(4506)).has('jacard'),'The card is not the office');
+assert.ok(!ids({id:8411,text:'A pat to Taylor, my coworker at Kinko’s.'}).has('taylor-hall'),'A changed row cannot inherit a reviewed occurrence');
+const unrelated=ids({text:'My friends live in a house by a bush. A good Samaritan delivered Chinese food.'});
+for(const id of ['friends-tv-series','friendship-house','george-w-bush','samaritan','chinese-restaurant']) assert.ok(!unrelated.has(id));
+const overlapping=ids({text:'Alpha Phi Omega, Kappa Alpha Theta and Alpha Phi organized a party.'});
+assert.ok(overlapping.has('alpha-phi-omega'));assert.ok(overlapping.has('alpha-phi'));assert.ok(overlapping.has('kappa-alpha-theta'));assert.ok(!overlapping.has('kappa-alpha'));
+assert.ok(!ids({text:'Alpha Phi Omega'}).has('alpha-phi'));
+assert.ok(!ids({text:'McGraw',target:'Long Hall'}).has('mcgraw-long-hall'));
+assert.equal(recognizeEntities({text:'McGraw-Long and McGraw-Long Hall'}).filter(e=>e.id==='mcgraw-long-hall').length,1);
+for(const e of ENTITY_DICTIONARY.filter(e=>e.type==='Events')) assert.ok(ids({text:e.name}).has(e.id),`Event ${e.name}`);
+// Live rows need no model run for full names; reviewed short-form overrides do.
+assert.ok(ids({id:20001,text:'A pat to Food Lion for helping us.'}).has('food-lion'));
+assert.ok(!ids({text:'Read at Carrier while President Carrier spoke.'}).has('carrier-library'));
+const custom=createEntityRecognizer([{id:'a',name:'a',type:'Misc.',aliases:['test']},{id:'b',name:'b',type:'Misc.',aliases:['test name']}]);
+assert.deepEqual(custom({text:'test name and test'}).map(e=>e.id).sort(),['a','b']);
+console.log('Lookup merges, Events, exact-text occurrence safeguards, independent spans, new rows and false-positive checks passed.');

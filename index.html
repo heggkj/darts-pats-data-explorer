@@ -9,14 +9,14 @@
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Explore organizations, places, buildings, and other named entities in The Breeze's Darts and Pats archive." />
+    <meta name="description" content="Browse every Dart and Pat in The Breeze archive, explore named entities and events, and investigate recurring topics." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>Named entities in Darts &amp; Pats | PL2 Lab</title>
   </head>
   <body>
-    <a class="skip-link" href="#entity-explorer">Skip to the entity explorer</a>
+    <a class="skip-link" href="#entity-explorer">Skip to the archive explorer</a>
 
     <header class="site-header">
       <a class="brand" href="https://pl2lab.org/" aria-label="PL2 Lab home">
@@ -36,7 +36,7 @@
         <div class="intro-copy">
           <p class="eyebrow">The Breeze archive · 1991–2026</p>
           <h1 id="page-title">Named entities in Darts <span>&amp;</span> Pats</h1>
-          <p>See which campus places and organizations appear most often, when they were mentioned, and whether the mention was published as a Dart or a Pat.</p>
+          <p>Browse every entry, explore campus names and events, or investigate recurring topics across the years.</p>
         </div>
         <dl class="archive-stats" aria-label="Live archive summary">
           <div><dt>Records</dt><dd id="total-records">—</dd></div>
@@ -46,7 +46,33 @@
         </dl>
       </section>
 
-      <section class="workspace" aria-label="Named entity explorer">
+      <section class="workspace" aria-label="Archive explorer">
+        <div class="explorer-views" role="group" aria-label="Explore the archive">
+          <button type="button" data-explorer-view="archive" aria-controls="archive-panel" aria-pressed="true">All entries</button>
+          <button type="button" data-explorer-view="entities" aria-controls="entities-panel" aria-pressed="false">Named entities</button>
+          <button type="button" data-explorer-view="topics" aria-controls="archive-panel" aria-pressed="false">Topics · beta</button>
+        </div>
+        <section id="archive-panel" class="archive-panel" aria-labelledby="archive-title" aria-busy="true">
+          <h2 id="archive-title">All entries</h2>
+          <p id="archive-coverage">Loading the complete Dart and Pat archive…</p>
+          <section id="topics-panel" aria-label="Keyword-based topics" hidden>
+            <p>Explore recurring subjects, including entries without named entities. These are keyword matches—not model-discovered or independently validated topics. Darts and Pats describe the entry type, not sentiment toward the topic.</p>
+            <details><summary>See the matching keywords</summary><dl id="topic-rules"></dl></details>
+            <p id="topic-status" role="status"></p>
+            <div id="topic-buttons" class="topic-buttons" role="group" aria-label="Select a topic"></div>
+          </section>
+          <form id="archive-filters" class="archive-filters" role="search" aria-label="Search all archive entries">
+            <label class="archive-query">Search all entries<input type="search" id="archive-query" placeholder="Search published text, target or sender…" /></label>
+            <label>Year<select id="archive-year"><option value="all">All years</option></select></label>
+            <label>Entry type<select id="archive-kind"><option value="all">Darts and Pats</option><option value="DART">Darts</option><option value="PAT">Pats</option></select></label>
+            <label>Entity recognition<select id="archive-recognition"><option value="all">All entries</option><option value="unmatched">Without recognized entities</option><option value="matched">With recognized entities</option></select></label>
+            <button id="archive-reset" type="button">Reset filters</button>
+          </form>
+          <p id="archive-results-status" role="status">Loading entries…</p>
+          <div id="archive-records" class="archive-records"></div>
+          <button id="archive-more" class="load-more" type="button" hidden>Show more</button>
+        </section>
+        <div id="entities-panel" hidden>
         <div class="entity-type-filter">
           <span id="entity-types-label">Select Entity Type:</span>
           <div id="entity-types" class="entity-type-pills" role="group" aria-labelledby="entity-types-label">
@@ -120,6 +146,8 @@
 
         </div>
 
+        </div>
+
         <section class="live-strip" aria-live="polite">
           <span class="live-dot" aria-hidden="true"></span>
           <strong id="source-status">Connecting to the live Google Sheet…</strong>
@@ -129,9 +157,11 @@
         <section class="methods-panel" aria-labelledby="methods-title">
           <div><p class="eyebrow eyebrow--dark">Method</p><h2 id="methods-title">How entities are recognized</h2></div>
           <div>
-            <p>The page reads the shared Google Sheet when it loads and checks the published text, parsed target, and parsed sender against a versioned JMU-specific dictionary of people, organizations, academic units, buildings, places, housing communities, businesses, groups, and the mascot. Misc. includes named events, technology, publications, and other entities outside those types. The Breeze and WXJM retain their existing Organization classification.</p>
-            <p>The catalogue includes 71 additional names supported by source-context review after two NER models examined all 10,860 eligible entries in the September 7, 2026 snapshot. Unreviewed candidate strings, fragments, and proposed aliases are not treated as confirmed entities. This is an expanded catalogue, not an exhaustive inventory or an independently validated accuracy study. New Sheet rows are matched against this catalogue; the discovery models do not rerun automatically.</p>
-            <p>Counts represent records containing an entity, not the number of times its name repeats inside one record. Historical aliases are grouped under one stable name. This controlled method favors interpretable, campus-specific results over speculative name extraction from OCR text.</p>
+            <p>All entries makes every eligible Dart and Pat accessible, whether or not a named entity is recognized. Search checks the published text, parsed target, and parsed sender. The live Google Sheet is read when the page loads or Refresh data is selected; if it cannot be reached, a cached archive is shown and labeled.</p>
+            <p>The named-entity lookup was updated September 8, 2026 after review of candidates proposed by two NER models over the September 7 snapshot. It includes approved full names, merged spelling variants and source-checked occurrences. Ambiguous or unsupported short forms remain withheld. Events includes named events, holidays and observances; Misc. retains technology, products, works and selected concepts outside other types. This is not an exhaustive inventory or an independently validated accuracy study.</p>
+            <p>New Sheet rows are checked against the same lookup automatically on refresh. The discovery models do not rerun. Some reviewed short-name matches are tied to the original text of specific records; these decisions are not reused if that text changes. Source text is never rewritten. Longer competing names take priority at the same text span, so Alpha Phi Omega is not automatically Alpha Phi. Physical cards are distinguished from Card Services, and people from similarly named buildings.</p>
+            <p>Entity counts represent records containing an entity, not repeated uses of its name. The same entry can mention several entities. Recognition does not establish that the Dart or Pat is directed at that entity. Overall coverage counts each entry once.</p>
+            <p>Topics beta uses a separate, visible keyword list. It is a starting point for exploration, not a trained topic model or sentiment analysis. Keywords can have multiple meanings and topic totals overlap. Each result shows its matching keywords; entries without a topic match remain available in All entries.</p>
             <p>Only entries labeled Dart or Pat are included in this explorer; combined entries are excluded from all counts, charts, searches, and record lists. The balance gauge describes the selected entity and year (or all years). Equal counts are an even split; otherwise, a majority up to 55% is nearly even, above 55% but below 60% is a Dart or Pat lean, at least 60% but below 75% is a fairly strong lean, and 75% or more is a strong lean. Labels use unrounded shares. These are descriptive bands, not tests of statistical significance or measures of sentiment intensity.</p>
             <p><a href="https://docs.google.com/spreadsheets/d/1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA/edit?usp=sharing">View the live source spreadsheet</a></p>
           </div>
