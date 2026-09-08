@@ -1,4 +1,5 @@
 import cloud from "d3-cloud";
+import { packAnchoredCloud } from "./anchoredCloud.js";
 
 function seededRandom(seed) {
   let value = (Math.abs(seed) % 2147483646) + 1;
@@ -9,7 +10,7 @@ function seededRandom(seed) {
 }
 
 // Keep every label in a single packed cloud. Grow the canvas when a pass omits a word.
-export function layoutEntityCloud(entities, { width, seed = 1729, canvas = () => document.createElement("canvas"), onEnd, onError }) {
+export function layoutEntityCloud(entities, { width, seed = 1729, spotlightId = null, canvas = () => document.createElement("canvas"), onEnd, onError }) {
   let stopped = false;
   let activeLayout;
   let retryTimer;
@@ -31,6 +32,26 @@ export function layoutEntityCloud(entities, { width, seed = 1729, canvas = () =>
     }
     return { ...entity, text: entity.name, size };
   });
+  if (baseWords.some(word => word.id === spotlightId)) {
+    const measured = baseWords.map(word => {
+      const padding = word.id === spotlightId ? 10 : 3;
+      let size = word.id === spotlightId ? Math.max(22, Math.round(word.size * 1.18)) : word.size;
+      let metrics;
+      do {
+        context.font = `600 ${size}px Fraunces`;
+        metrics = context.measureText(word.text);
+        if (metrics.width + padding * 2 + 4 <= layoutWidth) break;
+        size--;
+      } while (size > 1);
+      const ascent = metrics.actualBoundingBoxAscent || size;
+      const descent = metrics.actualBoundingBoxDescent || size * 0.25;
+      return { ...word, size, padding, ascent, boxWidth: Math.ceil(Math.max(metrics.width,
+        (metrics.actualBoundingBoxLeft || 0) + (metrics.actualBoundingBoxRight || 0)) + padding * 2 + 4),
+        boxHeight: Math.ceil(ascent + descent + padding * 2) };
+    });
+    onEnd(packAnchoredCloud(measured, layoutWidth, spotlightId, seededRandom(seed)));
+    return { stop() {} };
+  }
   const area = baseWords.reduce((sum, word) => {
     context.font = `600 ${word.size + 1}px Fraunces`;
     return sum + (context.measureText(word.text).width + 8) * (word.size + 6);

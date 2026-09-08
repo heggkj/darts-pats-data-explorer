@@ -1,7 +1,7 @@
 import { layoutEntityCloud } from "./cloudLayout.js";
 import "./styles.css";
 import { ENTITY_DICTIONARY, ENTITY_TYPE_COLORS, recognizeEntities } from "./entityDictionary.js";
-import { searchEntities, chooseCloudEntities, partitionCloudEntities, scrambleOrder } from "./entityBrowsing.js";
+import { searchEntities, chooseCloudEntities, scrambleOrder } from "./entityBrowsing.js";
 import { entryBalance } from "./entryBalance.js";
 
 const SHEET_ID = "1QxSwNnQDkxWk3HcCvIrr5RelCROchm0MA0AsL78Q5VA";
@@ -303,30 +303,9 @@ function selectSearchEntity(entityId) {
   selectEntity(entityId, { scrollSidebar: false });
 }
 
-function createCloudSpotlight(entity) {
-  const row = document.createElement("div");
-  row.className = "cloud-spotlight-row";
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "cloud-spotlight is-selected";
-  button.dataset.entityId = entity.id;
-  button.setAttribute("aria-pressed", "true");
-  button.setAttribute("aria-label", `${entity.name}: ${entity.count} mentions. Selected search result.`);
-  button.title = `${entity.name}: ${formatNumber(entity.count)} mentions`;
-  button.textContent = entity.name;
-  button.addEventListener("click", () => selectEntity(entity.id, { scrollSidebar: false }));
-  if (state.spotlightAnimationPending) {
-    button.classList.add("is-arriving");
-    state.spotlightAnimationPending = false;
-  }
-  row.append(button);
-  return row;
-}
-
 async function renderCloud() {
   const allEntities = cloudEntities();
   const entities = chooseCloudEntities(allEntities, state.cloudOrder, state.selectedEntityId);
-  const { spotlight, packed } = partitionCloudEntities(entities, state.cloudSpotlightId);
   state.cloudIds = entities.map((entity) => entity.id);
   elements.cloudScramble.disabled = allEntities.length < 2;
   elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
@@ -345,14 +324,9 @@ async function renderCloud() {
   try { await document.fonts.load('600 16px "Fraunces"'); } catch { /* Use the browser's fallback font if needed. */ }
   if (renderId !== state.cloudRenderId) return;
   const availableWidth = Math.max(256, Math.round(elements.wordCloud.getBoundingClientRect().width || 760) - 16);
-  if (!packed.length) {
-    elements.wordCloud.replaceChildren(createCloudSpotlight(spotlight));
-    elements.wordCloud.setAttribute("aria-busy", "false");
-    elements.cloudCount.setAttribute("aria-label", `${entities.length} entities shown for the current filters`);
-    return;
-  }
-  activeCloudLayout = layoutEntityCloud(packed, {
+  activeCloudLayout = layoutEntityCloud(entities, {
     width: availableWidth,
+    spotlightId: state.cloudSpotlightId,
     seed: entities.length * 31 + (state.selectedYear || 0) + state.cloudSeed * 7919,
     onEnd: ({ words: placedWords, width, height }) => {
       if (renderId !== state.cloudRenderId) return;
@@ -387,7 +361,7 @@ async function renderCloud() {
         group.append(text);
       }
       svg.append(group);
-      elements.wordCloud.replaceChildren(...(spotlight ? [createCloudSpotlight(spotlight), svg] : [svg]));
+      elements.wordCloud.replaceChildren(svg);
       elements.wordCloud.setAttribute("aria-busy", "false");
       elements.cloudCount.textContent = `(N=${formatNumber(allEntities.length)})`;
       elements.cloudCount.setAttribute("aria-label", `${allEntities.length} entities shown for the current filters`);
@@ -396,11 +370,14 @@ async function renderCloud() {
         const bounds = selectedWord.getBBox();
         const centerX = bounds.x + bounds.width / 2;
         const centerY = bounds.y + bounds.height / 2;
-        const scale = Math.min(1.18, (width - 24) / (bounds.width + 14), (height - 24) / (bounds.height + 8));
+        // Anchored search results are already enlarged and padded by the packer.
+        const isAnchored = state.cloudSpotlightId === state.selectedEntityId;
+        const scale = isAnchored ? 1
+          : Math.min(1.18, (width - 24) / (bounds.width + 14), (height - 24) / (bounds.height + 8));
         const halfWidth = (bounds.width + 14) * scale / 2;
         const halfHeight = (bounds.height + 8) * scale / 2;
-        const fittedX = Math.max(-width / 2 + 12 + halfWidth, Math.min(centerX, width / 2 - 12 - halfWidth));
-        const fittedY = Math.max(-height / 2 + 12 + halfHeight, Math.min(centerY, height / 2 - 12 - halfHeight));
+        const fittedX = isAnchored ? centerX : Math.max(-width / 2 + 12 + halfWidth, Math.min(centerX, width / 2 - 12 - halfWidth));
+        const fittedY = isAnchored ? centerY : Math.max(-height / 2 + 12 + halfHeight, Math.min(centerY, height / 2 - 12 - halfHeight));
         const selectionLayer = document.createElementNS("http://www.w3.org/2000/svg", "g");
         selectionLayer.setAttribute("class", "selected-entity-layer");
         selectionLayer.setAttribute("transform", `translate(${fittedX},${fittedY}) scale(${scale}) translate(${-centerX},${-centerY})`);
@@ -412,6 +389,10 @@ async function renderCloud() {
         highlight.setAttribute("height", bounds.height + 8);
         highlight.setAttribute("rx", "8");
         highlight.setAttribute("aria-hidden", "true");
+        if (state.spotlightAnimationPending && state.cloudSpotlightId === state.selectedEntityId) {
+          highlight.classList.add("is-arriving");
+          state.spotlightAnimationPending = false;
+        }
         // Last in SVG paint order: enlarge the selection without changing frequency sizes.
         selectionLayer.append(highlight, selectedWord);
         group.append(selectionLayer);

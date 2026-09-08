@@ -25,13 +25,6 @@ export function chooseCloudEntities(entities, order, selectedId) {
   });
 }
 
-// The searched entity is displayed once in the cloud's first row. Repack all
-// remaining entities, rather than leaving a hole at its old coordinates.
-export function partitionCloudEntities(entities, spotlightId) {
-  const spotlight = entities.find(entity => entity.id === spotlightId) || null;
-  return { spotlight, packed: entities.filter(entity => entity.id !== spotlight?.id) };
-}
-
 export function scrambleOrder(entities, previousIds, random = Math.random) {
   const previous = new Set(previousIds);
   const shuffled = [...entities];
